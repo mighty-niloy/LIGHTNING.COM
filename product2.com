@@ -327,7 +327,7 @@
  </li>
 </ul>
 
- <a href="Product.html" class="active">1</a>
+ <a href="Product.html" class="active">2</a>
   <a href="product2.html">2</a>
   <a href="product4.html">3</a>
   <a href="product4.html">4</a>
@@ -401,7 +401,8 @@
   <br><br>
 
   <marquee behavior="scroll" direction="left" style="color: white;">
-    WE ALSO WITH YOU MR/MISS — OUR WEBSITE IS READY TO HELP YOU
+  <h3>  WE ALSO WITH YOU MR/MISS — OUR WEBSITE IS READY TO HELP YOU 
+    </h3>
   </marquee>
 </footer>
   </section>
