@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - The Lightning Niloy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .topbar {
+      background-color: #eee;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .search-bar input {
+      padding: 8px;
+      width: 250px;
+    }
+
+    .search-bar button {
+      padding: 8px 16px;
+      background-color: yellow;
+      border: none;
+    }
+
+    .banner {
+      background-image: url('https://i.imgur.com/jhm48Vz.png'); /* Replace with actual banner image URL */
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      width: 100%; /* Adjusted to make it responsive */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .banner h1 {
+      color: gold;
+      font-size: 36px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: adds a shadow for better visibility */
+    }
+
+    nav {
+      background-color: #2c4c4a;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 12px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .products-section {
+      padding: 40px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .contact-buttons a {
+      margin: 5px;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: green;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .contact-buttons a.messenger {
+      background: #0084ff;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button>Search</button>
+    </div>
+  </div>
+
+  <div class="banner">
+    <h1>Our Products</h1>
+  </div>
+
+  <nav>
+    <a href="Home.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="products-section">
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="https://i.imgur.com/fxHFI71.jpeg" alt="Drop shoulder t-shirt">
+        <div class="product-name">Black Drop shoulder</div>
+        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
+                <div class="price">750 BDT</div>
+        <div class="contact-buttons">
+          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
+          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="https://i.imgur.com/yEb4RjX.png" alt="Drop shoulder t-shirt">
+        <div class="product-name">Black original drop t shirt</div>
+        <div class="contact-buttons">
+          <p>T shirt also maintain good quality.new arrival order first before stock out ..</p>
+                <div class="price">500 BDT</div>
+          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
+          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
+        </div>
+      </div>
