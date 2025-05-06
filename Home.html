@@ -45,413 +45,87 @@
             padding: 0;
         }
 
-        header {
-            background-color: #1e3c72f; /* bliue gradient */
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-marquee {
-      color: light white;
-      font-size: 20px;
-      font-weight: bold;}
-
-        header img {
-            width: 100px;
-            height: auto;
-            border-radius: 50%;
-        }
-
-        header h1 {
-            margin: 10px 0 0;
-        }
-
-        nav {
-            background-color: #2e2e2e; /* Dark Grey */
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        .product-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
-        }
-
-        .product {
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            border-radius: 8px;
-            position: relative;
-        }
-
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown button style */
-.dropbtn {
-  color: white;
-  text-decoration: none;
-  padding: 14px 16px;
-  display: inline-block;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 140px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Dropdown links */
-.dropdown-content a {
-  color: black;
-  padding: 10px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Hover effects */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        .product img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            cursor: zoom-in;
-        }
-
-        .product img:hover {
-            transform: scale(1.2);
-        }
-
-        .product h3 {
-            color: #0044cc;
-        }
-
-        .product p {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .product .price {
-            font-size: 18px;
-            color: #FFD700;
-            font-weight: bold;
-        }
-
-        .order-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .order-button-messenger {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #0078ff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        #about {
-            background-color: #fff;
-            margin-top: 40px;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        #contact {
-            background-color: #fff;
-            margin-top: 40px;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        footer {
-            background-color: #0044cc;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 30px;
-        }
-
-        /* Modal for Image Details */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            max-width: 80%;
-            max-height: 80%;
-            overflow-y: auto;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 600px) {
-            .product {
-                width: 100%;
-            }
    
-.product-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .product-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 300px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-
-  .product-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-
-  .product-card h3 {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-
-  .product-card p {
-    font-size: 14px;
-    color: #555;
-  }
-
-  @media (max-width: 600px) {
-    .product-section {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product-card {
-      width: 90%;
-    }
-  }
-
-
-
-
-
-
-
-
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
-.search-container input[type="text"] {
-  padding: 10px;
-  width: 250px;
-  border: 2px solid #ccc;
-  border-radius: 8px 0 0 8px;
-  font-size: 16px;
-  outline: none;
-}
-
-.search-container button {
-  padding: 10px 15px;
-  background-color:#FFEB3B ; /* Yellow */
-  color: Light white;
-  border: none;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.search-container button:hover {
-  background-color: #007b33;
-}
-
- body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fefefe /* Light Gray */
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #D3D3D3; /* Grey */
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-marquee {
-      color: light white;
-      font-size: 20px;
-      font-weight: bold;}
-
-        header img {
-            width: 100px;
-            height: auto;
-            border-radius: 50%;
-        }
-
-        header h1 {
-            margin: 10px 0 0;
-        }
-
-        nav {
-            background-color: #575757; /* Black */
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        .product-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
-        }
-
-        .product {
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            border-radius: 8px;
-            position: relative;
-        }
-
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown button style */
-.dropbtn {
-  color: white;
-  text-decoration: none;
-  padding: 14px 16px;
-  display: inline-block;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 140px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Dropdown links */
+           header {
+               background-color: #1e3c72f; /* blue gradien */
+               padding: 20px;
+               text-align: center;
+               color: white;
+           }
+   marquee {
+         color: light white;
+         font-size: 20px;
+         font-weight: bold;}
+   
+           header img {
+               width: 100px;
+               height: auto;
+               border-radius: 50%;
+           }
+   
+           header h1 {
+               margin: 10px 0 0;
+           }
+   
+           nav {
+               background-color: #575757; /* Black */
+               padding: 10px;
+               text-align: center;
+           }
+   
+           nav a {
+               color: white;
+               margin: 0 15px;
+               text-decoration: none;
+               font-weight: bold;
+           }
+   
+           .container {
+               padding: 20px;
+           }
+   
+           .product-section {
+               display: flex;
+               flex-wrap: wrap;
+               gap: 20px;
+               justify-content: space-around;
+           }
+   
+           .product {
+               background-color: white;
+               border: 1px solid #ddd;
+               padding: 20px;
+               width: 250px;
+               text-align: center;
+               border-radius: 8px;
+               position: relative;
+           }
+   
+   /* Dropdown container */
+   .dropdown {
+     position: relative;
+     display: inline-block;
+   }
+   
+   /* Dropdown button style */
+   .dropbtn {
+     color: white;
+     text-decoration: none;
+     padding: 14px 16px;
+     display: inline-block;
+   }
+   
+   /* Dropdown content (hidden by default) */
+   .dropdown-content {
+     display: none;
+     position: absolute;
+     background-color: #f9f9f9;
+     min-width: 140px;
+     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+     z-index: 1;
+   }
+   
+   /* Dropdown links */
 .dropdown-content a {
   color: black;
   padding: 10px 16px;
@@ -534,7 +208,7 @@ marquee {
         #about {
             background-color: #fff;
             margin-top: 40px;
-            padding: 20px;
+            padding: 20px;2
             border-radius: 8px;
         }
 
@@ -546,7 +220,7 @@ marquee {
         }
 
         footer {
-            background-color: #0044cc;
+            background-color: #2e2e2e;
             color: white;
             text-align: center;
             padding: 10px;
