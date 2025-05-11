@@ -325,7 +325,7 @@
         .cart-sidebar {
             position: fixed;
             top: 0;
-            right: -400px;
+            right: -400px;/* Starts hidden */
             width: 400px;
             height: 100%;
             background: white;
@@ -335,6 +335,16 @@
             padding: 20px;
             overflow-y: auto;
         }
+           .cart-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
         
         .cart-header {
             display: flex;
@@ -461,6 +471,7 @@
  </style>
 </head>
 <body>
+    <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
 <script>
   function searchFunction() {
     const input = document.getElementById("searchInput").value.toLowerCase();
@@ -830,15 +841,30 @@
             Swal.fire('Cart Cleared!', 'Your cart is now empty.', 'success');
         }
 
-        function toggleCart() {
-            const sidebar = document.getElementById('cartSidebar');
-            sidebar.style.right = sidebar.style.right === '0px' ? '-400px' : '0px';
-            updateCart();
-        }
+      function toggleCart() {
+    const sidebar = document.getElementById('cartSidebar');
+    const backdrop = document.getElementById('cartBackdrop');
+    const isMobile = window.innerWidth <= 600;
+    const hidePosition = isMobile ? '-100%' : '-400px';
+    
+    if (sidebar.style.right === '0px') {
+        sidebar.style.right = hidePosition;
+        backdrop.style.display = 'none';
+    } else {
+        sidebar.style.right = '0px';
+        backdrop.style.display = 'block';
+    }
+    updateCart();
+}
 
-        function closeCart() {
-            document.getElementById('cartSidebar').style.right = '-400px';
-        }
+function closeCart() {
+    const sidebar = document.getElementById('cartSidebar');
+    const backdrop = document.getElementById('cartBackdrop');
+    const isMobile = window.innerWidth <= 600;
+    
+    sidebar.style.right = isMobile ? '-100%' : '-400px';
+    backdrop.style.display = 'none';
+}
 
         function checkout() {
             if (cart.length === 0) {
