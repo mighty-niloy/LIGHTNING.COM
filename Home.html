@@ -321,30 +321,134 @@
       width: 90%;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ /* ===== CART STYLES ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-details {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-item-controls button {
+            background: #f1f1f1;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .remove-item {
+            color: #ff0000;
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .clear-cart-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        #cartCount {
+            background-color: #ff0000;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .empty-cart-message {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+        }
+        
+        @media (max-width: 600px) {
+            .cart-sidebar { 
+                width: 100%; 
+                right: -100%; 
+            }
+        }
+  
 
 
 
@@ -395,19 +499,24 @@
 
         <a href="Home.html">Home</a>
         <a href="Pants.html">All Products</a>
-<li class="dropdown">
+<div class="dropdown">
   <a href="#Product" class="dropbtn">Products</a>
   <div class="dropdown-content">
     <a href="Product.html">Drop shoulder T-shirt</a>
     <a href="Pant.html">Pant</a>
     <a href="#cap">Cap</a>
   </div>
-</li>
+</div>
 
 
 
        <a href="about.html" target="_blank">About Us</a>
         <a href="#contact">Contact</a>
+        <!-- Added Cart Button -->
+        <a href="#" onclick="toggleCart()" style="color: white;">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartCount">0</span>
+        </a>
     </nav>
 
     <div class="container">
@@ -415,11 +524,12 @@
         <div class="product-section">
             
             <!-- Product 1 -->
-            <div class="product" onclick="openModal('Watch.html')">
+            <div class="product">
                 <img src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Silver-Black Watch">
                 <h3>Silver-Black Watch</h3>
                 <p>High quality Naviforce silver-black watch for men. Durable, stylish, and perfect for formal occasions.</p>
                 <div class="price">3200 BDT</div>
+                <button onclick="addToCart('Silver-Black Watch', 3200, 'https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Silver-Black%20Watch%20(3200%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Silver-Black%20Watch%20(3200%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
@@ -430,7 +540,7 @@
                 <h3>Luxury Watch</h3>
                 <p>Aolix 9196 luxury wristwatch. Classy design with elegant finish. Perfect for gifts and celebrations.</p>
                 <div class="price">3200 BDT</div>
-               <button onclick="addToCart('Luxury Watch', 3200)">Add to Cart</button>
+                <button onclick="addToCart('Luxury Watch', 3200, 'https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-01.jpg')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Luxury%20Watch%20(3200%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Luxury%20Watch%20(3200%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
@@ -441,6 +551,7 @@
                 <h3>Premium quality Punjabi</h3>
                 <p>Elegant White men's watch. Comfortable for everyday use with a premium feel.</p>
                 <div class="price">4000 BDT</div>
+                <button onclick="addToCart('Premium quality Punjabi', 4000, 'https://media.e-valy.com/cms/products/images/d9c8a4f4-c55d-467f-b973-014c58dc09ff')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Leather%20Strap%20Watch%20(4000%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Leather%20Strap%20Watch%20(4000%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
@@ -451,6 +562,7 @@
                 <h3>Drop shoulder T-shirt</h3>
                 <p>Stylish premium black Drop shoulder T-shirt for men with premium quality and durability.</p>
                 <div class="price">4500 BDT</div>
+                <button onclick="addToCart('Drop shoulder T-shirt', 4500, 'https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076.jpg')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Gold-Plated%20Watch%20(4500%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Gold-Plated%20Watch%20(4500%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
@@ -461,51 +573,54 @@
                 <h3>Cargo pant</h3>
                 <p>6 pocket cargo pant . Cream colour .With premium Quality.</p>
                 <div class="price">3600 BDT</div>
+                <button onclick="addToCart('Cargo pant', 3600, 'https://down-ph.img.susercontent.com/file/ph-11134207-7rasf-m1m3n0gtgji63d')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
 
-           
-  <!-- Product 6 -->
+            <!-- Product 6 -->
             <div class="product">
                 <img src="https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.webp" alt="uis https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.web">
-                <h3>Luis Vuitton Cap </h3>
+                <h3>Luis Vuitton Cap</h3>
                 <p>A premium quality cap which makes your look stylish and smart.</p>
                 <div class="price">899 BDT</div>
+                <button onclick="addToCart('Luis Vuitton Cap', 899, 'https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.webp')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
 
- <!-- Product 7 -->
+            <!-- Product 7 -->
             <div class="product">
                 <img src="https://i.imgur.com/yCuNAJr.png">
                 <h3>Polo Parijan</h3>
                 <p>Imported and premium polo from parijan.</p>
                 <div class="price">5999 BDT</div>
+                <button onclick="addToCart('Polo Parijan', 5999, 'https://i.imgur.com/yCuNAJr.png')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
 
-
-<!-- Product 8 -->
+            <!-- Product 8 -->
             <div class="product">
                 <img src="https://i.imgur.com/MI6O4Fg.png">
                 <h3>Cargo jins</h3>
                 <p>A good quality cargo for you .</p>
                 <div class="price">2090 BDT</div>
+                <button onclick="addToCart('Cargo jins', 2090, 'https://i.imgur.com/MI6O4Fg.png')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
-<!-- Product 9 -->
+            
+            <!-- Product 9 -->
             <div class="product">
                 <img src="https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-2-450x450.webp">
                 <h3>Budget Wristband</h3>
                 <p>Stylish and budget-friendly wristband. Best for daily wear and youth fashion..</p>
                 <div class="price">999 BDT</div>
+                <button onclick="addToCart('Budget Wristband', 999, 'https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-2-450x450.webp')">Add to Cart</button>
                 <a href="https://wa.me/8801874580941?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button">Order via WhatsApp</a>
                 <a href="https://www.messenger.com/e2ee/t/26480413428268758?text=I'm%20interested%20in%20Sporty%20Watch%20(3600%20BDT)" target="_blank" class="order-button-messenger">Order via Messenger</a>
             </div>
-
         </div>
 
         
@@ -517,6 +632,22 @@
             <p>You can reach us anytime on <a href="https://wa.me/8801874580941" style="color:#FFB6C1;">WhatsApp</a>.</p>
         </section>
       </div>
+    <!-- ===== CART SIDEBAR ===== -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-btn" onclick="closeCart()">&times;</button>
+        </div>
+        <div id="cartItems">
+            <!-- Cart items will appear here -->
+            <div class="empty-cart-message">Your cart is empty</div>
+        </div>
+        <div class="cart-total">
+            <h4>Total: <span id="cartTotal">0</span> BDT</h4>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+        </div>
+    </div>
  <!-- Footer -->
     <footer class="bg-dark text-white py-5">
         <div class="container">
@@ -594,6 +725,7 @@
     </div>
 
     <script>
+       
         // Modal functions
         function openModal(imgElement) {
             var modal = document.getElementById("myModal");
@@ -606,6 +738,141 @@
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
+
+        // ===== CART FUNCTIONALITY =====
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function addToCart(name, price, image) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ 
+                    name, 
+                    price, 
+                    image,
+                    quantity: 1 
+                });
+            }
+            
+            updateCart();
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Added to Cart!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+            
+            // Update cart items display
+            const cartItems = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
+                document.getElementById('cartTotal').textContent = '0';
+                return;
+            }
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            <div>
+                                <div>${item.name}</div>
+                                <div>${item.price} BDT x ${item.quantity}</div>
+                            </div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button onclick="changeQuantity(${index}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="changeQuantity(${index}, 1)">+</button>
+                            <button class="remove-item" onclick="removeItem(${index})"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('cartTotal').textContent = total;
+        }
+
+        function changeQuantity(index, change) {
+            cart[index].quantity += change;
+            
+            // Remove item if quantity reaches 0
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+            Swal.fire('Cart Cleared!', 'Your cart is now empty.', 'success');
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.style.right = sidebar.style.right === '0px' ? '-400px' : '0px';
+            updateCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').style.right = '-400px';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                Swal.fire('Empty Cart', 'Please add items to your cart before checkout.', 'warning');
+                return;
+            }
+            
+            // Create WhatsApp message with cart items
+            let message = "I want to order the following items:\n";
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.quantity} x ${item.price} BDT)\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `\nTotal: ${total} BDT`;
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/8801874580941?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Close cart
+            closeCart();
+        }
+
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', updateCart);
     </script>
     <script src="script.js"></script>
 
