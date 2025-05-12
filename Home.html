@@ -325,7 +325,7 @@
         .cart-sidebar {
             position: fixed;
             top: 0;
-            right: -400px;/* Starts hidden */
+            right: -400px;/* Default hidden position for desktop */
             width: 400px;
             height: 100%;
             background: white;
@@ -335,6 +335,14 @@
             padding: 20px;
             overflow-y: auto;
         }
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .cart-sidebar { 
+        width: 100%; 
+        right: -100%; 
+    }
+}
+
            .cart-backdrop {
     position: fixed;
     top: 0;
@@ -343,9 +351,9 @@
     height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 999;
-    display: none;
+    display: none;/* Hidden by default */
 }
-        
+        /* Cart header, item, and controls */
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -451,13 +459,7 @@
             padding: 20px;
             color: #888;
         }
-        
-        @media (max-width: 600px) {
-            .cart-sidebar { 
-                width: 100%; 
-                right: -100%; 
-            }
-        }
+      
   
 
 
@@ -845,10 +847,9 @@
     const sidebar = document.getElementById('cartSidebar');
     const backdrop = document.getElementById('cartBackdrop');
     const isMobile = window.innerWidth <= 600;
-    const hidePosition = isMobile ? '-100%' : '-400px';
     
     if (sidebar.style.right === '0px') {
-        sidebar.style.right = hidePosition;
+        sidebar.style.right = isMobile ? '-100%' : '-400px';
         backdrop.style.display = 'none';
     } else {
         sidebar.style.right = '0px';
@@ -864,7 +865,6 @@ function closeCart() {
     const isMobile = window.innerWidth <= 600;
     
     sidebar.style.right = isMobile ? '-100%' : '-400px';
-     sidebar.style.width = isMobile ? '100%' : '400px';
     backdrop.style.display = 'none';
 }
 
