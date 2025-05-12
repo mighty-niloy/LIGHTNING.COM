@@ -852,6 +852,7 @@
         backdrop.style.display = 'none';
     } else {
         sidebar.style.right = '0px';
+       sidebar.style.width = isMobile ? '100%' : '400px';
         backdrop.style.display = 'block';
     }
     updateCart();
@@ -863,6 +864,7 @@ function closeCart() {
     const isMobile = window.innerWidth <= 600;
     
     sidebar.style.right = isMobile ? '-100%' : '-400px';
+     sidebar.style.width = isMobile ? '100%' : '400px';
     backdrop.style.display = 'none';
 }
 
