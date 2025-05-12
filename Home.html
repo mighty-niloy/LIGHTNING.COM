@@ -330,7 +330,7 @@
             height: 100%;
             background: white;
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            transition: right 0.3s;
+            transition: right 0.3s ease-in-out;
             z-index: 1000;
             padding: 20px;
             overflow-y: auto;
@@ -734,171 +734,185 @@
         </div>
     </div>
 
-    <script>
-       
-        // Modal functions
-        function openModal(imgElement) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("modalImage");
-            modal.style.display = "block";
-            modalImg.src = imgElement.src;
-        }
+    <script><script>
+    // Modal functions
+    function openModal(imgElement) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = imgElement.src;
+    }
 
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
 
-        // ===== CART FUNCTIONALITY =====
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // ===== CART FUNCTIONALITY =====
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Initialize cart position on load
+    function initializeCartPosition() {
+        const sidebar = document.getElementById('cartSidebar');
+        if (window.innerWidth <= 600) {
+            sidebar.style.right = '-100%';
+        } else {
+            sidebar.style.right = '-400px';
+        }
+    }
+
+    // Handle window resize events
+    window.addEventListener('resize', function() {
+        const sidebar = document.getElementById('cartSidebar');
+        const currentPosition = parseInt(sidebar.style.right) || -400;
         
-        function addToCart(name, price, image) {
-            // Check if item already exists in cart
-            const existingItem = cart.find(item => item.name === name);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ 
-                    name, 
-                    price, 
-                    image,
-                    quantity: 1 
-                });
-            }
-            
-            updateCart();
-            
-            Swal.fire({
-                icon: 'success',
-                title: 'Added to Cart!',
-                showConfirmButton: false,
-                timer: 1500
+        if (currentPosition >= 0) {
+            sidebar.style.right = '0px';
+        } else {
+            sidebar.style.right = window.innerWidth <= 600 ? '-100%' : '-400px';
+        }
+    });
+
+    function addToCart(name, price, image) {
+        const existingItem = cart.find(item => item.name === name);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ 
+                name, 
+                price, 
+                image,
+                quantity: 1 
             });
         }
+        
+        updateCart();
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Added to Cart!',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
 
-        function updateCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
+    function updateCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cartCount').textContent = totalItems;
+        
+        const cartItems = document.getElementById('cartItems');
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
+            document.getElementById('cartTotal').textContent = '0';
+            return;
+        }
+        
+        cartItems.innerHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
             
-            // Update cart count
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cartCount').textContent = totalItems;
-            
-            // Update cart items display
-            const cartItems = document.getElementById('cartItems');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
-                document.getElementById('cartTotal').textContent = '0';
-                return;
-            }
-            
-            cartItems.innerHTML = '';
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                
-                cartItems.innerHTML += `
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                            <div>
-                                <div>${item.name}</div>
-                                <div>${item.price} BDT x ${item.quantity}</div>
-                            </div>
-                        </div>
-                        <div class="cart-item-controls">
-                            <button onclick="changeQuantity(${index}, -1)">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="changeQuantity(${index}, 1)">+</button>
-                            <button class="remove-item" onclick="removeItem(${index})"><i class="fas fa-trash"></i></button>
+            cartItems.innerHTML += `
+                <div class="cart-item">
+                    <div class="cart-item-details">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div>
+                            <div>${item.name}</div>
+                            <div>${item.price} BDT x ${item.quantity}</div>
                         </div>
                     </div>
-                `;
-            });
-            
-            document.getElementById('cartTotal').textContent = total;
-        }
+                    <div class="cart-item-controls">
+                        <button onclick="changeQuantity(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQuantity(${index}, 1)">+</button>
+                        <button class="remove-item" onclick="removeItem(${index})"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        document.getElementById('cartTotal').textContent = total;
+    }
 
-        function changeQuantity(index, change) {
-            cart[index].quantity += change;
-            
-            // Remove item if quantity reaches 0
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            
-            updateCart();
-        }
-
-        function removeItem(index) {
+    function changeQuantity(index, change) {
+        cart[index].quantity += change;
+        
+        if (cart[index].quantity <= 0) {
             cart.splice(index, 1);
-            updateCart();
         }
+        
+        updateCart();
+    }
 
-        function clearCart() {
-            cart = [];
-            updateCart();
-            Swal.fire('Cart Cleared!', 'Your cart is now empty.', 'success');
+    function removeItem(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    function clearCart() {
+        cart = [];
+        updateCart();
+        Swal.fire('Cart Cleared!', 'Your cart is now empty.', 'success');
+    }
+
+    function toggleCart() {
+        const sidebar = document.getElementById('cartSidebar');
+        const backdrop = document.getElementById('cartBackdrop');
+        const isMobile = window.innerWidth <= 600;
+        
+        if (sidebar.style.right === '0px') {
+            sidebar.style.right = isMobile ? '-100%' : '-400px';
+            backdrop.style.display = 'none';
+        } else {
+            sidebar.style.right = '0px';
+            backdrop.style.display = 'block';
         }
+    }
 
-      function toggleCart() {
-    const sidebar = document.getElementById('cartSidebar');
-    const backdrop = document.getElementById('cartBackdrop');
-    const isMobile = window.innerWidth <= 600;
-    
-    if (sidebar.style.right === '0px') {
+    function closeCart() {
+        const sidebar = document.getElementById('cartSidebar');
+        const backdrop = document.getElementById('cartBackdrop');
+        const isMobile = window.innerWidth <= 600;
+        
         sidebar.style.right = isMobile ? '-100%' : '-400px';
         backdrop.style.display = 'none';
-    } else {
-        sidebar.style.right = '0px';
-       sidebar.style.width = isMobile ? '100%' : '400px';
-        backdrop.style.display = 'block';
     }
-    updateCart();
-}
 
-function closeCart() {
-    const sidebar = document.getElementById('cartSidebar');
-    const backdrop = document.getElementById('cartBackdrop');
-    const isMobile = window.innerWidth <= 600;
-    
-    sidebar.style.right = isMobile ? '-100%' : '-400px';
-    backdrop.style.display = 'none';
-}
-
-        function checkout() {
-            if (cart.length === 0) {
-                Swal.fire('Empty Cart', 'Please add items to your cart before checkout.', 'warning');
-                return;
-            }
-            
-            // Create WhatsApp message with cart items
-            let message = "I want to order the following items:\n";
-            let total = 0;
-            
-            cart.forEach(item => {
-                message += `- ${item.name} (${item.quantity} x ${item.price} BDT)\n`;
-                total += item.price * item.quantity;
-            });
-            
-            message += `\nTotal: ${total} BDT`;
-            
-            // Encode the message for URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/8801874580941?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
-            
-            // Close cart
-            closeCart();
+    function checkout() {
+        if (cart.length === 0) {
+            Swal.fire('Empty Cart', 'Please add items to your cart before checkout.', 'warning');
+            return;
         }
+        
+        let message = "I want to order the following items:\n";
+        let total = 0;
+        
+        cart.forEach(item => {
+            message += `- ${item.name} (${item.quantity} x ${item.price} BDT)\n`;
+            total += item.price * item.quantity;
+        });
+        
+        message += `\nTotal: ${total} BDT`;
+        
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/8801874580941?text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+        closeCart();
+    }
 
-        // Initialize cart on page load
-        document.addEventListener('DOMContentLoaded', updateCart);
-    </script>
+    // Initialize cart on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeCartPosition();
+        updateCart();
+    });
+</script>
+   
     
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
