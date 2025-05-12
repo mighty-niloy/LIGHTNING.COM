@@ -7,6 +7,7 @@
     <title> THE LIGHTNING - Business Page</title>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert for nice popups -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <style>
        /* Search Bar CSS */
@@ -325,7 +326,7 @@
         .cart-sidebar {
             position: fixed;
             top: 0;
-            right: -400px;/* Default hidden position for desktop */
+            right: -400px;
             width: 400px;
             height: 100%;
             background: white;
@@ -342,16 +343,6 @@
         right: -100%; 
     }
 }
-
-           .cart-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    display: none;/* Hidden by default */
 }
         /* Cart header, item, and controls */
         .cart-header {
@@ -473,7 +464,6 @@
  </style>
 </head>
 <body>
-    <div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
 <script>
   function searchFunction() {
     const input = document.getElementById("searchInput").value.toLowerCase();
@@ -734,7 +724,7 @@
         </div>
     </div>
 
-    <script><script>
+    <script>
     // Modal functions
     function openModal(imgElement) {
         var modal = document.getElementById("myModal");
@@ -750,30 +740,10 @@
 
     // ===== CART FUNCTIONALITY =====
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Initialize cart position on load
-    function initializeCartPosition() {
-        const sidebar = document.getElementById('cartSidebar');
-        if (window.innerWidth <= 600) {
-            sidebar.style.right = '-100%';
-        } else {
-            sidebar.style.right = '-400px';
-        }
-    }
-
-    // Handle window resize events
-    window.addEventListener('resize', function() {
-        const sidebar = document.getElementById('cartSidebar');
-        const currentPosition = parseInt(sidebar.style.right) || -400;
-        
-        if (currentPosition >= 0) {
-            sidebar.style.right = '0px';
-        } else {
-            sidebar.style.right = window.innerWidth <= 600 ? '-100%' : '-400px';
-        }
-    });
+   
 
     function addToCart(name, price, image) {
+       // Check if item already exists in cart
         const existingItem = cart.find(item => item.name === name);
         
         if (existingItem) {
@@ -800,9 +770,10 @@
     function updateCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
         
+            // Update cart count
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
         document.getElementById('cartCount').textContent = totalItems;
-        
+          // Update cart items display
         const cartItems = document.getElementById('cartItems');
         
         if (cart.length === 0) {
@@ -842,6 +813,7 @@
     function changeQuantity(index, change) {
         cart[index].quantity += change;
         
+            // Remove item if quantity reaches 0
         if (cart[index].quantity <= 0) {
             cart.splice(index, 1);
         }
@@ -862,25 +834,10 @@
 
     function toggleCart() {
         const sidebar = document.getElementById('cartSidebar');
-        const backdrop = document.getElementById('cartBackdrop');
-        const isMobile = window.innerWidth <= 600;
-        
-        if (sidebar.style.right === '0px') {
-            sidebar.style.right = isMobile ? '-100%' : '-400px';
-            backdrop.style.display = 'none';
-        } else {
-            sidebar.style.right = '0px';
-            backdrop.style.display = 'block';
-        }
-    }
+      sidebar.style.right = sidebar.style.right === '0px' ? '-400px' : '0px';
 
     function closeCart() {
-        const sidebar = document.getElementById('cartSidebar');
-        const backdrop = document.getElementById('cartBackdrop');
-        const isMobile = window.innerWidth <= 600;
-        
-        sidebar.style.right = isMobile ? '-100%' : '-400px';
-        backdrop.style.display = 'none';
+       document.getElementById('cartSidebar').style.right = '-400px';
     }
 
     function checkout() {
@@ -889,6 +846,7 @@
             return;
         }
         
+            // Create WhatsApp message with cart items
         let message = "I want to order the following items:\n";
         let total = 0;
         
@@ -899,22 +857,19 @@
         
         message += `\nTotal: ${total} BDT`;
         
+            // Encode the message for URL
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/8801874580941?text=${encodedMessage}`;
-        
+         // Open WhatsApp
         window.open(whatsappUrl, '_blank');
         closeCart();
     }
 
     // Initialize cart on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        initializeCartPosition();
-        updateCart();
-    });
+      document.addEventListener('DOMContentLoaded', updateCart);
+
 </script>
    
-    
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
 
