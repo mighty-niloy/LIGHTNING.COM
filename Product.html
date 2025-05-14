@@ -4,444 +4,1321 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products - The Lightning Niloy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
+    :root {
+      --primary-color: #2c4c4a;
+      --secondary-color: #f8d347;
+      --accent-color: #007BFF;
+      --light-color: #f5f5f5;
+      --dark-color: #333;
+      --white: #fff;
+    }
+    
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    .topbar {
-      background-color: #eee;
-      padding: 15px;
-      text-align: center;
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      line-height: 1.6;
     }
-
-    .search-bar input {
-      padding: 8px;
-      width: 250px;
+    
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-
-    .search-bar button {
-      padding: 8px 16px;
-      background-color: yellow;
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .logo-text span {
+      color: var(--accent-color);
+    }
+    
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 25px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 600;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+    
+    .nav-links a.active {
+      color: var(--accent-color);
+    }
+    
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+    
+    /* Header Icons */
+    .header-icons {
+      display: flex;
+      align-items: center;
+    }
+    
+    .header-icons a {
+      color: var(--dark-color);
+      margin-left: 20px;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    
+    .header-icons a:hover {
+      color: var(--accent-color);
+    }
+    
+    .cart-icon {
+      position: relative;
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
       border: none;
+      font-size: 24px;
+      cursor: pointer;
     }
-
+    
+    /* Search Bar */
+    .search-bar {
+      position: relative;
+      width: 300px;
+      margin: 0 20px;
+    }
+    
+    .search-bar input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    
+    .search-bar input:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+    
+    .search-bar button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: var(--secondary-color);
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .search-bar button:hover {
+      background-color: #e6c63d;
+    }
+    
+    /* Banner */
     .banner {
-      background-image: url('https://i.imgur.com/jhm48Vz.png'); /* Replace with actual banner image URL */
+      background-image: url('https://i.imgur.com/jhm48Vz.png');
       background-size: cover;
       background-position: center;
       height: 400px;
-      width: 100%; /* Adjusted to make it responsive */
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 36px;
+      position: relative;
+    }
+    
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .banner-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 20px;
+    }
+    
+    .banner h1 {
+      color: var(--secondary-color);
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .banner p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Main Content */
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 5%;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 32px;
+      color: var(--primary-color);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+    
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-image {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 12px;
       font-weight: bold;
     }
-
-    .banner h1 {
-      color: gold;
-      font-size: 36px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: adds a shadow for better visibility */
+    
+    .product-info {
+      padding: 15px;
     }
-
-    nav {
-      background-color: #2c4c4a;
+    
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: var(--dark-color);
+    }
+    
+    .product-description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .product-price {
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .add-to-cart, .view-details {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .add-to-cart {
+      background-color: var(--accent-color);
+      color: white;
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+    
+    .add-to-cart:hover {
+      background-color: #0069d9;
+    }
+    
+    .view-details {
+      background-color: var(--light-color);
+      color: var(--dark-color);
+    }
+    
+    .view-details:hover {
+      background-color: #e0e0e0;
+    }
+    
+    /* Cart Sidebar */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    
+    .cart-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: right 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .cart-sidebar.active {
+      right: 0;
+    }
+    
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cart-header h3 {
+      font-size: 20px;
+      margin: 0;
+    }
+    
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    
+    .cart-item {
+      display: flex;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+    
+    .cart-item-details {
+      flex-grow: 1;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .cart-item-price {
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+    }
+    
+    .quantity-btn {
+      width: 25px;
+      height: 25px;
+      background-color: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .quantity-input {
+      width: 40px;
+      text-align: center;
+      margin: 0 5px;
+      border: 1px solid #ddd;
+    }
+    
+    .remove-item {
+      color: #ff5252;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .checkout-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .checkout-btn:hover {
+      background-color: #0069d9;
+    }
+    
+    /* Pagination */
+    .pagination {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      padding: 12px;
+      align-items: center;
+      gap: 8px;
+      padding: 20px;
+      font-family: Bold, sans-serif;
+      flex-wrap: wrap;
     }
-
-    nav a {
-      color: white;
+    
+    .pagination a, .pagination span {
+      padding: 8px 12px;
       text-decoration: none;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    
+    .pagination a:hover:not(.active):not(.disabled) {
+      background-color: #eee;
+    }
+    
+    .pagination a.active {
       font-weight: bold;
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
     }
-
-    .products-section {
-      padding: 40px;
+    
+    .pagination a.disabled {
+      color: #aaa;
+      pointer-events: none;
+      border: 1px solid #eee;
     }
-
-    .products-grid {
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 50px 5% 20px;
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 30px;
     }
-
-    .product-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      text-align: center;
+    
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
     }
-
-    .product-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px;
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--secondary-color);
     }
-
-    .product-name {
-      font-weight: bold;
-      margin: 10px 0;
+    
+    .footer-links {
+      list-style: none;
     }
-
-    .contact-buttons a {
-      margin: 5px;
-      display: inline-block;
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ddd;
       text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .footer-contact p {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
       color: white;
-      background: green;
-      padding: 8px 12px;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .newsletter input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
       border-radius: 5px;
     }
-
-    .contact-buttons a.messenger {
-      background: #0084ff;
+    
+    .newsletter button {
+      background-color: var(--secondary-color);
+      color: var(--dark-color);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-
-    img {
-      max-width: 100%;
-      height: auto;
+    
+    .newsletter button:hover {
+      background-color: #e6c63d;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-bottom p {
+      margin-bottom: 10px;
+    }
+    
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .payment-methods img {
+      height: 25px;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    
+    .payment-methods img:hover {
+      opacity: 1;
+    }
+    
+    .marquee {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .header-container {
+        flex-wrap: wrap;
+        padding: 15px;
+      }
+      
+      .search-bar {
+        order: 3;
+        width: 100%;
+        margin: 15px 0;
+      }
+      
+      .header-icons {
+        margin-left: auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        transition: left 0.3s;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-links li {
+        margin: 15px 0;
+      }
+      
+      .cart-sidebar {
+        width: 100%;
+        max-width: 350px;
+      }
+      
+      .banner h1 {
+        font-size: 36px;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .logo-text {
+        font-size: 20px;
+      }
+      
+      .banner {
+        height: 300px;
+      }
+      
+      .banner h1 {
+        font-size: 28px;
+      }
+      
+      .section-title h2 {
+        font-size: 24px;
+      }
+      
+      .product-actions {
+        flex-direction: column;
+      }
+      
+      .add-to-cart {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="topbar">
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-      <button>Search</button>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="https://i.imgur.com/jhm48Vz.png" alt="The Lightning Niloy Logo">
+        <span class="logo-text">Lightning <span>Niloy</span></span>
+      </a>
+      
+      <div class="search-bar">
+        <input type="text" placeholder="Search products..." id="searchInput">
+        <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+      </div>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-icons">
+        <a href="#" class="cart-icon" onclick="toggleCart()">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+      
+      <button class="mobile-menu-btn" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-  </div>
+  </header>
 
+  <!-- Banner -->
   <div class="banner">
-    <h1>Our Products</h1>
-  </div>
-
-  <nav>
-    <a href="Home.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <section class="products-section">
-    <div class="products-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/fxHFI71.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black Drop shoulder</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">750 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/yEb4RjX.png" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black original drop t shirt</div>
-        <div class="contact-buttons">
-          <p>T shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">500 BDT</div>
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/ZVWx6LN.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed Drop shoulder t-shirt</div>
-        <div class="contact-buttons">
-          <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 4 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/C1J3uUt.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Drop shoulder t-shirt</div>
-        <div class="contact-buttons">
-          <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product  5-->
-      <div class="product-card">
-        <img src="https://i.imgur.com/xmJAAeY.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">White printed Drop shoulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival .Summer collection.order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 6 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/Cg0BAPM.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black Drop shoulder</div>
-        <p>T-shirt also maintain good quality.new arrival .Summer collection.order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 7 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/bATn9L9.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">White printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 8 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/AgVS8EH.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 9 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/Jeia96c.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">White printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 10 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/Ku0QFpI.jpeg" alt="Elegant Watch">
-        <div class="product-name">Black printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 11 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/Ku0QFpI.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">white printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 12 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/NhK3L6f.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 13 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/NhK3L6f.jpeg" alt="Drop soulder t-shirt">
-        <div class="product-name">Black colour with violet lightening printing Drop shoulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 14 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/kekDVwB.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">White printed colour drop soulder t-shirt with black border</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 15 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/uP09lvd.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 16 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/zkOOgrK.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed tom & jerry colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 17 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/h1g0T0S.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 18 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/lu0Wb4P.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">White printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 19 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/on6bFke.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Black printed colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://i.imgur.com/rc1VSZB.jpeg" alt="Drop shoulder t-shirt">
-        <div class="product-name">Red colour drop soulder t-shirt</div>
-        <p>T-shirt also maintain good quality.new arrival order first before stock out ..</p>
-                <div class="price">699 BDT</div>
-        <div class="contact-buttons">
-          <a href="https://wa.me/8801874580941" target="_blank">WhatsApp</a>
-          <a class="messenger" href="https://www.messenger.com/e2ee/t/26480413428268758" target="_blank">Messenger</a>
-        </div>
-      </div>
-  <!-- Add more products as needed -->
+    <div class="banner-content">
+      <h1>Our Premium Collection</h1>
+      <p>Discover the latest trends in fashion with our exclusive drop shoulder t-shirts</p>
     </div>
-<!-- Pagination Bar -->
-<div class="pagination">
- <ul>
-<li>
- <a href="product7.html" class="active">❮ Previous</a>
- </li>
-</ul>
-
- <a href="Product.html" class="active">1</a>
-  <a href="product2.html">2</a>
-  <a href="product4.html">3</a>
-  <a href="product4.html">4</a>
-  <a href="product5.html">5</a>
-  <a href="product6.html">6</a>
-  <a href="product7.html">7</a>
-  <span>...</span>
-  <a href="product2.html">Next ❯</a>
-</div>
-
-<!-- Pagination Styles -->
-<style>
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 20px;
-    font-family: Bold, sans-serif;
-    flex-wrap: wrap;
-  }
-
-  .pagination a, .pagination span {
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .pagination a:hover:not(.active):not(.disabled) {
-    background-color: #eee;
-  }
-
-  .pagination a.active {
-    font-weight: bold;
-    border: 2px solid #000;
-  }
-
-  .pagination a.disabled {
-    color: #aaa;
-    pointer-events: none;
-    border: 1px solid #eee;
-  }
-</style>
-
-  <!-- Include this in <head> if not already present -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!-- Footer Section -->
-<footer style="background-color: #007BFF; color: white; padding: 20px 10px; text-align: center;">
-  <p>© 2025 The Lightning Niloy. All rights reserved.</p>
-
-  <div>
-    Follow us:
-    <a href="https://www.facebook.com/ni.l.oy.845150" target="_blank" style="color:white; margin-left: 10px;">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/its_me_niloy_just/?fbclid=..." target="_blank" style="color:white; margin-left: 10px;">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://wa.me/8801874580941" target="_blank" style="color:white; margin-left: 10px;">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://m.me/yourpage" target="_blank" style="color:white; margin-left: 10px;">
-      <i class="fab fa-facebook-messenger"></i>
-    </a>
   </div>
 
-  <br><br>
+  <!-- Main Content -->
+  <div class="main-container">
+    <div class="section-title">
+      <h2>Featured Products</h2>
+    </div>
+    
+    <div class="products-grid" id="productsGrid">
+      <!-- Product cards will be dynamically inserted here -->
+    </div>
+    
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="product7.html" class="disabled">❮ Previous</a>
+      <a href="Product.html" class="active">1</a>
+      <a href="product2.html">2</a>
+      <a href="product3.html">3</a>
+      <a href="product4.html">4</a>
+      <a href="product5.html">5</a>
+      <a href="product6.html">6</a>
+      <a href="product7.html">7</a>
+      <span>...</span>
+      <a href="product2.html">Next ❯</a>
+    </div>
+  </div>
 
-  <marquee behavior="scroll" direction="left" style="color: white;">
-    WE ALSO WITH YOU MR/MISS — OUR WEBSITE IS READY TO HELP YOU
-  </marquee>
-</footer>
-  </section>
+  <!-- Shopping Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+    
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be dynamically inserted here -->
+      <div class="empty-cart-message" style="text-align: center; padding: 50px 0;">
+        <i class="fas fa-shopping-cart" style="font-size: 50px; color: #ddd; margin-bottom: 20px;"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">0 BDT</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>The Lightning Niloy is a premium fashion brand specializing in trendy and comfortable clothing. We're committed to quality and customer satisfaction.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/ni.l.oy.845150" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/its_me_niloy_just/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/8801874580941" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://m.me/yourpage" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <div class="footer-contact">
+          <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Dhaka, Bangladesh</p>
+          <p><i class="fas fa-phone"></i> +880 1874 580941</p>
+          <p><i class="fas fa-envelope"></i> info@lightningniloy.com</p>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for the latest updates and offers.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="payment-methods">
+        <img src="https://i.imgur.com/Vkw5jxx.png" alt="Visa">
+        <img src="https://i.imgur.com/8qJjvzQ.png" alt="Mastercard">
+        <img src="https://i.imgur.com/5tLj5kS.png" alt="PayPal">
+        <img src="https://i.imgur.com/4Z8XZQJ.png" alt="bKash">
+      </div>
+      <p>&copy; 2025 The Lightning Niloy. All rights reserved.</p>
+    </div>
+    
+    <div class="marquee">
+      <marquee behavior="scroll" direction="left">WE ALSO WITH YOU MR/MISS — OUR WEBSITE IS READY TO HELP YOU — Free Shipping on Orders Over 1500 BDT — New Arrivals Every Week</marquee>
+    </div>
+  </footer>
+
+  <script>
+    // Sample product data
+    const products = [
+      {
+        id: 1,
+        name: "Black Drop Shoulder T-shirt",
+        description: "Premium quality drop shoulder t-shirt with comfortable fit. New arrival, order first before stock out.",
+        price: 750,
+        image: "https://i.imgur.com/fxHFI71.jpeg",
+        badge: "New"
+      },
+      {
+        id: 2,
+        name: "Black Original Drop T-shirt",
+        description: "Classic black drop shoulder t-shirt with excellent fabric quality. Limited stock available.",
+        price: 500,
+        image: "https://i.imgur.com/yEb4RjX.png",
+        badge: ""
+      },
+      {
+        id: 3,
+        name: "Black Printed Drop Shoulder T-shirt",
+        description: "Stylish printed design on premium quality fabric. Summer collection item.",
+        price: 699,
+        image: "https://i.imgur.com/ZVWx6LN.jpeg",
+        badge: "Popular"
+      },
+      {
+        id: 4,
+        name: "Drop Shoulder T-shirt",
+        description: "Comfortable and trendy drop shoulder design. Available in multiple colors.",
+        price: 699,
+        image: "https://i.imgur.com/C1J3uUt.jpeg",
+        badge: ""
+      },
+      {
+        id: 5,
+        name: "White Printed Drop Shoulder T-shirt",
+        description: "Summer collection with unique print design. Lightweight and breathable fabric.",
+        price: 699,
+        image: "https://i.imgur.com/xmJAAeY.jpeg",
+        badge: "Summer"
+      },
+      {
+        id: 6,
+        name: "Black Drop Shoulder T-shirt",
+        description: "Versatile black t-shirt perfect for any occasion. Premium cotton blend fabric.",
+        price: 699,
+        image: "https://i.imgur.com/Cg0BAPM.jpeg",
+        badge: ""
+      },
+      {
+        id: 7,
+        name: "White Printed Color Drop Shoulder T-shirt",
+        description: "Vibrant colors with comfortable fit. New arrival with limited stock.",
+        price: 699,
+        image: "https://i.imgur.com/bATn9L9.jpeg",
+        badge: "New"
+      },
+      {
+        id: 8,
+        name: "Black Printed Color Drop Shoulder T-shirt",
+        description: "Trendy design with premium quality fabric. Perfect for casual outings.",
+        price: 699,
+        image: "https://i.imgur.com/AgVS8EH.jpeg",
+        badge: ""
+      },
+      {
+        id: 9,
+        name: "White Printed Color Drop Shoulder T-shirt",
+        description: "Lightweight fabric with unique print design. Summer essential.",
+        price: 699,
+        image: "https://i.imgur.com/Jeia96c.jpeg",
+        badge: "Summer"
+      },
+      {
+        id: 10,
+        name: "Black Printed Color Drop Shoulder T-shirt",
+        description: "Classic black with stylish print details. Comfortable for all-day wear.",
+        price: 699,
+        image: "https://i.imgur.com/Ku0QFpI.jpeg",
+        badge: ""
+      },
+      {
+        id: 11,
+        name: "White Printed Color Drop Shoulder T-shirt",
+        description: "Crisp white color with trendy print. Perfect for summer wardrobe.",
+        price: 699,
+        image: "https://i.imgur.com/Ku0QFpI.jpeg",
+        badge: "Summer"
+      },
+      {
+        id: 12,
+        name: "Black Printed Color Drop Shoulder T-shirt",
+        description: "Sleek black design with comfortable fit. Premium quality fabric.",
+        price: 699,
+        image: "https://i.imgur.com/NhK3L6f.jpeg",
+        badge: ""
+      },
+      {
+        id: 13,
+        name: "Black with Violet Lightning Printing T-shirt",
+        description: "Unique violet lightning print on black background. Eye-catching design.",
+        price: 699,
+        image: "https://i.imgur.com/NhK3L6f.jpeg",
+        badge: "Exclusive"
+      },
+      {
+        id: 14,
+        name: "White Printed Color Drop Shoulder T-shirt with Black Border",
+        description: "Contrasting black border design on white t-shirt. Stylish and comfortable.",
+        price: 699,
+        image: "https://i.imgur.com/kekDVwB.jpeg",
+        badge: ""
+      },
+      {
+        id: 15,
+        name: "Black Printed Color Drop Shoulder T-shirt",
+        description: "Classic black t-shirt with premium fabric quality. Versatile for any occasion.",
+        price: 699,
+        image: "https://i.imgur.com/uP09lvd.jpeg",
+        badge: ""
+      },
+      {
+        id: 16,
+        name: "Black Printed Tom & Jerry Color Drop Shoulder T-shirt",
+        description: "Fun Tom & Jerry print on comfortable black t-shirt. Nostalgic design.",
+        price: 699,
+        image: "https://i.imgur.com/zkOOgrK.jpeg",
+        badge: "Fun"
+      },
+      {
+        id: 17,
+        name: "Black Printed Color Drop Shoulder T-shirt",
+        description: "Sleek black design with comfortable drop shoulder. Premium fabric.",
+        price: 699,
+        image: "https://i.imgur.com/h1g0T0S.jpeg",
+        badge: ""
+      },
+      {
+        id: 18,
+        name: "White Printed Color Drop Shoulder T-shirt",
+        description: "Crisp white t-shirt with trendy print design. Summer essential.",
+        price: 699,
+        image: "https://i.imgur.com/lu0Wb4P.jpeg",
+        badge: "Summer"
+      },
+      {
+        id: 19,
+        name: "Black Printed Color Drop Shoulder T-shirt",
+        description: "Classic black with stylish print details. Comfortable for all-day wear.",
+        price: 699,
+        image: "https://i.imgur.com/on6bFke.jpeg",
+        badge: ""
+      },
+      {
+        id: 20,
+        name: "Red Color Drop Shoulder T-shirt",
+        description: "Vibrant red color t-shirt with comfortable fit. Premium quality fabric.",
+        price: 699,
+        image: "https://i.imgur.com/rc1VSZB.jpeg",
+        badge: "New"
+      }
+    ];
+
+    // Cart functionality
+    let cart = [];
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      renderProducts();
+      updateCartCount();
+      
+      // Load cart from localStorage if available
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+        renderCartItems();
+      }
+    });
+    
+    // Render products to the page
+    function renderProducts(filteredProducts = null) {
+      const productsGrid = document.getElementById('productsGrid');
+      productsGrid.innerHTML = '';
+      
+      const productsToRender = filteredProducts || products;
+      
+      productsToRender.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        
+        productCard.innerHTML = `
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}">
+            ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+          </div>
+          <div class="product-info">
+            <div class="product-name">${product.name}</div>
+            <div class="product-description">${product.description}</div>
+            <div class="product-price">${product.price} BDT</div>
+            <div class="product-actions">
+              <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+              <button class="view-details" onclick="viewDetails(${product.id})">View Details</button>
+            </div>
+          </div>
+        `;
+        
+        productsGrid.appendChild(productCard);
+      });
+    }
+    
+    // Add to cart function
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      
+      if (product) {
+        const existingItem = cart.find(item => item.id === productId);
+        
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({
+            ...product,
+            quantity: 1
+          });
+        }
+        
+        updateCartCount();
+        renderCartItems();
+        saveCartToLocalStorage();
+        
+        // Show notification
+        alert(`${product.name} added to cart!`);
+      }
+    }
+    
+    // Update cart count in header
+    function updateCartCount() {
+      const cartCount = document.querySelector('.cart-count');
+      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCount.textContent = totalItems;
+    }
+    
+    // Render cart items in sidebar
+    function renderCartItems() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotalElement = document.getElementById('cartTotal');
+      
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+          <div class="empty-cart-message" style="text-align: center; padding: 50px 0;">
+            <i class="fas fa-shopping-cart" style="font-size: 50px; color: #ddd; margin-bottom: 20px;"></i>
+            <p>Your cart is empty</p>
+          </div>
+        `;
+        cartTotalElement.textContent = '0 BDT';
+        return;
+      }
+      
+      cartItemsContainer.innerHTML = '';
+      
+      let total = 0;
+      
+      cart.forEach(item => {
+        const cartItemElement = document.createElement('div');
+        cartItemElement.className = 'cart-item';
+        
+        cartItemElement.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${item.price} BDT</div>
+            <div class="cart-item-quantity">
+              <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+              <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+              <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+              <button class="remove-item" onclick="removeFromCart(${item.id})">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        
+        cartItemsContainer.appendChild(cartItemElement);
+        total += item.price * item.quantity;
+      });
+      
+      cartTotalElement.textContent = `${total} BDT`;
+    }
+    
+    // Update item quantity in cart
+    function updateQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      
+      if (item) {
+        item.quantity += change;
+        
+        if (item.quantity <= 0) {
+          cart = cart.filter(item => item.id !== productId);
+        }
+        
+        updateCartCount();
+        renderCartItems();
+        saveCartToLocalStorage();
+      }
+    }
+    
+    // Remove item from cart
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCartCount();
+      renderCartItems();
+      saveCartToLocalStorage();
+    }
+    
+    // Toggle cart visibility
+    function toggleCart() {
+      document.getElementById('cartOverlay').classList.toggle('active');
+      document.getElementById('cartSidebar').classList.toggle('active');
+    }
+    
+    // Toggle mobile menu
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+    
+    // View product details
+    function viewDetails(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        alert(`Viewing details for: ${product.name}\nPrice: ${product.price} BDT\nDescription: ${product.description}`);
+      }
+    }
+    
+    // Search products
+    function searchProducts() {
+      const searchInput = document.getElementById('searchInput');
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      if (searchTerm.trim() === '') {
+        renderProducts();
+        return;
+      }
+      
+      const filteredProducts = products.filter(product => 
+        product.name.toLowerCase().includes(searchTerm) || 
+        product.description.toLowerCase().includes(searchTerm)
+      );
+      
+      renderProducts(filteredProducts);
+    }
+    
+    // Save cart to localStorage
+    function saveCartToLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    
+    // Initialize search functionality
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchProducts();
+      }
+    });
+  </script>
 </body>
 </html>
