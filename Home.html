@@ -1664,12 +1664,14 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h5>Newsletter</h5>
-                    <p>Subscribe to get updates on new arrivals and special offers.</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Your email address">
-                        <button type="submit" class="newsletter-btn">Subscribe</button>
-                    </form>
+    <h5>Newsletter</h5>
+    <p>Subscribe to get updates on new arrivals and special offers.</p>
+    <form id="subscribeForm" class="newsletter-form">
+        <input type="email" name="email" class="newsletter-input" placeholder="Your email address" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+    <div id="subscribeMessage" class="mt-2" style="color: white;"></div>
+
                     <div class="payment-methods">
                         <img src="https://i.imgur.com/BOhbHvu.png" alt="bKash">
                         <img src="https://i.imgur.com/syZmIJ5.png" alt="Visa">
@@ -2025,6 +2027,63 @@
                 searchFunction();
             }
         });
+
+
+
+
+        
+// Newsletter Subscription
+document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const email = form.email.value;
+    const messageDiv = document.getElementById('subscribeMessage');
+    
+    // Simple validation
+    if (!email) {
+        messageDiv.textContent = 'Please enter your email address';
+        messageDiv.style.color = 'red';
+        return;
+    }
+    
+    // Disable button during submission
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Subscribing...';
+    
+    // Send data via AJAX
+    fetch('subscribe.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `email=${encodeURIComponent(email)}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            messageDiv.textContent = data.message;
+            messageDiv.style.color = 'green';
+            form.reset();
+        } else {
+            messageDiv.textContent = data.message;
+            messageDiv.style.color = 'red';
+        }
+    })
+    .catch(error => {
+        messageDiv.textContent = 'An error occurred. Please try again.';
+        messageDiv.style.color = 'red';
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+    });
+});
+
+
+        
     </script>
 </body>
 </html>
