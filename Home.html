@@ -1625,7 +1625,7 @@
                 <div class="contact-method">
                     <i class="fas fa-envelope"></i>
                     <h4>Email</h4>
-                    <a href="mailto:niloyirfan0@gmail.com">niloyirfan0@gmail.com.com</a>
+                    <a href="mailto:ku0467807@gmail.com">ku0467807@gmail.com</a>
                 </div>
             </div>
         </section>
@@ -1663,15 +1663,16 @@
                         <li><a href="#">Returns & Exchanges</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+               <div class="footer-column">
     <h5>Newsletter</h5>
     <p>Subscribe to get updates on new arrivals and special offers.</p>
-    <form id="subscribeForm" class="newsletter-form">
-        <input type="email" name="email" class="newsletter-input" placeholder="Your email address" required>
-        <button type="submit" class="newsletter-btn">Subscribe</button>
+    <form action="https://formspree.io/f/mldbakbe" method="POST" id="subscribeForm" class="newsletter-form">
+        <input type="email" name="email" placeholder="Your email address" required>
+        <input type="hidden" name="_subject" value="New Subscriber - THE LIGHTNING">
+        <button type="submit">Subscribe</button>
     </form>
-    <div id="subscribeMessage" class="mt-2" style="color: white;"></div>
-
+    <div id="subscribeMessage"></div>
+</div>
                     <div class="payment-methods">
                         <img src="https://i.imgur.com/BOhbHvu.png" alt="bKash">
                         <img src="https://i.imgur.com/syZmIJ5.png" alt="Visa">
@@ -2032,55 +2033,21 @@
 
 
         
-// Newsletter Subscription
-document.getElementById('subscribeForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const email = form.email.value;
-    const messageDiv = document.getElementById('subscribeMessage');
-    
-    // Simple validation
-    if (!email) {
-        messageDiv.textContent = 'Please enter your email address';
-        messageDiv.style.color = 'red';
-        return;
-    }
-    
-    // Disable button during submission
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Subscribing...';
-    
-    // Send data via AJAX
-    fetch('subscribe.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `email=${encodeURIComponent(email)}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            messageDiv.textContent = data.message;
-            messageDiv.style.color = 'green';
+document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+            document.getElementById('subscribeMessage').textContent = "Thank you for subscribing!";
             form.reset();
         } else {
-            messageDiv.textContent = data.message;
-            messageDiv.style.color = 'red';
+            document.getElementById('subscribeMessage').textContent = "Oops! Something went wrong.";
         }
-    })
-    .catch(error => {
-        messageDiv.textContent = 'An error occurred. Please try again.';
-        messageDiv.style.color = 'red';
-        console.error('Error:', error);
-    })
-    .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Subscribe';
     });
-});
 
 
         
