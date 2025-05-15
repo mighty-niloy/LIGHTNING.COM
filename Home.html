@@ -1663,23 +1663,23 @@
                         <li><a href="#">Returns & Exchanges</a></li>
                     </ul>
                 </div>
-               <div class="footer-column">
-    <h5>Newsletter</h5>
-    <p>Subscribe to get updates on new arrivals and special offers.</p>
-    <form action="https://formspree.io/f/mldbakbe" method="POST" id="subscribeForm" class="newsletter-form">
-        <input type="email" name="email" placeholder="Your email address" required>
+             <div class="footer-column">
+    <h5 class="text-xl font-semibold mb-2">Newsletter</h5>
+    <p class="text-gray-600 mb-4">Subscribe to get updates on new arrivals and special offers.</p>
+    <form action="https://formspree.io/f/mldbakbe" method="POST" id="subscribeForm" class="newsletter-form flex flex-col sm:flex-row gap-2 mb-4">
+        <input type="email" name="email" placeholder="Your email address" required class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 flex-grow">
         <input type="hidden" name="_subject" value="New Subscriber - THE LIGHTNING">
-        <button type="submit">Subscribe</button>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-colors">Subscribe</button>
     </form>
-    <div id="subscribeMessage"></div>
-                    <div class="payment-methods">
-                        <img src="https://i.imgur.com/BOhbHvu.png" alt="bKash">
-                        <img src="https://i.imgur.com/syZmIJ5.png" alt="Visa">
-                        <img src="https://i.imgur.com/qNSwo6g.png" alt="MasterCard">
-                        <img src="https://i.imgur.com/5R0hZQ5.png" alt="Nagad">
-                    </div>
-                </div>
-            </div>
+    <div id="subscribeMessage" class="text-green-600"></div>
+    <div class="payment-methods flex gap-2 mt-4">
+        <img src="https://i.imgur.com/BOhbHvu.png" alt="bKash" class="h-8">
+        <img src="https://i.imgur.com/syZmIJ5.png" alt="Visa" class="h-8">
+        <img src="https://i.imgur.com/qNSwo6g.png" alt="MasterCard" class="h-8">
+        <img src="https://i.imgur.com/5R0hZQ5.png" alt="Nagad" class="h-8">
+    </div>
+</div>
+
             <div class="footer-bottom">
                 <p>© 2025 THE LIGHTNING. All rights reserved.</p>
             </div>
