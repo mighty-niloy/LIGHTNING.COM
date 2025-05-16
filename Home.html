@@ -1551,34 +1551,39 @@
 
 
 <!-- Place this between your header and product grid -->
-<s<div class="banner-slides flex transition-transform duration-500 overflow-hidden w-full">
-  <!-- Banner 1 -->
-  <div class="banner-slide flex-shrink-0 w-full relative">
-    <img src="https://i.imgur.com/qgCxNSJ.png" alt="Promotion 1" class="w-full h-auto">
-    <div class="banner-caption absolute bottom-8 left-8 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-      <h3 class="text-xl font-semibold">Special Offer 1</h3>
-      <p>Limited time only!</p>
-    </div>
-  </div>
-  
-  <!-- Banner 2 -->
-  <div class="banner-slide flex-shrink-0 w-full relative">
-    <img src="https://i.imgur.com/0X4bQWb.png" alt="Promotion 2" class="w-full h-auto">
-    <div class="banner-caption absolute bottom-8 left-8 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-      <h3 class="text-xl font-semibold">Special Offer 2</h3>
-      <p>New arrivals!</p>
-    </div>
-  </div>
-        <!-- Add more banners as needed -->
+<section class="banner-section">
+  <div class="banner-container">
+    <button class="nav-btn prev-btn">&lt;</button>
+    
+    <div class="banner-slides">
+      <!-- Banner 1 -->
+      <div class="banner-slide active">
+        <img src="https://i.imgur.com/0X4bQWb.png" alt="Promotion 1">
+        <div class="banner-caption">
+          <h3>Special Offer 1</h3>
+          <p>Limited time only!</p>
+        </div>
+      </div>
+      
+      <!-- Banner 2 -->
+      <div class="banner-slide active">
+        <img src="https://i.imgur.com/qgCxNSJ.png" alt="Promotion 2">
+        <div class="banner-caption">
+          <h3>Special Offer 2</h3>
+          <p>New arrivals!</p>
+        </div>
+      </div>
+      
+      <!-- Add more banners as needed -->
     </div>
     
-    <button class="nav-btn next-btn absolute right-4 z-10 bg-black text-white px-4 py-2 rounded-full">&gt;</button>
+    <button class="nav-btn next-btn">&gt;</button>
   </div>
   
-  <div class="indicator-dots flex gap-2 justify-center mt-4">
+  <div class="indicator-dots">
     <span class="dot active" data-index="0"></span>
-    <span class="dot" data-index="1"></span>
-       <!-- Add more dots matching your banner count -->
+    <span class="dot active" data-index="1"></span>
+    <!-- Add more dots matching your banner count -->
   </div>
 </section>
 
