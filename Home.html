@@ -273,6 +273,136 @@
             background-color: #fdd835;
         }
 
+
+
+
+
+.banner-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.banner-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.banner-slides {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.banner-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.banner-slide img {
+  width: 100%;
+  display: block;
+}
+
+.banner-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 18px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.indicator-dots {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
         /* Main Content Styles */
         .container {
             max-width: 1200px;
@@ -1415,6 +1545,64 @@
         </div>
     </nav>
 
+
+
+
+
+
+
+<!-- Place this between your header and product grid -->
+<section class="banner-section">
+  <div class="banner-container">
+    <button class="nav-btn prev-btn">&lt;</button>
+    
+    <div class="banner-slides">
+      <!-- Banner 1 -->
+      <div class="banner-slide active">
+        <img src="https://i.imgur.com/qgCxNSJ.png" alt="Promotion 1">
+        <div class="banner-caption">
+          <h3>Special Offer 1</h3>
+          <p>Limited time only!</p>
+        </div>
+      </div>
+      
+      <!-- Banner 2 -->
+      <div class="banner-slide">
+        <img src="banner2.jpg" alt="Promotion 2">
+        <div class="banner-caption">
+          <h3>Special Offer 2</h3>
+          <p>New arrivals!</p>
+        </div>
+      </div>
+      
+      <!-- Add more banners as needed -->
+    </div>
+    
+    <button class="nav-btn next-btn">&gt;</button>
+  </div>
+  
+  <div class="indicator-dots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <!-- Add more dots matching your banner count -->
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     <!-- Search Bar -->
     <div class="search-container">
         <div class="search-box">
@@ -2031,6 +2219,96 @@
         });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.banner-slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  // Show current slide
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+  }
+
+  // Next slide
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  // Previous slide
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  // Click on dot
+  dots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      currentIndex = parseInt(this.getAttribute('data-index'));
+      showSlide(currentIndex);
+    });
+  });
+
+  // Button events
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  // Auto slide (optional)
+  let slideInterval = setInterval(nextSlide, 5000);
+
+  // Pause on hover
+  const bannerContainer = document.querySelector('.banner-container');
+  bannerContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+  bannerContainer.addEventListener('mouseleave', () => {
+    slideInterval = setInterval(nextSlide, 5000);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
         
