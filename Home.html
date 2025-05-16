@@ -1550,49 +1550,41 @@
 
 
 
-
 <!-- Place this between your header and product grid -->
-<section class="banner-section">
-  <div class="banner-container">
-    <button class="nav-btn prev-btn">&lt;</button>
+<section class="banner-section relative overflow-hidden">
+  <div class="banner-container relative flex items-center">
+    <button class="nav-btn prev-btn absolute left-4 z-10 bg-black text-white px-4 py-2 rounded-full">&lt;</button>
     
-    <div class="banner-slides">
+    <div class="banner-slides flex transition-all duration-500 overflow-hidden w-full">
       <!-- Banner 1 -->
-      <div class="banner-slide active">
-        <img src="https://i.imgur.com/qgCxNSJ.png" alt="Promotion 1">
-        <div class="banner-caption">
-          <h3>Special Offer 1</h3>
+      <div class="banner-slide min-w-full flex-shrink-0 relative">
+        <img src="https://i.imgur.com/qgCxNSJ.png" alt="Promotion 1" class="w-full h-auto">
+        <div class="banner-caption absolute bottom-8 left-8 bg-black bg-opacity-70 text-white p-4 rounded-lg">
+          <h3 class="text-xl font-semibold">Special Offer 1</h3>
           <p>Limited time only!</p>
         </div>
       </div>
       
       <!-- Banner 2 -->
-      <div class="banner-slide active">
-        <img src="https://i.imgur.com/0X4bQWb.png" alt="Promotion 2">
-        <div class="banner-caption">
-          <h3>Special Offer 2</h3>
+      <div class="banner-slide min-w-full flex-shrink-0 relative">
+        <img src="https://i.imgur.com/0X4bQWb.png" alt="Promotion 2" class="w-full h-auto">
+        <div class="banner-caption absolute bottom-8 left-8 bg-black bg-opacity-70 text-white p-4 rounded-lg">
+          <h3 class="text-xl font-semibold">Special Offer 2</h3>
           <p>New arrivals!</p>
         </div>
       </div>
-      
-      <!-- Add more banners as needed -->
+        <!-- Add more banners as needed -->
     </div>
     
-    <button class="nav-btn next-btn">&gt;</button>
+    <button class="nav-btn next-btn absolute right-4 z-10 bg-black text-white px-4 py-2 rounded-full">&gt;</button>
   </div>
   
   <div class="indicator-dots flex gap-2 justify-center mt-4">
     <span class="dot active" data-index="0"></span>
-    <span class="dot active" data-index="1"></span>
-    <!-- Add more dots matching your banner count -->
+    <span class="dot" data-index="1"></span>
+       <!-- Add more dots matching your banner count -->
   </div>
 </section>
-
-
-
-
-
-
 
 
 
@@ -2329,16 +2321,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.querySelector('.prev-btn');
   const nextBtn = document.querySelector('.next-btn');
+  const bannerContainer = document.querySelector('.banner-container');
   let currentIndex = 0;
   const totalSlides = slides.length;
+  let slideInterval;
 
   // Show current slide
   function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+      slide.style.opacity = i === index ? '1' : '0';
+      slide.style.transition = 'opacity 0.8s ease-in-out';
+    });
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
   }
 
   // Next slide
@@ -2366,14 +2361,20 @@ document.addEventListener('DOMContentLoaded', function() {
   prevBtn.addEventListener('click', prevSlide);
 
   // Auto slide (optional)
-  let slideInterval = setInterval(nextSlide, 5000);
-
-  // Pause on hover
-  const bannerContainer = document.querySelector('.banner-container');
-  bannerContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-  bannerContainer.addEventListener('mouseleave', () => {
+  function startAutoSlide() {
     slideInterval = setInterval(nextSlide, 5000);
-  });
+  }
+
+  function stopAutoSlide() {
+    clearInterval(slideInterval);
+  }
+
+  bannerContainer.addEventListener('mouseenter', stopAutoSlide);
+  bannerContainer.addEventListener('mouseleave', startAutoSlide);
+
+  // Initialize the first slide
+  showSlide(currentIndex);
+  startAutoSlide();
 });
 
 
