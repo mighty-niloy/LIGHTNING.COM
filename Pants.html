@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,21 +15,28 @@
             --accent: #25D366;
             --dark: #2e2e2e;
             --light: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--light-gray);
+            color: var(--dark);
+            line-height: 1.6;
         }
         
         .promo-banner {
             background-color: var(--secondary);
             color: var(--dark);
             text-align: center;
-            padding: 8px 0;
+            padding: 10px 0;
             font-weight: 500;
             position: relative;
             overflow: hidden;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .promo-banner .close-banner {
@@ -37,23 +45,107 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            line-height: 1;
+            padding: 0 5px;
         }
         
         .navbar-custom {
             background-color: var(--primary);
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            margin-right: 10px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 15px !important;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link:focus {
+            color: var(--secondary) !important;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .dropdown-item {
+            padding: 8px 15px;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
         }
         
         .product-card {
             transition: all 0.3s ease;
             border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-card .card-img-top {
+            padding: 20px;
+            background-color: var(--light-gray);
+            object-fit: contain;
+            height: 200px;
+        }
+        
+        .product-card .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .product-card .card-text {
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        
+        .product-card .price {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .product-card .btn {
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 12px;
         }
         
         .cart-sidebar {
@@ -65,15 +157,15 @@
             background: white;
             box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             transition: right 0.3s ease;
-            z-index: 1000;
+            z-index: 1050;
             overflow-y: auto;
         }
         
         .cart-item-img {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 6px;
         }
         
         .cart-overlay {
@@ -83,7 +175,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 999;
+            z-index: 1040;
             display: none;
         }
         
@@ -93,8 +185,8 @@
             left: 0;
             width: 100%;
             background: white;
-            border: 1px solid #ddd;
-            border-radius: 0 0 4px 4px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 0 0 8px 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             z-index: 1000;
             max-height: 300px;
@@ -103,51 +195,113 @@
         }
         
         .search-result-item {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
+            padding: 12px;
+            border-bottom: 1px solid var(--medium-gray);
             cursor: pointer;
             transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
         }
         
         .search-result-item:hover {
-            background-color: #f8f9fa;
+            background-color: var(--light-gray);
         }
         
         .search-result-item img {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
-            margin-right: 10px;
-            border-radius: 4px;
+            margin-right: 12px;
+            border-radius: 6px;
         }
         
-        @media (max-width: 768px) {
-            .cart-sidebar {
-                width: 90%;
-                right: -90%;
-            }
-            
-            .promo-banner {
-                font-size: 14px;
-                padding: 8px 30px 8px 15px;
-            }
-            
-            .search-results {
-                position: relative;
-                max-height: 200px;
-            }
+        .search-result-item div {
+            flex: 1;
         }
         
-        @media (max-width: 576px) {
-            .promo-banner {
-                font-size: 12px;
-            }
+        .search-result-item .fw-bold {
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+        
+        .search-result-item small {
+            font-size: 0.85rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1c2a3d;
+            border-color: #1c2a3d;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-warning {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-warning:hover {
+            background-color: #fdd835;
+            border-color: #fdd835;
+            color: var(--dark);
+        }
+        
+        .badge {
+            font-weight: 500;
+            font-size: 0.7rem;
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .page-link {
+            color: var(--primary);
+        }
+        
+        .modal-content {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid var(--medium-gray);
+            padding: 15px 20px;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid var(--medium-gray);
+            padding: 15px 20px;
         }
         
         .order-status-step {
             position: relative;
             padding-left: 30px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .order-status-step:before {
@@ -157,11 +311,15 @@
             top: 0;
             height: 100%;
             width: 2px;
-            background: #dee2e6;
+            background: var(--medium-gray);
         }
         
         .order-status-step.active:before {
             background: var(--primary);
+        }
+        
+        .order-status-step.completed:before {
+            background: var(--accent);
         }
         
         .order-status-step .step-icon {
@@ -171,11 +329,13 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #dee2e6;
+            background: var(--medium-gray);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
         
         .order-status-step.active .step-icon {
@@ -185,20 +345,180 @@
         .order-status-step.completed .step-icon {
             background: var(--accent);
         }
+        
+        .order-status-step h6 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .order-status-step p {
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            margin-bottom: 0;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        footer p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        footer ul li {
+            margin-bottom: 10px;
+        }
+        
+        footer ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        footer ul li a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            color: var(--dark) !important;
+            transform: translateY(-3px);
+        }
+        
+        .input-group .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary);
+        }
+        
+        .input-group .btn {
+            z-index: 1;
+        }
+        
+        .cart-item {
+            transition: all 0.3s;
+        }
+        
+        .cart-item:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .cart-item .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .cart-item .remove {
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        
+        .cart-item .remove:hover {
+            opacity: 1;
+        }
+        
+        .added-to-cart {
+            animation: fadeInOut 3s ease-in-out;
+            opacity: 0;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        .swal2-popup {
+            border-radius: 10px !important;
+        }
+        
+        .swal2-title {
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 90%;
+                right: -90%;
+            }
+            
+            .promo-banner {
+                font-size: 0.8rem;
+                padding: 8px 30px 8px 15px;
+            }
+            
+            .search-results {
+                position: relative;
+                max-height: 200px;
+            }
+            
+            .navbar-nav {
+                margin-top: 15px;
+            }
+            
+            .nav-item {
+                margin-bottom: 5px;
+            }
+            
+            .input-group {
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .promo-banner {
+                font-size: 0.7rem;
+                padding: 8px 25px 8px 10px;
+            }
+            
+            .product-card .card-img-top {
+                height: 150px;
+                padding: 15px;
+            }
+            
+            .modal-dialog {
+                margin: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Promotional Banner -->
     <div class="promo-banner" id="promoBanner">
         🎉 Flash Sale! Get 20% off on all watches this week. Use code: LIGHTNING20 🎉
-        <span class="close-banner" id="closeBanner">&times;</span>
+        <button class="close-banner" id="closeBanner">&times;</button>
     </div>
 
     <!-- Modern Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="https://i.imgur.com/tgJQiJe.jpeg" alt="Logo" width="40" class="me-2 rounded-circle">
+                <img src="https://i.imgur.com/tgJQiJe.jpeg" alt="Logo" width="40" class="rounded-circle">
                 THE LIGHTNING
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -208,7 +528,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="3" id="productsDropdown">Catagories</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown">Categories</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Watches</a></li>
                             <li><a class="dropdown-item" href="Product.html">Clothing</a></li>
@@ -218,19 +538,19 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
-                <div class="d-flex">
-                    <div class="input-group position-relative">
+                <div class="d-flex align-items-center">
+                    <div class="input-group position-relative me-2">
                         <input type="text" class="form-control" placeholder="Search products..." id="searchInput">
                         <button class="btn btn-warning" type="button" id="searchButton">
                             <i class="fas fa-search"></i>
                         </button>
                         <div class="search-results" id="searchResults"></div>
                     </div>
-                    <button class="btn btn-outline-light ms-3 position-relative" id="cartButton">
+                    <button class="btn btn-outline-light position-relative me-2" id="cartButton">
                         <i class="fas fa-shopping-cart"></i> 
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
                     </button>
-                    <button class="btn btn-success ms-3" id="loginButton">Login</button>
+                    <button class="btn btn-success" id="loginButton">Login</button>
                 </div>
             </div>
         </div>
@@ -260,18 +580,18 @@
                 <span>Discount:</span>
                 <span id="cartDiscount">0</span> BDT
             </div>
-            <div class="d-flex justify-content-between fw-bold">
+            <div class="d-flex justify-content-between fw-bold mb-3">
                 <span>Total:</span>
                 <span id="cartTotal">0</span> BDT
             </div>
-            <button class="btn btn-primary w-100 mt-3" id="checkoutBtn">Proceed to Checkout</button>
-            <button class="btn btn-outline-secondary w-100 mt-2" id="continueShopping">Continue Shopping</button>
+            <button class="btn btn-primary w-100 mb-2" id="checkoutBtn">Proceed to Checkout</button>
+            <button class="btn btn-outline-secondary w-100" id="continueShopping">Continue Shopping</button>
         </div>
     </div>
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Login / Register</h5>
@@ -280,14 +600,16 @@
                 <div class="modal-body">
                     <form id="authForm">
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email" required>
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" placeholder="Password" required>
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Login</button>
                         <div class="text-center mt-3">
-                            <p>New customer? <a href="#" id="showRegister">Register here</a></p>
+                            <p class="mb-0">New customer? <a href="#" id="showRegister">Register here</a></p>
                         </div>
                     </form>
                 </div>
@@ -297,7 +619,7 @@
 
     <!-- Order Status Modal -->
     <div class="modal fade" id="orderStatusModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Order Status</h5>
@@ -316,12 +638,14 @@
             <div class="col-12">
                 <h2 class="display-5 fw-bold" id="productsHeading">Featured Products</h2>
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-0" id="productsSubheading">Premium quality products at competitive prices</p>
+                    <p class="mb-0 text-muted" id="productsSubheading">Premium quality products at competitive prices</p>
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown">
                             Sort By
                         </button>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-sort="default">Default</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#" data-sort="price-low">Price: Low to High</a></li>
                             <li><a class="dropdown-item" href="#" data-sort="price-high">Price: High to Low</a></li>
                             <li><a class="dropdown-item" href="#" data-sort="newest">Newest First</a></li>
@@ -349,7 +673,7 @@
         
         <!-- Product Quick View Modal -->
         <div class="modal fade" id="productModal" tabindex="-1">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="productModalTitle">Product Details</h5>
@@ -361,9 +685,9 @@
                                 <img src="" id="productModalImage" class="img-fluid rounded" alt="" loading="lazy">
                             </div>
                             <div class="col-md-6">
-                                <h3 id="productModalName"></h3>
+                                <h3 id="productModalName" class="mb-3"></h3>
                                 <div class="price h4 text-warning my-3" id="productModalPrice"></div>
-                                <div class="d-flex align-items-center mb-2">
+                                <div class="d-flex align-items-center mb-3">
                                     <div class="text-warning me-2">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -373,8 +697,8 @@
                                     </div>
                                     <span class="text-muted">(24 reviews)</span>
                                 </div>
-                                <p id="productModalDesc"></p>
-                                <div class="d-flex align-items-center mb-3">
+                                <p id="productModalDesc" class="mb-4"></p>
+                                <div class="d-flex align-items-center mb-4">
                                     <div class="input-group" style="width: 150px;">
                                         <button class="btn btn-outline-secondary" type="button" id="decrementQty">-</button>
                                         <input type="text" class="form-control text-center" value="1" id="productQty">
@@ -382,7 +706,7 @@
                                     </div>
                                     <button class="btn btn-primary ms-3" id="addToCartModal">Add to Cart</button>
                                 </div>
-                                <div class="alert alert-success d-none" id="addedToCartAlert">
+                                <div class="alert alert-success d-none mb-4" id="addedToCartAlert">
                                     <i class="fas fa-check-circle me-2"></i> Item added to cart!
                                 </div>
                                 <div class="d-flex flex-wrap">
@@ -405,49 +729,54 @@
     <footer class="bg-dark text-white py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-lg-4 mb-4">
                     <h5>THE LIGHTNING</h5>
                     <p>Premium e-commerce platform offering high-quality products with excellent customer service.</p>
                     <div class="social-icons">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-md-2 mb-4">
+                <div class="col-lg-2 col-md-4 mb-4">
                     <h5>Shop</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">All Products</a></li>
-                        <li><a href="#" class="text-white-50">New Arrivals</a></li>
-                        <li><a href="#" class="text-white-50">Featured</a></li>
-                        <li><a href="#" class="text-white-50">Sale Items</a></li>
+                        <li><a href="#" class="text-white-50"><u>All Products</u></a></li>
+                        <li><a href="#" class="text-white-50"><u>New Arrivals</u></a></li>
+                        <li><a href="#" class="text-white-50"><u>Featured</u></a></li>
+                        <li><a href="#" class="text-white-50"><u>Sale Items</u></a></li>
                     </ul>
                 </div>
-                <div class="col-md-2 mb-4">
+                <div class="col-lg-2 col-md-4 mb-4">
                     <h5>Support</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">Contact Us</a></li>
-                        <li><a href="#" class="text-white-50">FAQs</a></li>
-                        <li><a href="#" class="text-white-50">Shipping</a></li>
-                        <li><a href="#" class="text-white-50">Returns</a></li>
+                        <li><a href="#" class="text-white-50"><u>Contact Us</u></a></li>
+                        <li><a href="#" class="text-white-50"><u>FAQs</u></a></li>
+                        <li><a href="#" class="text-white-50"><u>Shipping</u></a></li>
+                        <li><a href="#" class="text-white-50"><u>Returns</u></a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <h5>Newsletter</h5>
                     <p>Subscribe for updates and special offers</p>
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Your email">
                         <button class="btn btn-primary" type="button">Subscribe</button>
                     </div>
+                    <p class="small text-muted">We'll never share your email with anyone else.</p>
                 </div>
             </div>
-            <hr>
+            <hr class="my-4">
             <div class="row">
-                <div class="col-md-6">
-                    <p class="mb-0">© 2025 THE LIGHTNING. All rights reserved.</p>
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0 small">© 2025 THE LIGHTNING. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <img src="https://via.placeholder.com/200x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid">
+                    <img src="https://i.imgur.com/BOhbHvu.png/200x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
+                    <img src="https://i.imgur.com/syZmIJ5.png/200x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
+                    <img src="https://i.imgur.com/qNSwo6g.png/200x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
+
                 </div>
             </div>
         </div>
@@ -519,8 +848,7 @@
                 id: 7,
                 name: "Sports Sneakers",
                 price: 2500,
-                image: "https://i.imgur.com/KwHyuId.jpg",// Main image
-                 additionalImages: ["https://i.imgur.com/o8ZQlTy.jpg"], // Other color variants
+                image: "https://i.imgur.com/KwHyuId.jpg",
                 description: "Comfortable sports sneakers with cushioned soles for maximum comfort during activities.",
                 category: "footwear",
                 dateAdded: new Date('2025-03-01')
@@ -533,6 +861,42 @@
                 description: "UV-protected designer sunglasses with polarized lenses for eye protection and style.",
                 category: "accessories",
                 dateAdded: new Date('2025-02-28')
+            },
+            {
+                id: 9,
+                name: "Smart Watch",
+                price: 3500,
+                image: "https://i.imgur.com/5JQm3Xj.jpg",
+                description: "Feature-rich smart watch with health monitoring and notification support.",
+                category: "watches",
+                dateAdded: new Date('2025-03-15')
+            },
+            {
+                id: 10,
+                name: "Formal Shirt",
+                price: 1500,
+                image: "https://i.imgur.com/8XwZQ2y.jpg",
+                description: "Premium quality formal shirt with perfect fit and wrinkle-resistant fabric.",
+                category: "clothing",
+                dateAdded: new Date('2025-03-12')
+            },
+            {
+                id: 11,
+                name: "Backpack",
+                price: 1900,
+                image: "https://i.imgur.com/9zQwX3k.jpg",
+                description: "Durable and spacious backpack with multiple compartments and laptop sleeve.",
+                category: "accessories",
+                dateAdded: new Date('2025-02-10')
+            },
+            {
+                id: 12,
+                name: "Running Shoes",
+                price: 2700,
+                image: "https://i.imgur.com/7yJ8w9Z.jpg",
+                description: "Lightweight running shoes with excellent cushioning and breathable material.",
+                category: "footwear",
+                dateAdded: new Date('2025-03-08')
             }
         ];
 
@@ -541,7 +905,7 @@
         let currentProduct = null;
         let currentSort = 'default';
         let searchIndex = null;
-        const productsPerPage = 12;
+        const productsPerPage = 8;
         let currentPage = 1;
         let filteredProducts = [];
         
@@ -629,9 +993,9 @@
             const discount = subtotal >= 5000 ? subtotal * 0.1 : 0;
             const total = subtotal - discount;
             
-            document.getElementById('cartSubtotal').textContent = subtotal;
-            document.getElementById('cartDiscount').textContent = discount;
-            document.getElementById('cartTotal').textContent = total;
+            document.getElementById('cartSubtotal').textContent = subtotal.toFixed(2);
+            document.getElementById('cartDiscount').textContent = discount.toFixed(2);
+            document.getElementById('cartTotal').textContent = total.toFixed(2);
         }
         
         // Add item to cart
@@ -675,12 +1039,29 @@
             }
         }
         
+        // Sort products
+        function sortProducts(productsToSort, sortMethod) {
+            switch(sortMethod) {
+                case 'price-low':
+                    return [...productsToSort].sort((a, b) => a.price - b.price);
+                case 'price-high':
+                    return [...productsToSort].sort((a, b) => b.price - a.price);
+                case 'newest':
+                    return [...productsToSort].sort((a, b) => b.dateAdded - a.dateAdded);
+                default:
+                    return [...productsToSort];
+            }
+        }
+        
         // Render products with pagination
         function renderProducts(productsToRender = products, searchTerm = '') {
             const productGrid = document.getElementById('productGrid');
             productGrid.innerHTML = '';
             
-            filteredProducts = [...productsToRender];
+            // Sort products if needed
+            const sortedProducts = sortProducts(productsToRender, currentSort);
+            filteredProducts = [...sortedProducts];
+            
             const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
             const startIndex = (currentPage - 1) * productsPerPage;
             const paginatedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
@@ -764,7 +1145,10 @@
                         icon: 'success',
                         title: `${products.find(p => p.id === productId).name} added to cart`,
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1500,
+                        toast: true,
+                        background: 'var(--light)',
+                        width: '350px'
                     });
                 });
             });
@@ -932,62 +1316,12 @@
         // Process order function
         async function processOrder(orderDetails) {
             // In a real app, this would send the order to your backend
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 setTimeout(() => {
                     console.log('Order processed:', orderDetails);
                     resolve();
                 }, 1000);
             });
-        }
-        
-        // Send order confirmation email
-        async function sendOrderConfirmationEmail(orderDetails, customerEmail) {
-            try {
-                // Simulate email sending
-                console.log(`Email sent to ${customerEmail} with order details`);
-                return true;
-            } catch (error) {
-                console.error('Error sending email:', error);
-                return false;
-            }
-        }
-        
-        // Send SMS notification
-        async function sendSMSNotification(orderDetails) {
-            try {
-                // Simulate SMS sending
-                console.log(`SMS sent to ${orderDetails.phone} with order confirmation`);
-                return true;
-            } catch (error) {
-                console.error('Error sending SMS:', error);
-                return false;
-            }
-        }
-        
-        // Show browser notification
-        function showBrowserNotification(orderDetails) {
-            if (!("Notification" in window)) return;
-            
-            if (Notification.permission === "granted") {
-                createNotification(orderDetails);
-            } else if (Notification.permission !== "denied") {
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") {
-                        createNotification(orderDetails);
-                    }
-                });
-            }
-        }
-        
-        function createNotification(orderDetails) {
-            const notification = new Notification("Order Confirmed", {
-                body: `Your order #${orderDetails.orderId} has been placed successfully!`,
-                icon: "/logo.png"
-            });
-            
-            notification.onclick = () => {
-                window.open(`/orders/${orderDetails.orderId}`, '_blank');
-            };
         }
         
         // Show order status
@@ -1012,32 +1346,32 @@
             };
             
             const statusSteps = [
-                { id: 'processing', label: 'Processing', active: orderStatus.status === 'processing' },
-                { id: 'shipped', label: 'Shipped', active: orderStatus.status === 'shipped' },
-                { id: 'delivered', label: 'Delivered', active: orderStatus.status === 'delivered' }
+                { id: 'processing', label: 'Processing', active: orderStatus.status === 'processing', description: 'Your order is being prepared' },
+                { id: 'shipped', label: 'Shipped', active: orderStatus.status === 'shipped', description: 'Your order is on the way' },
+                { id: 'delivered', label: 'Delivered', active: orderStatus.status === 'delivered', description: 'Your order has been delivered' }
             ];
             
             statusContent.innerHTML = `
-                <h5>Order #${orderStatus.id}</h5>
-                <p>Date: ${orderStatus.date.toLocaleString()}</p>
+                <h5 class="mb-3">Order #${orderStatus.id}</h5>
+                <p class="text-muted mb-4">Date: ${orderStatus.date.toLocaleString()}</p>
                 
                 <div class="mb-4">
                     ${statusSteps.map((step, index) => `
                         <div class="order-status-step ${step.active ? 'active' : ''} ${index < statusSteps.findIndex(s => s.id === orderStatus.status) ? 'completed' : ''}">
                             <span class="step-icon">${index + 1}</span>
                             <h6>${step.label}</h6>
-                            <p>${step.active ? 'Your order is currently in this stage' : ''}</p>
+                            <p>${step.active ? step.description : ''}</p>
                         </div>
                     `).join('')}
                 </div>
                 
-                <h6>Items:</h6>
-                <ul>
+                <h6 class="mb-2">Items:</h6>
+                <ul class="mb-4">
                     ${orderStatus.items.map(item => `
                         <li>${item.name} - ${item.quantity} x ${item.price} BDT</li>
                     `).join('')}
                 </ul>
-                <h5>Total: ${orderStatus.total} BDT</h5>
+                <h5 class="border-top pt-3">Total: ${orderStatus.total} BDT</h5>
             `;
             
             statusModal.show();
@@ -1100,22 +1434,32 @@
                     html: `
                         <div class="mb-3">
                             <label for="checkoutEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="checkoutEmail" required>
+                            <input type="email" class="form-control" id="checkoutEmail" placeholder="your@email.com" required>
                         </div>
                         <div class="mb-3">
                             <label for="checkoutPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="checkoutPhone" required>
+                            <input type="tel" class="form-control" id="checkoutPhone" placeholder="01XXXXXXXXX" required>
                         </div>
                     `,
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonText: 'Confirm Order',
                     cancelButtonText: 'Continue Shopping',
+                    confirmButtonColor: 'var(--primary)',
+                    focusConfirm: false,
                     preConfirm: () => {
                         const email = document.getElementById('checkoutEmail').value;
                         const phone = document.getElementById('checkoutPhone').value;
                         if (!email || !phone) {
                             Swal.showValidationMessage('Please fill in all fields');
+                            return false;
+                        }
+                        if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+                            Swal.showValidationMessage('Please enter a valid email');
+                            return false;
+                        }
+                        if (!/^01[3-9]\d{8}$/.test(phone)) {
+                            Swal.showValidationMessage('Please enter a valid Bangladeshi phone number');
                             return false;
                         }
                         return { email, phone };
@@ -1124,7 +1468,7 @@
                     if (result.isConfirmed) {
                         const customerInfo = result.value;
                         const orderDetails = {
-                            orderId: 'ORD-' + Date.now(),
+                            orderId: 'ORD-' + Date.now().toString().slice(-6),
                             items: cart.map(item => {
                                 const product = products.find(p => p.id === item.id);
                                 return {
@@ -1136,20 +1480,19 @@
                             }),
                             total: document.getElementById('cartTotal').textContent,
                             email: customerInfo.email,
-                            phone: customerInfo.phone
+                            phone: customerInfo.phone,
+                            date: new Date()
                         };
                         
                         processOrder(orderDetails).then(() => {
-                            sendOrderConfirmationEmail(orderDetails, customerInfo.email);
-                            sendSMSNotification(orderDetails);
-                            showBrowserNotification(orderDetails);
                             showOrderStatus(orderDetails.orderId);
                             
-                            Swal.fire(
-                                'Order Placed!',
-                                'Your order has been received. We will contact you shortly.',
-                                'success'
-                            );
+                            Swal.fire({
+                                title: 'Order Placed!',
+                                text: 'Your order has been received. We will contact you shortly.',
+                                icon: 'success',
+                                confirmButtonColor: 'var(--primary)'
+                            });
                             
                             cart = [];
                             saveCart();
@@ -1157,11 +1500,12 @@
                             document.getElementById('cartSidebar').style.right = '-400px';
                             document.getElementById('cartOverlay').style.display = 'none';
                         }).catch(error => {
-                            Swal.fire(
-                                'Error',
-                                'There was a problem processing your order. Please try again.',
-                                'error'
-                            );
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'There was a problem processing your order. Please try again.',
+                                icon: 'error',
+                                confirmButtonColor: 'var(--primary)'
+                            });
                             console.error('Order processing error:', error);
                         });
                     }
@@ -1186,10 +1530,17 @@
                 }
             });
             
+            // Validate quantity input
+            document.getElementById('productQty').addEventListener('change', function() {
+                if (!this.value || parseInt(this.value) < 1) {
+                    this.value = 1;
+                }
+            });
+            
             // Add to cart from modal
             document.getElementById('addToCartModal').addEventListener('click', function() {
                 if (currentProduct) {
-                    const quantity = parseInt(document.getElementById('productQty').value);
+                    const quantity = parseInt(document.getElementById('productQty').value) || 1;
                     addToCart(currentProduct.id, quantity);
                 }
             });
@@ -1233,6 +1584,52 @@
             const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
             document.getElementById('loginButton').addEventListener('click', function() {
                 loginModal.show();
+            });
+            
+            // Show register form
+            document.getElementById('showRegister').addEventListener('click', function(e) {
+                e.preventDefault();
+                const authForm = document.getElementById('authForm');
+                authForm.innerHTML = `
+                    <div class="mb-3">
+                        <label for="registerName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="registerName" placeholder="Your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                    </div>
+                `;
+                
+                document.getElementById('showLogin').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    authForm.innerHTML = `
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <div class="text-center mt-3">
+                            <p class="mb-0">New customer? <a href="#" id="showRegister">Register here</a></p>
+                        </div>
+                    `;
+                });
             });
         });
     </script>
