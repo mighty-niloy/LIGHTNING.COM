@@ -383,18 +383,17 @@
 }
 
 @media (max-width: 480px) {
-    /* Zoom simulation */
+    /* Simulate 75% zoom */
     body {
-        transform: scale(1.76);
+        transform: scale(0.75);
         transform-origin: top left;
-        width: 56.8%; /* 100 / 1.76 to fit viewport */
+        width: 133.33%; /* 100 / 0.75 = 133.33% */
     }
 
     html, body {
         overflow-x: auto;
         height: auto;
     }
-
     .product-grid {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 10px;
