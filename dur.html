@@ -362,7 +362,19 @@
     gap: 20px;
     margin-top: 20px;
 }
+/* Desktop: Simulate 90% zoom */
+@media (min-width: 769px) {
+    body {
+        transform: scale(0.9);
+        transform-origin: top left;
+        width: 111.11%; /* 100 / 0.9 */
+    }
 
+    html, body {
+        overflow-x: auto;
+        height: auto;
+    }
+}
 @media (max-width: 1200px) {
     .product-grid {
         grid-template-columns: repeat(4, 1fr);
