@@ -490,6 +490,38 @@
             }
         }
 
+        @media (max-width: 600px) {
+            .accessories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .category-img {
+                height: 200px;
+            }
+            
+            .category-info {
+                padding: 1rem;
+            }
+            
+            .category-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .category-info p {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+            
+            .stat-item strong {
+                font-size: 0.9rem;
+            }
+            
+            .stat-item span {
+                font-size: 0.7rem;
+            }
+        }
+
         @media (max-width: 480px) {
             .hero-banner {
                 height: 300px;
@@ -501,6 +533,10 @@
 
             .section-header h2 {
                 font-size: 1.8rem;
+            }
+            
+            .accessories-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
