@@ -372,10 +372,8 @@
     }
 
     html, body {
-        overflow-x: auto;
-        height: auto;
-        margin: 0;
-        padding: 0;
+        overflow-x: hidden;
+        width: 100%;
     }
 }
 
@@ -401,6 +399,10 @@
         transform: none;
         width: 100%;
     }
+
+    html, body {
+        overflow-x: hidden;
+    }
 }
 
 @media (max-width: 480px) {
@@ -412,11 +414,9 @@
     }
 
     html, body {
-        overflow-x: auto;
-        height: auto;
-        margin: 0;
-        padding: 0;
+        overflow-x: hidden;
     }
+}
     .product-grid {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 10px;
