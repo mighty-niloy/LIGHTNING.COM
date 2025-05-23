@@ -369,11 +369,18 @@
         transform: scale(0.9);
         transform-origin: top left;
         width: 111.11%; /* 100 / 0.9 */
+        min-height: calc(100vh / 0.9); /* Prevent footer white space */
     }
 
-    html, body {
-        overflow-x: hidden;
+    body {
+        overflow-x: auto;
         width: 100%;
+        position: relative;
+    }
+    
+    /* This prevents horizontal scrollbar from appearing */
+    html {
+        overflow-x: hidden;
     }
 }
 
@@ -396,26 +403,29 @@
     }
 
     #zoom-wrapper {
-        transform: none;
-        width: 100%;
+        transform: scale(0.75);
+        transform-origin: top left;
+        width: 133.33%; /* 100 / 0.75 */
     }
 
-    html, body {
-        overflow-x: hidden;
+    body {
+        overflow-x: auto;
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    /* Mobile: Simulate 75% zoom */
+    /* Keep mobile zoom exactly as you had it */
     #zoom-wrapper {
         transform: scale(0.75);
         transform-origin: top left;
         width: 133.33%; /* 100 / 0.75 */
     }
 
-    html, body {
-        overflow-x: hidden;
+    body {
+        overflow-x: auto;
     }
+}
 }
     .product-grid {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
