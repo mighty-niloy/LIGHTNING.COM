@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="https://i.imgur.com/tgJQiJe.jpg" type="image/jpeg">
+    <link rel="icon" href="https://i.imgur.com/tgJQiJe.jpeg" type="image/jpeg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE LIGHTNING - Premium Fashion Store</title>
@@ -25,7 +25,7 @@
         }
 
         /* Dark mode variables */
-        :root.dark-mode {
+      :root.dark-mode {
             --primary-color: #3a4d6b;
             --secondary-color: #FFD700;
             --dark-color: #121212;
@@ -51,20 +51,47 @@
             }
         }
 
-        /* Dark mode toggle button */
-        .dark-mode-btn {
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-right: 15px;
-            transition: var(--transition);
+         body.dark-mode {
+            background-color: var(--dark-color);
+            color: var(--text-color);
         }
 
-        .dark-mode-btn:hover {
-            transform: scale(1.1);
+        body.dark-mode .product-card,
+        body.dark-mode #contact,
+        body.dark-mode .modal-content,
+        body.dark-mode .cart-sidebar,
+        body.dark-mode .login-content {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            border-color: #333;
         }
+
+        body.dark-mode .product-description,
+        body.dark-mode .product-meta span {
+            color: #bbb;
+        }
+
+        body.dark-mode .search-input,
+        body.dark-mode .newsletter-input {
+            background-color: #333;
+            color: white;
+            border-color: #444;
+        }
+
+        body.dark-mode .dropdown-content {
+            background-color: #333;
+            border-color: #444;
+        }
+
+        body.dark-mode .dropdown-content a {
+            color: #eee;
+            border-bottom-color: #444;
+        }
+
+        body.dark-mode .dropdown-content a:hover {
+            background-color: #444;
+        }
+
 
         /* Loading spinner */
         .loading-spinner {
@@ -1931,22 +1958,34 @@
         const darkModeToggle = document.getElementById('darkModeToggle');
         const loadingSpinner = document.getElementById('loadingSpinner');
 
-        // Dark mode functionality
-        function initDarkMode() {
-            const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
-            
-            if (darkModeEnabled) {
-                document.body.classList.add('dark-mode');
-                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-            
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDarkMode);
-                darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            });
-        }
+      // Dark mode functionality - corrected version
+function initDarkMode() {
+    // Check for saved dark mode preference
+    const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+    
+    // Apply dark mode if enabled
+    if (darkModeEnabled) {
+        document.documentElement.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        document.documentElement.classList.remove('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+    
+    // Toggle dark mode on button click
+    darkModeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark-mode');
+        const isDarkMode = document.documentElement.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+        darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+}
+
+// Initialize dark mode when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initDarkMode();
+    // ... rest of your initialization code
+});
 
         // Enhanced cart with expiration
         function updateCart() {
