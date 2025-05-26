@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://i.imgur.com/LbLeLLr.png" type="image/jpeg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - The Lightning Niloy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.css">
+  <style>
+    :root {
+      --primary: #2c4c4a;
+      --secondary: #f5a623;
+      --light: #f5f5f5;
+      --dark: #333;
+      --white: #fff;
+      --gray: #777;
+      --light-gray: #eaeaea;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --danger: #ff4d4d;
+      --success: #25D366;
+      --info: #0084FF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    .top-bar {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 8px 0;
+      font-size: 14px;
+    }
+
+    .top-bar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .top-bar-links a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 20px;
+      transition: var(--transition);
+      font-weight: 300;
+    }
+
+    .top-bar-links a:hover {
+      color: var(--secondary);
+    }
+
+    .main-header {
+      padding: 20px 0;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      color: var(--secondary);
+      margin-left: 5px;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .search-cart {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar input {
+      padding: 10px 20px;
+      width: 300px;
+      border: 1px solid var(--light-gray);
+      border-radius: 30px;
+      outline: none;
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(44, 76, 74, 0.1);
+    }
+
+    .search-bar button {
+      position: absolute;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .cart-icon {
+      position: relative;
+      font-size: 22px;
+      color: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cart-icon:hover {
+      color: var(--secondary);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: var(--secondary);
+      color: var(--white);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--primary);
+      position: sticky;
+      top: 78px;
+      z-index: 999;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 15px 20px;
+      display: block;
+      transition: var(--transition);
+      font-size: 16px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover:after,
+    .nav-links a.active:after {
+      width: 100%;
+    }
+
+    /* Banner */
+    .banner {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.imgur.com/jhm48Vz.png');
+      background-size: cover;
+      background-position: center;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .banner-content {
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .banner h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: var(--secondary);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      font-weight: 700;
+    }
+
+    .banner p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--secondary);
+      color: var(--white);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #e6951d;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(245, 166, 35, 0.3);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      grid-column: 1 / -1;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Filters Section */
+    .filters-section {
+      background-color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+      position: sticky;
+      top: 160px;
+    }
+
+    .filter-group {
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--light-gray);
+      padding-bottom: 20px;
+    }
+
+    .filter-group:last-child {
+      border-bottom: none;
+    }
+
+    .filter-title {
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .filter-title i {
+      transition: var(--transition);
+    }
+
+    .filter-title.collapsed i {
+      transform: rotate(-90deg);
+    }
+
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-option input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+    }
+
+    .filter-option label {
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .price-range-slider {
+      margin-top: 20px;
+    }
+
+    .price-range-values {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .noUi-target {
+      background: var(--light-gray);
+      border: none;
+      box-shadow: none;
+      height: 4px;
+    }
+
+    .noUi-connect {
+      background: var(--primary);
+    }
+
+    .noUi-handle {
+      width: 18px;
+      height: 18px;
+      top: -7px;
+      right: -9px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--primary);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .noUi-handle:before, .noUi-handle:after {
+      display: none;
+    }
+
+    /* Sort and Filter Bar */
+    .sort-filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background-color: var(--white);
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .results-count {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .sort-options {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sort-options label {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .sort-options select {
+      padding: 8px 15px;
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      background-color: var(--white);
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .sort-options select:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    .view-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .view-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .view-btn.active, .view-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 1;
+      text-transform: uppercase;
+    }
+
+    .product-badge.new {
+      background-color: var(--success);
+    }
+
+    .product-badge.hot {
+      background-color: var(--danger);
+    }
+
+    .product-badge.sale {
+      background-color: var(--primary);
+    }
+
+    .product-image-container {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: var(--dark);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 54px;
+    }
+
+    .product-price {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: var(--gray);
+      font-size: 16px;
+      margin-left: 10px;
+      font-weight: 400;
+    }
+
+    .product-description {
+      color: var(--gray);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #FF9529;
+    }
+
+    .product-rating .stars {
+      margin-right: 5px;
+    }
+
+    .product-rating .count {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 0;
+      grid-column: 1 / -1;
+    }
+
+    .pagination a, .pagination span {
+      padding: 10px 16px;
+      text-decoration: none;
+      color: var(--dark);
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      transition: var(--transition);
+      font-size: 16px;
+    }
+
+    .pagination a:hover:not(.active):not(.disabled) {
+      background-color: var(--light);
+    }
+
+    .pagination a.active {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .pagination a.disabled {
+      color: #aaa;
+      pointer-events: none;
+      border-color: var(--light-gray);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 60px 0 0;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-col {
+      margin-bottom: 30px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer-logo span {
+      color: var(--secondary);
+    }
+
+    .footer-about p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+      line-height: 1.8;
+    }
+
+    .footer-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 2px;
+      background-color: var(--secondary);
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: var(--transition);
+      display: block;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      padding-left: 5px;
+      color: var(--secondary);
+    }
+
+    .contact-info {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-info i {
+      color: var(--secondary);
+      margin-top: 4px;
+      font-size: 18px;
+    }
+
+    .contact-info span {
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      transition: var(--transition);
+      font-size: 18px;
+    }
+
+    .social-links a:hover {
+      background-color: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .newsletter {
+      margin-top: 20px;
+    }
+
+    .newsletter input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .newsletter button {
+      width: 100%;
+      background-color: var(--secondary);
+      color: var(--white);
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .newsletter button:hover {
+      background-color: #e6951d;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Cart Modal */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      right: -450px;
+      width: 450px;
+      height: 100%;
+      background-color: var(--white);
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .cart-modal.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--light-gray);
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .cart-header h3 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .close-cart:hover {
+      transform: rotate(90deg);
+    }
+
+    .cart-items {
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .cart-item-img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item-name {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .cart-item-price {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quantity-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--light-gray);
+      background: none;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .quantity-btn:hover {
+      background-color: var(--light);
+    }
+
+    .remove-item {
+      color: #ff4d4d;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .remove-item:hover {
+      color: #e60000;
+    }
+
+    .cart-summary {
+      padding: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 16px;
+    }
+
+    .checkout-btn:hover {
+      background-color: #1e3a38;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(44, 76, 74, 0.3);
+    }
+
+    .empty-cart-message {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .empty-cart-message p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .empty-cart-message .btn {
+      margin-top: 15px;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Product Quick View Modal */
+    .quick-view-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 90%;
+      max-width: 1000px;
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      display: none;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .quick-view-modal.open {
+      display: block;
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .quick-view-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .quick-view-header h3 {
+      font-size: 22px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .close-quick-view {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--gray);
+      transition: var(--transition);
+    }
+
+    .close-quick-view:hover {
+      color: var(--dark);
+      transform: rotate(90deg);
+    }
+
+    .quick-view-content {
+      display: flex;
+      padding: 30px;
+    }
+
+    .quick-view-images {
+      flex: 1;
+      padding-right: 30px;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 450px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      padding: 10px;
+      background-color: var(--white);
+    }
+
+    .thumbnail-container {
+      display: flex;
+      gap: 15px;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border: 1px solid var(--light-gray);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 5px;
+      background-color: var(--white);
+    }
+
+    .thumbnail:hover {
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .quick-view-details {
+      flex: 1;
+      padding-left: 20px;
+    }
+
+    .quick-view-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .quick-view-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .quick-view-old-price {
+      text-decoration: line-through;
+      color: var(--gray);
+      font-size: 18px;
+      margin-left: 15px;
+      font-weight: 400;
+    }
+
+    .quick-view-description {
+      margin-bottom: 25px;
+      line-height: 1.8;
+      color: var(--gray);
+    }
+
+    .quick-view-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .add-to-cart-btn {
+      flex-grow: 1;
+      padding: 15px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #1e3a38;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(44, 76, 74, 0.3);
+    }
+
+    .wishlist-btn {
+      width: 50px;
+      height: 50px;
+      background-color: #f8f8f8;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .wishlist-btn:hover {
+      background-color: #f0f0f0;
+      color: #ff4d4d;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      gap: 8px;
+      flex: 1;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #128C7E;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .messenger-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      background-color: #0084FF;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      gap: 8px;
+      flex: 1;
+    }
+
+    .messenger-btn:hover {
+      background-color: #0066CC;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 132, 255, 0.3);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .quick-view-content {
+        flex-direction: column;
+      }
+      
+      .quick-view-images {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+      
+      .quick-view-details {
+        padding-left: 0;
+      }
+      
+      .main-image {
+        height: 350px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .header-container {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .search-bar input {
+        width: 250px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .cart-modal {
+        width: 100%;
+        max-width: 450px;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .filters-section {
+        position: static;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .banner h1 {
+        font-size: 32px;
+      }
+      
+      .banner p {
+        font-size: 16px;
+      }
+      
+      .section-title h2 {
+        font-size: 28px;
+      }
+      
+      .quick-view-modal {
+        width: 95%;
+      }
+      
+      .main-image {
+        height: 300px;
+      }
+      
+      .thumbnail {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .quick-view-title {
+        font-size: 24px;
+      }
+      
+      .quick-view-price {
+        font-size: 20px;
+      }
+
+      .sort-filter-bar {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .top-bar-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+      
+      .top-bar-links a {
+        margin: 0 10px;
+      }
+      
+      .search-bar input {
+        width: 100%;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .quick-view-content {
+        padding: 20px;
+      }
+      
+      .quick-view-actions {
+        flex-direction: column;
+      }
+      
+      .contact-buttons {
+        flex-direction: column;
+      }
+      
+      .pagination {
+        flex-wrap: wrap;
+      }
+
+      .pagination a, .pagination span {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
+
+    /* Notification styles */
+    .notification {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--primary);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1100;
+    }
+    
+    .notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .notification i {
+      font-size: 20px;
+      color: var(--secondary);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 15px 0;
+      font-size: 14px;
+      color: var(--gray);
+      grid-column: 1 / -1;
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      margin: 0 5px;
+      color: var(--gray);
+    }
+
+    /* Badge styles */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+
+    .badge-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .badge-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .badge-danger {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .badge-success {
+      background-color: var(--success);
+      color: white;
+    }
+
+    /* Loading spinner */
+    .loading-spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div>Welcome to The Lightning Niloy - Your Premium Fashion Destination</div>
+      <div class="top-bar-links">
+        <a href="tel:+8801874580941"><i class="fas fa-phone"></i> +880 1874 580941</a>
+        <a href="mailto:contact@lightningniloy.com"><i class="fas fa-envelope"></i> contact@lightningniloy.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="https://i.imgur.com/jhm48Vz.png" alt="Lightning Niloy Logo">
+        Lightning<span>Niloy</span>
+      </a>
+      
+      <div class="search-cart">
+        <div class="search-bar">
+          <input type="text" placeholder="Search products...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="cart-icon" id="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-content">
+      <h1>Premium Fashion Collection</h1>
+      <p>Discover our exclusive range of high-quality products designed for style and comfort</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" id="products">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="products.html">Products</a>
+      <span>/</span>
+      <span>All Products</span>
+    </div>
+
+    <div class="section-title">
+      <h2>Our Products</h2>
+      <p>Explore our carefully curated selection of premium fashion items and accessories</p>
+    </div>
+
+    <!-- Filters Section -->
+    <aside class="filters-section">
+      <div class="filter-group">
+        <div class="filter-title">
+          <h3>Categories</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter-options">
+          <div class="filter-option">
+            <input type="checkbox" id="category-t-shirts" checked>
+            <label for="category-t-shirts">T-Shirts (42)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="category-watches">
+            <label for="category-watches">Watches (15)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="category-jeans">
+            <label for="category-jeans">Jeans (28)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="category-shoes">
+            <label for="category-shoes">Shoes (19)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="category-accessories">
+            <label for="category-accessories">Accessories (36)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          <h3>Price Range</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="price-range-slider" id="price-range-slider"></div>
+        <div class="price-range-values">
+          <span id="min-price">0 BDT</span>
+          <span id="max-price">5000 BDT</span>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          <h3>Brands</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter-options">
+          <div class="filter-option">
+            <input type="checkbox" id="brand-nike">
+            <label for="brand-nike">Nike (12)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="brand-adidas">
+            <label for="brand-adidas">Adidas (8)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="brand-puma">
+            <label for="brand-puma">Puma (5)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="brand-naviforce">
+            <label for="brand-naviforce">Naviforce (7)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="brand-local">
+            <label for="brand-local">Local Brands (23)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          <h3>Availability</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter-options">
+          <div class="filter-option">
+            <input type="checkbox" id="in-stock" checked>
+            <label for="in-stock">In Stock (68)</label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="out-of-stock">
+            <label for="out-of-stock">Out of Stock (12)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-title">
+          <h3>Ratings</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter-options">
+          <div class="filter-option">
+            <input type="checkbox" id="rating-5">
+            <label for="rating-5">
+              <span class="product-rating">
+                <span class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </span>
+                <span class="count">(24)</span>
+              </span>
+            </label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="rating-4">
+            <label for="rating-4">
+              <span class="product-rating">
+                <span class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </span>
+                <span class="count">(18)</span>
+              </span>
+            </label>
+          </div>
+          <div class="filter-option">
+            <input type="checkbox" id="rating-3">
+            <label for="rating-3">
+              <span class="product-rating">
+                <span class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                </span>
+                <span class="count">(12)</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn" style="width: 100%; margin-top: 20px;">Apply Filters</button>
+      <button class="btn btn-outline" style="width: 100%; margin-top: 10px;">Reset Filters</button>
+    </aside>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <!-- Sort and Filter Bar -->
+      <div class="sort-filter-bar">
+        <div class="results-count">Showing 1-12 of 80 products</div>
+        
+        <div class="sort-options">
+          <label for="sort-by">Sort by:</label>
+          <select id="sort-by">
+            <option value="popularity">Popularity</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Customer Rating</option>
+            <option value="newest">Newest Arrivals</option>
+            <option value="discount">Discount Percentage</option>
+          </select>
+        </div>
+        
+        <div class="view-options">
+          <button class="view-btn active" data-view="grid"><i class="fas fa-th-large"></i></button>
+          <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <span class="product-badge new">New</span>
+          <div class="product-image-container">
+            <img src="https://i.imgur.com/3dScIkS.jpeg" alt="Black Drop Shoulder T-shirt" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Black Drop Shoulder T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </span>
+              <span class="count">(24)</span>
+            </div>
+            <div class="product-price">699 BDT</div>
+            <p class="product-description">Premium quality cotton fabric with stylish drop shoulder design for ultimate comfort</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="1">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="1">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <span class="product-badge hot">Hot</span>
+          <div class="product-image-container">
+            <img src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Naviforce Silver-Black Watch" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Naviforce Silver-Black Watch</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span class="count">(18)</span>
+            </div>
+            <div class="product-price">3200 BDT <span class="old-price">3500 BDT</span></div>
+            <p class="product-description">Stylish men's watch with premium build quality and genuine leather strap</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="2">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="2">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <span class="product-badge sale">Sale</span>
+          <div class="product-image-container">
+            <img src="https://i.imgur.com/zx4PHju.jpeg" alt="Sky Blue Printed T-shirt" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Sky Blue Printed T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <span class="count">(32)</span>
+            </div>
+            <div class="product-price">699 BDT</div>
+            <p class="product-description">Summer collection with unique printed design made from 100% premium cotton</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="3">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="3">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <span class="product-badge">Bestseller</span>
+          <div class="product-image-container">
+            <img src="https://i.imgur.com/clIEjqu.jpeg" alt="Black Drop Shoulder T-shirt" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Black Drop Shoulder T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </span>
+              <span class="count">(27)</span>
+            </div>
+            <div class="product-price">599 BDT <span class="old-price">699 BDT</span></div>
+            <p class="product-description">Classic black t-shirt with comfortable fit and modern drop shoulder design</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="4">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="4">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div class="product-image-container">
+            <img src="https://i.imgur.com/j65Kb0l.jpeg" alt="Black Printed T-shirt" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Black Printed T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span class="count">(15)</span>
+            </div>
+            <div class="product-price">699 BDT</div>
+            <p class="product-description">Trendy printed design with premium fabric that maintains quality after washing</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="5">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="5">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <span class="product-badge">Limited</span>
+          <div class="product-image-container">
+            <img src="https://i.imgur.com/h7IQwxF.jpeg" alt="Green Drop Shoulder T-shirt" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Green Drop Shoulder T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              <span class="count">(29)</span>
+            </div>
+            <div class="product-price">699 BDT</div>
+            <p class="product-description">Vibrant green color perfect for summer with organic cotton fabric</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="6">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="6">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+          <span class="product-badge new">New</span>
+          <div class="product-image-container">
+            <img src="https://i.imgur.com/3dScIkS.jpeg" alt="White Drop Shoulder T-shirt" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">White Drop Shoulder T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </span>
+              <span class="count">(21)</span>
+            </div>
+            <div class="product-price">699 BDT</div>
+            <p class="product-description">Premium quality white cotton t-shirt with stylish drop shoulder design</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="7">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="7">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+          <span class="product-badge sale">Sale</span>
+          <div class="product-image-container">
+            <img src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Naviforce Gold-Black Watch" class="product-image">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Naviforce Gold-Black Watch</h3>
+            <div class="product-rating">
+              <span class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </span>
+              <span class="count">(19)</span>
+            </div>
+            <div class="product-price">3500 BDT <span class="old-price">4000 BDT</span></div>
+            <p class="product-description">Luxury men's watch with premium gold plating and genuine leather strap</p>
+            <div class="product-actions">
+              <button class="btn btn-sm btn-outline quick-view-btn" data-id="8">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="btn btn-secondary btn-icon add-to-cart-btn" data-id="8">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="disabled">❮ Previous</a>
+        <a href="products.html" class="active">1</a>
+        <a href="products2.html">2</a>
+        <a href="products3.html">3</a>
+        <a href="products4.html">4</a>
+        <a href="products5.html">5</a>
+        <a href="products6.html">6</a>
+        <a href="products7.html">7</a>
+        <span>...</span>
+        <a href="products2.html">Next ❯</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">Lightning<span>Niloy</span></a>
+        <div class="footer-about">
+          <p>Your premier destination for quality fashion and accessories. We offer the best products at competitive prices with excellent customer service.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/ni.l.oy.845150" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/its_me_niloy_just/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/8801874580941" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Customer Service</h3>
+        <ul class="footer-links">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns & Exchanges</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Contact Us</h3>
+        <div class="contact-info">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>123 Fashion Street, Dhaka, Bangladesh</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-phone"></i>
+          <span>+880 1874 580941</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <span>contact@lightningniloy.com</span>
+        </div>
+        
+        <div class="newsletter">
+          <h3 class="footer-title">Newsletter</h3>
+          <p>Subscribe for updates and special offers</p>
+          <input type="email" placeholder="Your email address">
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Lightning Niloy. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+      <h3>Your Shopping Cart</h3>
+      <button class="close-cart" id="close-cart">&times;</button>
+    </div>
+    
+    <div class="cart-items" id="cart-items">
+      <!-- Cart items will be added here dynamically -->
+      <div class="empty-cart-message">
+        <p>Your cart is currently empty.</p>
+        <a href="products.html" class="btn">Continue Shopping</a>
+      </div>
+    </div>
+    
+    <div class="cart-summary">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total">0 BDT</span>
+      </div>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Quick View Modal -->
+  <div class="quick-view-modal" id="quick-view-modal">
+    <div class="quick-view-header">
+      <h3>Product Details</h3>
+      <button class="close-quick-view" id="close-quick-view">&times;</button>
+    </div>
+    
+    <div class="quick-view-content">
+      <div class="quick-view-images">
+        <img src="" alt="Product Image" class="main-image" id="quick-view-main-image">
+        <div class="thumbnail-container">
+          <!-- Thumbnails will be added here dynamically -->
+        </div>
+      </div>
+      
+      <div class="quick-view-details">
+        <h2 class="quick-view-title" id="quick-view-title">Product Name</h2>
+        <div class="quick-view-price" id="quick-view-price">0 BDT <span class="quick-view-old-price" id="quick-view-old-price"></span></div>
+        
+        <div class="product-rating">
+          <span class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </span>
+          <span class="count">(24 reviews)</span>
+        </div>
+        
+        <div class="quick-view-description" id="quick-view-description">
+          Product description goes here with all the details about the product.
+        </div>
+        
+        <div class="product-tags">
+          <span class="badge badge-primary">Premium</span>
+          <span class="badge badge-secondary">New Arrival</span>
+          <span class="badge badge-success">In Stock</span>
+        </div>
+        
+        <div class="quick-view-actions">
+          <button class="add-to-cart-btn" id="quick-view-add-to-cart">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+        
+        <div class="contact-buttons">
+          <a href="https://wa.me/8801874580941" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="https://www.messenger.com/e2ee/t/26480413428268758" class="messenger-btn" target="_blank">
+            <i class="fab fa-facebook-messenger"></i> Messenger
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js"></script>
+  <script>
+    // Sample product data
+    const products = {
+      1: {
+        name: "Black Drop Shoulder T-shirt",
+        price: 699,
+        oldPrice: null,
+        description: "Premium quality cotton fabric with stylish drop shoulder design. Perfect for casual outings and comfortable all-day wear. Available in all sizes from S to XXL. This t-shirt maintains its shape and color even after multiple washes, making it a perfect addition to your wardrobe.",
+        images: [
+          "https://i.imgur.com/3dScIkS.jpeg",
+          "https://i.imgur.com/3dScIkS.jpeg",
+          "https://i.imgur.com/3dScIkS.jpeg"
+        ],
+        rating: 4.5,
+        reviews: 24,
+        tags: ["Premium", "New Arrival", "In Stock"]
+      },
+      2: {
+        name: "Naviforce Silver-Black Watch",
+        price: 3200,
+        oldPrice: 3500,
+        description: "Stylish men's watch with premium build quality. Features include water resistance up to 50m, stainless steel case, and genuine leather strap. The perfect accessory for both casual and formal occasions. The watch comes with a 1-year warranty against manufacturing defects.",
+        images: [
+          "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg",
+          "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg",
+          "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg"
+        ],
+        rating: 4,
+        reviews: 18,
+        tags: ["Premium", "Luxury", "In Stock"]
+      },
+      3: {
+        name: "Sky Blue Printed T-shirt",
+        price: 699,
+        oldPrice: null,
+        description: "Summer collection with unique printed design. Made from 100% premium cotton for maximum comfort and breathability. The fabric is perfect for hot weather and maintains its softness after multiple washes. Available in all sizes from S to XXL.",
+        images: [
+          "https://i.imgur.com/zx4PHju.jpeg",
+          "https://i.imgur.com/zx4PHju.jpeg",
+          "https://i.imgur.com/zx4PHju.jpeg"
+        ],
+        rating: 5,
+        reviews: 32,
+        tags: ["Summer", "Best Seller", "In Stock"]
+      },
+      4: {
+        name: "Black Drop Shoulder T-shirt",
+        price: 599,
+        oldPrice: 699,
+        description: "Classic black t-shirt with comfortable fit and modern drop shoulder design. Made from high-quality fabric that doesn't fade after washing. The versatile design makes it perfect for layering or wearing on its own. A must-have for every wardrobe.",
+        images: [
+          "https://i.imgur.com/clIEjqu.jpeg",
+          "https://i.imgur.com/clIEjqu.jpeg",
+          "https://i.imgur.com/clIEjqu.jpeg"
+        ],
+        rating: 4.5,
+        reviews: 27,
+        tags: ["Classic", "Best Seller", "In Stock"]
+      },
+      5: {
+        name: "Black Printed T-shirt",
+        price: 699,
+        oldPrice: null,
+        description: "Trendy printed design with premium fabric that maintains quality after washing. The unique artwork stands out while the comfortable fit suits all body types. Machine washable with color protection to keep it looking new for longer.",
+        images: [
+          "https://i.imgur.com/j65Kb0l.jpeg",
+          "https://i.imgur.com/j65Kb0l.jpeg",
+          "https://i.imgur.com/j65Kb0l.jpeg"
+        ],
+        rating: 4,
+        reviews: 15,
+        tags: ["Trendy", "Limited Edition", "In Stock"]
+      },
+      6: {
+        name: "Green Drop Shoulder T-shirt",
+        price: 699,
+        oldPrice: null,
+        description: "Vibrant green color perfect for summer. Made from organic cotton for eco-conscious consumers. The breathable fabric keeps you cool in hot weather while the stylish drop shoulder design adds a modern touch to your look.",
+        images: [
+          "https://i.imgur.com/h7IQwxF.jpeg",
+          "https://i.imgur.com/h7IQwxF.jpeg",
+          "https://i.imgur.com/h7IQwxF.jpeg"
+        ],
+        rating: 5,
+        reviews: 29,
+        tags: ["Eco-Friendly", "Summer", "In Stock"]
+      },
+      7: {
+        name: "White Drop Shoulder T-shirt",
+        price: 699,
+        oldPrice: null,
+        description: "Premium quality white cotton t-shirt with stylish drop shoulder design. The fabric is soft, breathable and maintains its shape wash after wash. Perfect for layering or wearing on its own. Available in all sizes from S to XXL.",
+        images: [
+          "https://i.imgur.com/3dScIkS.jpeg",
+          "https://i.imgur.com/3dScIkS.jpeg",
+          "https://i.imgur.com/3dScIkS.jpeg"
+        ],
+        rating: 4.5,
+        reviews: 21,
+        tags: ["Premium", "New Arrival", "In Stock"]
+      },
+      8: {
+        name: "Naviforce Gold-Black Watch",
+        price: 3500,
+        oldPrice: 4000,
+        description: "Luxury men's watch with premium gold plating and genuine leather strap. Features include water resistance up to 50m, stainless steel case with gold plating, and date display. The perfect accessory for formal occasions and business meetings.",
+        images: [
+          "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg",
+          "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg",
+          "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg"
+        ],
+        rating: 4,
+        reviews: 19,
+        tags: ["Luxury", "Premium", "In Stock"]
+      }
+    };
+
+    // Cart functionality
+    let cart = [];
+    
+    // Load cart from localStorage if available
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    
+    // DOM Elements
+    const cartIcon = document.getElementById('cart-icon');
+    const cartModal = document.getElementById('cart-modal');
+    const closeCart = document.getElementById('close-cart');
+    const overlay = document.getElementById('overlay');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const quickViewModal = document.getElementById('quick-view-modal');
+    const closeQuickView = document.getElementById('close-quick-view');
+    const quickViewMainImage = document.getElementById('quick-view-main-image');
+    const quickViewTitle = document.getElementById('quick-view-title');
+    const quickViewPrice = document.getElementById('quick-view-price');
+    const quickViewOldPrice = document.getElementById('quick-view-old-price');
+    const quickViewDescription = document.getElementById('quick-view-description');
+    const quickViewAddToCart = document.getElementById('quick-view-add-to-cart');
+    const thumbnailContainer = document.querySelector('.thumbnail-container');
+    
+    // Initialize price range slider
+    const priceSlider = document.getElementById('price-range-slider');
+    const minPriceDisplay = document.getElementById('min-price');
+    const maxPriceDisplay = document.getElementById('max-price');
+    
+    if (priceSlider) {
+      noUiSlider.create(priceSlider, {
+        start: [0, 5000],
+        connect: true,
+        range: {
+          'min': 0,
+          'max': 5000
+        },
+        step: 100,
+        format: {
+          to: function(value) {
+            return Math.round(value);
+          },
+          from: function(value) {
+            return Number(value);
+          }
+        }
+      });
+      
+      priceSlider.noUiSlider.on('update', function(values, handle) {
+        if (handle) {
+          maxPriceDisplay.textContent = values[handle] + ' BDT';
+        } else {
+          minPriceDisplay.textContent = values[handle] + ' BDT';
+        }
+      });
+    }
+    
+    // Toggle filter groups
+    document.querySelectorAll('.filter-title').forEach(title => {
+      title.addEventListener('click', () => {
+        title.classList.toggle('collapsed');
+        const options = title.nextElementSibling;
+        options.style.display = options.style.display === 'none' ? 'flex' : 'none';
+      });
+      
+      // Collapse all by default except categories
+      if (!title.textContent.includes('Categories')) {
+        title.classList.add('collapsed');
+        title.nextElementSibling.style.display = 'none';
+      }
+    });
+    
+    // Toggle cart modal
+    cartIcon.addEventListener('click', () => {
+      cartModal.classList.add('open');
+      overlay.classList.add('active');
+      updateCartDisplay();
+    });
+    
+    closeCart.addEventListener('click', () => {
+      cartModal.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+    
+    overlay.addEventListener('click', () => {
+      cartModal.classList.remove('open');
+      quickViewModal.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+    
+    // Close quick view modal
+    closeQuickView.addEventListener('click', () => {
+      quickViewModal.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+    
+    // Add to cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const productId = e.target.getAttribute('data-id');
+        addToCart(productId);
+      });
+    });
+    
+    // Quick view buttons
+    document.querySelectorAll('.quick-view-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const productId = e.target.getAttribute('data-id');
+        showQuickView(productId);
+      });
+    });
+    
+    // Add to cart from quick view
+    quickViewAddToCart.addEventListener('click', () => {
+      const productId = quickViewAddToCart.getAttribute('data-id');
+      addToCart(productId);
+      quickViewModal.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+    
+    // View options (grid/list)
+    document.querySelectorAll('.view-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const productsGrid = document.querySelector('.products-grid');
+        if (button.dataset.view === 'list') {
+          productsGrid.classList.add('list-view');
+        } else {
+          productsGrid.classList.remove('list-view');
+        }
+      });
+    });
+    
+    // Sort products
+    document.getElementById('sort-by').addEventListener('change', function() {
+      // In a real application, this would sort the products array
+      showNotification(`Products sorted by: ${this.options[this.selectedIndex].text}`);
+    });
+    
+    // Add product to cart
+    function addToCart(productId) {
+      const product = products[productId];
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: productId,
+          name: product.name,
+          price: product.price,
+          image: product.images[0],
+          quantity: 1
+        });
+      }
+      
+      updateCartCount();
+      updateCartDisplay();
+      saveCartToLocalStorage();
+      
+      // Show added to cart notification
+      showNotification(`${product.name} has been added to your cart!`);
+    }
+    
+    // Show notification
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fas fa-check-circle"></i>
+          <span>${message}</span>
+        </div>
+      `;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 10);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 3000);
+    }
+    
+    // Update cart item count
+    function updateCartCount() {
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.querySelector('.cart-count').textContent = count;
+    }
+    
+    // Update cart display
+    function updateCartDisplay() {
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+          <div class="empty-cart-message">
+            <p>Your cart is currently empty.</p>
+            <a href="products.html" class="btn">Continue Shopping</a>
+          </div>
+        `;
+        cartTotal.textContent = '0 BDT';
+        return;
+      }
+      
+      cartItemsContainer.innerHTML = '';
+      
+      cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+          <div class="cart-item-details">
+            <h4 class="cart-item-name">${item.name}</h4>
+            <div class="cart-item-price">${item.price} BDT</div>
+            <div class="cart-item-quantity">
+              <button class="quantity-btn minus-btn" data-id="${item.id}">-</button>
+              <span>${item.quantity}</span>
+              <button class="quantity-btn plus-btn" data-id="${item.id}">+</button>
+            </div>
+            <button class="remove-item" data-id="${item.id}">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+      });
+      
+      // Add event listeners for quantity buttons
+      document.querySelectorAll('.minus-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const productId = e.target.getAttribute('data-id');
+          updateQuantity(productId, -1);
+        });
+      });
+      
+      document.querySelectorAll('.plus-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const productId = e.target.getAttribute('data-id');
+          updateQuantity(productId, 1);
+        });
+      });
+      
+      // Add event listeners for remove buttons
+      document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const productId = e.target.getAttribute('data-id');
+          removeFromCart(productId);
+        });
+      });
+      
+      // Update total
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      cartTotal.textContent = `${total} BDT`;
+    }
+    
+    // Update item quantity
+    function updateQuantity(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      
+      if (item) {
+        item.quantity += change;
+        
+        if (item.quantity <= 0) {
+          cart = cart.filter(item => item.id !== productId);
+        }
+        
+        updateCartCount();
+        updateCartDisplay();
+        saveCartToLocalStorage();
+      }
+    }
+    
+    // Remove item from cart
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCartCount();
+      updateCartDisplay();
+      saveCartToLocalStorage();
+    }
+    
+    // Save cart to localStorage
+    function saveCartToLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    
+    // Show quick view modal
+    function showQuickView(productId) {
+      const product = products[productId];
+      
+      quickViewTitle.textContent = product.name;
+      quickViewPrice.textContent = `${product.price} BDT`;
+      
+      if (product.oldPrice) {
+        quickViewOldPrice.textContent = `${product.oldPrice} BDT`;
+      } else {
+        quickViewOldPrice.textContent = '';
+      }
+      
+      quickViewDescription.textContent = product.description;
+      quickViewMainImage.src = product.images[0];
+      quickViewAddToCart.setAttribute('data-id', productId);
+      
+      // Update rating
+      const ratingContainer = document.querySelector('.quick-view-details .product-rating');
+      ratingContainer.querySelector('.stars').innerHTML = generateStarRating(product.rating);
+      ratingContainer.querySelector('.count').textContent = `(${product.reviews} reviews)`;
+      
+      // Update tags
+      const tagsContainer = document.querySelector('.product-tags');
+      tagsContainer.innerHTML = '';
+      product.tags.forEach(tag => {
+        const badge = document.createElement('span');
+        badge.className = 'badge badge-primary';
+        badge.textContent = tag;
+        tagsContainer.appendChild(badge);
+      });
+      
+      // Clear thumbnails
+      thumbnailContainer.innerHTML = '';
+      
+      // Add thumbnails
+      product.images.forEach((image, index) => {
+        const thumbnail = document.createElement('img');
+        thumbnail.src = image;
+        thumbnail.className = 'thumbnail';
+        thumbnail.alt = `Thumbnail ${index + 1}`;
+        thumbnail.addEventListener('click', () => {
+          quickViewMainImage.src = image;
+        });
+        thumbnailContainer.appendChild(thumbnail);
+      });
+      
+      quickViewModal.classList.add('open');
+      overlay.classList.add('active');
+    }
+    
+    // Generate star rating HTML
+    function generateStarRating(rating) {
+      let stars = '';
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 >= 0.5;
+      
+      for (let i = 1; i <= 5; i++) {
+        if (i <= fullStars) {
+          stars += '<i class="fas fa-star"></i>';
+        } else if (i === fullStars + 1 && hasHalfStar) {
+          stars += '<i class="fas fa-star-half-alt"></i>';
+        } else {
+          stars += '<i class="far fa-star"></i>';
+        }
+      }
+      
+      return stars;
+    }
+    
+    // Search functionality
+    const searchInput = document.querySelector('.search-bar input');
+    const searchButton = document.querySelector('.search-bar button');
+    
+    searchButton.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+    
+    function performSearch() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      
+      if (searchTerm) {
+        // In a real application, this would search your product database
+        showNotification(`Searching for: ${searchTerm}`);
+        // You would then filter and display matching products
+      }
+    }
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+    
+    // Update cart count on page load
+    updateCartCount();
+  </script>
+</body>
+</html>
