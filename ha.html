@@ -1656,7 +1656,7 @@
                     <p class="mb-0 small">© 2025 THE LIGHTNING. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <img src="https://via.placeholder.com/200x50?text=Payment+Methods" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
+                    <img src="https://imgur.com/gallery/mm-avXeeT8?text=Payment+Methods" alt="Payment Methods" class="img-fluid" style="max-height: 30px;">
                 </div>
             </div>
         </div>
@@ -1728,9 +1728,9 @@
                 name: "Premium T-Shirt",
                 price: 850,
                 oldPrice: 1200,
-                image: "",
+                image: "https://i.imgur.com/j65Kb0l.jpeg",
                 images: [
-                    "https://i.imgur.com/RbjXbd4.jpg",
+                    "https://i.imgur.com/j65Kb0l.jpeg",
                     "https://i.imgur.com/vz7fHhU.jpg",
                     "https://i.imgur.com/9kLcJjZ.jpg"
                 ],
@@ -1980,8 +1980,26 @@
         ];
 
         // Enhanced cart functionality with local storage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+       let cart = [];
+try {
+  const parsedCart = JSON.parse(localStorage.getItem('cart'));
+  if (Array.isArray(parsedCart)) {
+    cart = parsedCart;
+  }
+} catch (e) {
+  cart = [];
+}
+
+       let wishlist = [];
+try {
+  const parsedWishlist = JSON.parse(localStorage.getItem('wishlist'));
+  if (Array.isArray(parsedWishlist)) {
+    wishlist = parsedWishlist;
+  }
+} catch (e) {
+  wishlist = [];
+}
+
         let currentProduct = null;
         let currentSort = 'default';
         let searchIndex = null;
