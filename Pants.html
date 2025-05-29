@@ -1660,7 +1660,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/nouislider@15.5.1/dist/nouislider.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/wnumb@1.2.0/wNumb.min.js"></script>
-    
     <!-- Main Application Script -->
     <script>
         // Enhanced product data with more attributes
@@ -2585,34 +2584,29 @@ try {
                 });
             }
             
-            // Set product thumbnails
-            if (currentProduct.images && currentProduct.images.length > 0) {
-                // Reset all thumbnails
-                document.querySelectorAll('.product-thumbnail').forEach(thumb => {
-                    thumb.classList.remove('active');
-                });
-                
-                // Set first thumbnail as active
-                document.getElementById('thumb1').querySelector('img').src = currentProduct.images[0];
-                document.getElementById('thumb1').classList.add('active');
-                document.getElementById('thumb1').style.display = 'block';
-                
-                // Set second thumbnail if available
-                if (currentProduct.images[1]) {
-                    document.getElementById('thumb2').querySelector('img').src = currentProduct.images[1];
-                    document.getElementById('thumb2').style.display = 'block';
-                } else {
-                    document.getElementById('thumb2').style.display = 'none';
-                }
-                
-                // Set third thumbnail if available
-                if (currentProduct.images[2]) {
-                    document.getElementById('thumb3').querySelector('img').src = currentProduct.images[2];
-                    document.getElementById('thumb3').style.display = 'block';
-                } else {
-                    document.getElementById('thumb3').style.display = 'none';
-                }
-            }
+           // Clear existing thumbnails
+const thumbContainer = document.getElementById('productThumbnailsContainer');
+thumbContainer.innerHTML = '';
+
+// Generate thumbnails for all available images
+if (currentProduct.images && currentProduct.images.length > 0) {
+    currentProduct.images.forEach((imgSrc, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = `product-thumbnail ${index === 0 ? 'active' : ''}`;
+        thumb.innerHTML = `<img src="${imgSrc}" alt="Thumbnail ${index + 1}">`;
+        
+        thumb.addEventListener('click', () => {
+            // Set clicked thumbnail as active
+            document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+            
+            // Update main image
+            document.getElementById('productModalImage').src = imgSrc;
+        });
+        
+        thumbContainer.appendChild(thumb);
+    });
+}
             
             // Set wishlist button state
             const wishlistBtn = document.getElementById('addToWishlistModal');
