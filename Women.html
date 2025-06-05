@@ -52,6 +52,38 @@
             background-color: var(--dark-bg);
             color: var(--dark-text);
         }
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.fixed-shop {
+  width: 490px;           /* changed from 591px */
+  min-height: 642px;      /* changed from 623px */
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Optional: scale on smaller devices to fit */
+@media (max-width: 600px) {
+  .fixed-shop {
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 400px) {
+  .fixed-shop {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+}
 
         /* Loading Spinner */
         .loading-overlay {
@@ -2915,6 +2947,9 @@
     </style>
 </head>
 <body>
+    <div class="fixed-shop">
+  <!-- all your content inside this -->
+
     <b>AT FIRST LOGIN/REGISTER or SUBSCRIBE US AND THEN CONTINUE YOUR SHOPING</b>
     <!-- Login Modal -->
     <div id="loginModal" class="login-modal">
@@ -4817,5 +4852,6 @@ document.querySelector('.close-modal').addEventListener('click', function () {
   });
 
         </script>
+    </div>
     </body>
 </html>
