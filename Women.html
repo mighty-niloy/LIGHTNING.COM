@@ -15,44 +15,68 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        :root {
-            --primary-color: #243347;
-            --secondary-color: #FFEB3B;
-            --accent-color: #25D366;
-            --dark-color: #2e2e2e;
-            --light-color: #ffffff;
-            --text-color: #333333;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --gradient-primary: linear-gradient(135deg, #243347 0%, #3a516b 100%);
-            --gradient-accent: linear-gradient(135deg, #25D366 0%, #5ce1a8 100%);
-            --gradient-secondary: linear-gradient(135deg, #FFEB3B 0%, #ffc107 100%);
-            --neon-shadow: 0 0 10px rgba(37, 211, 102, 0.7);
-            
-            /* Dark mode variables */
-            --dark-bg: #121212;
-            --dark-text: #f5f5f5;
-            --dark-card: #1e1e1e;
-            --dark-border: #333;
-        }
+:root {
+  /* Default (Light Mode) Colors */
+  --primary-color: #0f172a; /* Deep Navy - Can remain, likely for interactive elements */
+  --secondary-color: #9333ea; /* Vivid Purple */
+  --accent-color: #22d3ee; /* Electric Cyan */
+  --highlight-color: #f43f5e; /* Neon Pink */
+  --glow-color: #10b981; /* Emerald Glow */
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+  --background-color: #ffffff; /* White background for light mode */
+  --text-color: #000000; /* Black text for light mode */
+  --card-bg: #f0f0f0; /* Light gray for cards in light mode */
+  --border-color: #e0e0e0; /* Light border in light mode */
 
-        body.dark-mode {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-        }
+  --border-radius: 12px;
+  --box-shadow: 0 0 20px rgba(16, 185, 129, 0.1); /* Adjusted for light background */
+  --transition: all 0.3s ease;
 
+  --gradient-primary: linear-gradient(135deg, #9333ea 0%, #22d3ee 100%);
+  --gradient-accent: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  --gradient-warning: linear-gradient(135deg, #f43f5e 0%, #f97316 100%);
+
+  --neon-glow: 0 0 12px rgba(34, 211, 238, 0.3), 0 0 24px rgba(16, 185, 129, 0.2); /* Adjusted for light background */
+}
+
+/* Example usage (assuming these are vibrant and work in both modes) */
+.glow-button {
+  background: var(--gradient-primary);
+  color: var(--text-color); /* Should still be readable */
+  border-radius: var(--border-radius);
+  padding: 0.75em 1.5em;
+  box-shadow: var(--neon-glow);
+  transition: var(--transition);
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 24px rgba(244, 63, 94, 0.7),
+    0 0 32px rgba(147, 51, 234, 0.6);
+  transform: scale(1.05);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color); /* Uses default light background */
+  color: var(--text-color); /* Uses default black text */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode overrides */
+body.dark-mode {
+  --background-color: #121212; /* Dark background */
+  --text-color: #f5f5f5; /* Light text */
+  --card-bg: #1e1e1e; /* Dark card background */
+  --border-color: #333; /* Dark border */
+
+  /* Adjust glow/shadows for dark background visibility if needed */
+  --box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); /* Revert to stronger for dark */
+  --neon-glow: 0 0 12px rgba(34, 211, 238, 0.6), 0 0 24px rgba(16, 185, 129, 0.5); /* Revert to stronger for dark */
+}
         /* Loading Spinner */
         .loading-overlay {
             position: fixed;
@@ -171,24 +195,22 @@
         }
         
         .login-btn {
-            background: var(--gradient-secondary);
-            color: var(--primary-color);
+            background: var(--gradient-warning);
+            color: var(--text-color);
             border: none;
             padding: 8px 20px;
-            border-radius: 30px;
+            border-radius: var(--border-radius);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             margin-left: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: var(--neon-glow);
             font-size: 14px;
         }
-        
-        .login-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-        
+      .login-btn:hover {
+  box-shadow: 0 0 24px rgba(255, 105, 180, 0.7), 0 0 32px rgba(147, 51, 234, 0.6);
+  transform: scale(1.05);
+}
         marquee {
             background-color: rgba(255, 235, 59, 0.2);
             color: var(--primary-color);
@@ -999,12 +1021,11 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 15px;
-            }
-        }
+      /* For mobile devices (screens up to 768px wide) */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+  }        }
 
         @media (max-width: 480px) {
             .product-grid {
@@ -2915,7 +2936,7 @@
     </style>
 </head>
 <body>
-    <b>AT FIRST LOGIN/REGISTER or SUBSCRIBE US AND THEN CONTINUE YOUR SHOPING</b>
+    <b><center>AT FIRST LOGIN/REGISTER or SUBSCRIBE US AND THEN CONTINUE YOUR SHOPING</b>
     <!-- Login Modal -->
     <div id="loginModal" class="login-modal">
         <div class="login-content">
