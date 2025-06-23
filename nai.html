@@ -654,6 +654,9 @@
             color: white;
             padding: 60px 0 30px;
             position: relative;
+            /* Ensure footer spans full width */
+            width: 100%; 
+            box-sizing: border-box; /* Include padding in width */
         }
         
         footer:before {
@@ -827,6 +830,7 @@
             box-shadow: var(--shadow-md);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            border: none; /* Ensure no default button border */
         }
 
         .floating-btn:hover {
@@ -845,24 +849,25 @@
         /* Filter Sidebar for Floating Button */
         .filter-sidebar {
             background: var(--light);
-            border-radius: 12px;
+            border-radius: 12px; /* Keep consistent border radius */
             padding: 25px;
             box-shadow: var(--shadow-sm);
-            margin-bottom: 25px;
-            position: sticky; /* Keep it sticky on desktop */
-            top: 20px;
-            /* For mobile, initially hide and position it for the floating button */
+            margin-bottom: 25px; /* Spacing for desktop */
+            
+            /* Mobile-specific positioning and visibility */
             transform: translateX(100%);
             opacity: 0;
             visibility: hidden;
             transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s ease-out;
-            width: 320px; /* Adjust width for mobile view */
+            width: 320px; 
             height: 100vh; /* Full height on mobile */
             position: fixed;
             top: 0;
             right: 0;
             z-index: 1055; /* Between overlay and floating buttons */
             overflow-y: auto;
+            border-top-left-radius: 0; /* No radius at top-left when open from right edge */
+            border-bottom-left-radius: 0;
         }
 
         .filter-sidebar.open {
@@ -876,12 +881,18 @@
                 transform: translateX(0);
                 opacity: 1;
                 visibility: visible;
-                position: sticky;
-                width: auto; /* Reset width */
-                height: auto; /* Reset height */
+                position: sticky; /* Keep it sticky on desktop */
+                top: 20px;
+                width: auto; /* Reset width for desktop flow */
+                height: auto; /* Reset height for desktop flow */
+                border-radius: 12px; /* Restore full border radius for desktop */
             }
             .floating-buttons {
                 display: none; /* Hide floating buttons on desktop */
+            }
+            /* Show filter sidebar column on desktop */
+            .col-lg-3.filter-column { 
+                display: block !important;
             }
         }
         
@@ -1285,9 +1296,9 @@
                 margin-top: 15px;
             }
             
-            /* Filter sidebar for mobile controlled by floating button */
-            .col-lg-3.mb-4 {
-                display: none; /* Hide filter sidebar column on mobile */
+            /* Hide filter sidebar column on mobile (managed by floating button) */
+            .col-lg-3.filter-column {
+                display: none; 
             }
         }
         
@@ -1586,7 +1597,7 @@
         <!-- Big Banner -->
         <div class="row mb-5">
             <div class="col-12">
-                <div class="banner big-banner text-center" style="background-image: url('https://placehold.co/1200x300/243347/FFFFFF?text=GRAND+SALE+ON+ALL+ELECTRONICS'); background-size: cover; background-position: center; min-height: 300px;">
+                <div class="banner big-banner text-center" style="background-image: url('https://i.imgur.com/N7G4sWu.png?text=GRAND+SALE+ON+ALL+ELECTRONICS'); background-size: cover; background-position: center; min-height: 300px;">
                     <div class="banner-content">
                         <i class="fas fa-bolt banner-icon"></i>
                         <h3>⚡ Big Summer Sale! ⚡</h3>
@@ -1599,7 +1610,7 @@
 
         <div class="row">
             <!-- Filter Sidebar (hidden on mobile, shown by floating button) -->
-            <div class="col-lg-3 mb-4">
+            <div class="col-lg-3 mb-4 filter-column">
                 <div class="filter-sidebar" id="filterSidebar">
                     <div class="filter-header">
                         <h5>Filters</h5>
@@ -1722,7 +1733,7 @@
                 <!-- Medium Banners -->
                 <div class="row g-4 mb-5">
                     <div class="col-md-6">
-                        <div class="banner medium-banner" style="background-image: url('https://placehold.co/600x200/28a745/FFFFFF?text=FRESH+COLLECTION'); background-size: cover; background-position: center; min-height: 200px;">
+                        <div class="banner medium-banner" style="background-image: url('https://i.imgur.com/kekDVwB.jpg/600x200/28a745/FFFFFF?text=FRESH+COLLECTION'); background-size: cover; background-position: center; min-height: 200px;">
                             <div class="banner-content left">
                                 <i class="fas fa-leaf banner-icon"></i>
                                 <h3>Fresh Arrivals!</h3>
@@ -1732,7 +1743,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="banner medium-banner" style="background-image: url('https://placehold.co/600x200/ffc107/FFFFFF?text=GADGET+DEALS'); background-size: cover; background-position: center; min-height: 200px;">
+                        <div class="banner medium-banner" style="background-image: url('https://i.imgur.com/Bq4AAhH.jpg/600x200/ffc107/FFFFFF?text=GADGET+DEALS'); background-size: cover; background-position: center; min-height: 200px;">
                             <div class="banner-content right">
                                 <i class="fas fa-headphones banner-icon"></i>
                                 <h3>Gadget Mania!</h3>
@@ -1762,7 +1773,7 @@
                 <!-- Small Banners -->
                 <div class="row g-3 mt-5">
                     <div class="col-md-4 col-sm-6">
-                        <div class="banner small-banner text-center" style="background-image: url('https://placehold.co/400x150/dc3545/FFFFFF?text=WINTER+SALE'); background-size: cover; background-position: center; min-height: 150px;">
+                        <div class="banner small-banner text-center" style="background-image: url('https://i.imgur.com/mJPbNFt.png/400x150?text=WINTER+SALE'); background-size: cover; background-position: center; min-height: 150px;">
                             <div class="banner-content">
                                 <i class="fas fa-snowflake banner-icon"></i>
                                 <h3>Winter Wear!</h3>
@@ -1771,7 +1782,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <div class="banner small-banner text-center" style="background-image: url('https://placehold.co/400x150/17a2b8/FFFFFF?text=FREE+SHIPPING'); background-size: cover; background-position: center; min-height: 150px;">
+                        <div class="banner small-banner text-center" style="background-image: url('https://i.imgur.com/1kRhYc6.png?text=FREE+SHIPPING'); background-size: cover; background-position: center; min-height: 150px;">
                             <div class="banner-content">
                                 <i class="fas fa-truck banner-icon"></i>
                                 <h3>Free Shipping!</h3>
@@ -1780,7 +1791,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <div class="banner small-banner text-center" style="background-image: url('https://placehold.co/400x150/6c757d/FFFFFF?text=NEW+USER+BONUS'); background-size: cover; background-position: center; min-height: 150px;">
+                        <div class="banner small-banner text-center" style="background-image: url('https://i.imgur.com/F7aRkvu.png/400x150?text=NEW+USER+BONUS'); background-size: cover; background-position: center; min-height: 150px;">
                             <div class="banner-content">
                                 <i class="fas fa-gift banner-icon"></i>
                                 <h3>New User Bonus!</h3>
@@ -2300,6 +2311,12 @@
             }
         ];
 
+        // Global coupons - defined outside products array for broader application
+        const globalCoupons = {
+            "LIGHTNING20": { discount: 0.20, appliesTo: "watches" }, // 20% off watches
+            "WELCOME10": { discount: 0.10, appliesTo: "all" } // 10% off all products
+        };
+
         // Enhanced cart functionality with local storage
         let cart = [];
         try {
@@ -2478,19 +2495,42 @@
                     return;
                 }
                 
-                let itemPrice = product.price;
-                let itemDiscount = 0;
+                let itemEffectivePrice = product.price;
+                let itemCouponDiscount = 0;
 
                 // Apply product-specific coupon if available and applied
                 if (couponsApplied[product.id]) {
-                    itemDiscount = couponsApplied[product.id];
-                    itemPrice = product.price - itemDiscount;
+                    itemCouponDiscount = couponsApplied[product.id];
+                    itemEffectivePrice = product.price - itemCouponDiscount;
+                } else {
+                    // Check for global coupon application
+                    for (const code in globalCoupons) {
+                        const coupon = globalCoupons[code];
+                        if (coupon.appliesTo === "all" || (coupon.appliesTo === product.category && product.category === "watches")) {
+                            let discountAmountForProduct = 0;
+                            if (typeof coupon.discount === 'number' && coupon.discount < 1) { // Percentage discount
+                                discountAmountForProduct = product.price * coupon.discount;
+                            } else if (typeof coupon.discount === 'number') { // Fixed amount discount
+                                discountAmountForProduct = coupon.discount;
+                            }
+                            // Only apply if this coupon is currently active in couponsApplied for its code, and it provides a better discount
+                            if (couponsApplied[code] && discountAmountForProduct > itemCouponDiscount) {
+                                itemCouponDiscount = discountAmountForProduct;
+                                itemEffectivePrice = product.price - itemCouponDiscount;
+                            }
+                        }
+                    }
                 }
                 
-                const itemTotal = itemPrice * item.quantity;
+                const itemTotal = itemEffectivePrice * item.quantity;
                 subtotal += (product.price * item.quantity); // Subtotal is original price * quantity
-                totalDiscount += (product.oldPrice ? (product.oldPrice - product.price) : 0) * item.quantity; // Old price discount
-                totalDiscount += itemDiscount * item.quantity; // Coupon discount for this product
+                
+                // Calculate original discount (from oldPrice)
+                let originalDiscount = product.oldPrice ? (product.oldPrice - product.price) : 0;
+                
+                // Add coupon discount to total discount
+                totalDiscount += originalDiscount * item.quantity;
+                totalDiscount += itemCouponDiscount * item.quantity;
 
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item d-flex justify-content-between mb-3 pb-3 border-bottom';
@@ -2499,8 +2539,8 @@
                         <img src="${product.image}" alt="${product.name}" class="cart-item-img me-3">
                         <div>
                             <h6 class="mb-1">${product.name}</h6>
-                            <p class="text-muted mb-1">${itemPrice.toFixed(2)} BDT ${product.oldPrice ? `<span class="text-decoration-line-through text-danger ms-2">${product.oldPrice} BDT</span>` : ''}</p>
-                            ${itemDiscount > 0 ? `<p class="text-success small mb-1">Coupon Applied: -${itemDiscount.toFixed(2)} BDT</p>` : ''}
+                            <p class="text-muted mb-1">${itemEffectivePrice.toFixed(2)} BDT ${product.oldPrice ? `<span class="text-decoration-line-through text-danger ms-2">${product.oldPrice} BDT</span>` : ''}</p>
+                            ${itemCouponDiscount > 0 ? `<p class="text-success small mb-1">Coupon Applied: -${itemCouponDiscount.toFixed(2)} BDT</p>` : ''}
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-sm btn-outline-secondary decrement" data-id="${product.id}" aria-label="Decrease quantity">-</button>
                                 <span class="mx-2">${item.quantity}</span>
@@ -2623,7 +2663,10 @@
         // Remove item from cart
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
-            delete couponsApplied[productId]; // Remove coupon if product is removed
+            // Also remove any product-specific coupons for this item
+            if (couponsApplied[productId]) {
+                delete couponsApplied[productId];
+            }
             saveCart();
             renderCart();
             
@@ -2661,27 +2704,62 @@
 
         // Apply coupon to a product in the cart
         function applyCoupon(couponCode) {
+            const code = couponCode.toUpperCase();
             let appliedSuccessfully = false;
-            cart.forEach(item => {
-                const product = products.find(p => p.id === item.id);
-                if (product && product.coupon && product.coupon.code.toLowerCase() === couponCode.toLowerCase()) {
-                    let discountAmount = 0;
-                    if (typeof product.coupon.discount === 'number' && product.coupon.discount < 1) { // Percentage discount
-                        discountAmount = product.price * product.coupon.discount;
-                    } else if (typeof product.coupon.discount === 'number') { // Fixed amount discount
-                        discountAmount = product.coupon.discount;
+
+            // Check global coupons first
+            if (globalCoupons[code]) {
+                const coupon = globalCoupons[code];
+                cart.forEach(item => {
+                    const product = products.find(p => p.id === item.id);
+                    if (product) {
+                        let canApply = false;
+                        if (coupon.appliesTo === "all") {
+                            canApply = true;
+                        } else if (coupon.appliesTo === product.category) {
+                            canApply = true;
+                        }
+
+                        if (canApply) {
+                            let discountAmount = 0;
+                            if (typeof coupon.discount === 'number' && coupon.discount < 1) { // Percentage discount
+                                discountAmount = product.price * coupon.discount;
+                            } else if (typeof coupon.discount === 'number') { // Fixed amount discount
+                                discountAmount = coupon.discount;
+                            }
+                            // Only apply if it's a new or better discount for this product from this global coupon
+                            if (!couponsApplied[product.id] || couponsApplied[product.id] < discountAmount) {
+                                couponsApplied[product.id] = discountAmount;
+                                appliedSuccessfully = true;
+                            }
+                        }
                     }
-                    
-                    couponsApplied[product.id] = discountAmount;
-                    appliedSuccessfully = true;
-                }
-            });
+                });
+            } else {
+                // Check product-specific coupons (if any)
+                cart.forEach(item => {
+                    const product = products.find(p => p.id === item.id);
+                    if (product && product.coupon && product.coupon.code.toUpperCase() === code) {
+                        let discountAmount = 0;
+                        if (typeof product.coupon.discount === 'number' && product.coupon.discount < 1) { // Percentage discount
+                            discountAmount = product.price * product.coupon.discount;
+                        } else if (typeof product.coupon.discount === 'number') { // Fixed amount discount
+                            discountAmount = product.coupon.discount;
+                        }
+                        // Only apply if it's a new or better discount for this product from its own coupon
+                        if (!couponsApplied[product.id] || couponsApplied[product.id] < discountAmount) {
+                            couponsApplied[product.id] = discountAmount;
+                            appliedSuccessfully = true;
+                        }
+                    }
+                });
+            }
 
             if (appliedSuccessfully) {
                 renderCart();
-                showToast('success', 'Coupon applied successfully!');
+                showToast('success', `Coupon '${couponCode}' applied successfully!`);
             } else {
-                showToast('error', 'Invalid or inapplicable coupon code.');
+                showToast('error', `Coupon '${couponCode}' is invalid, or does not apply to items in your cart, or provides less discount than already applied.`);
             }
         }
         
@@ -2785,8 +2863,8 @@
                 
                 paginatedProducts.forEach(product => {
                     const col = document.createElement('div');
-                    // Changed to col-md-4 for larger screens, but mobile will use col-6 via CSS
-                    col.className = 'col-6 col-md-4 col-lg-3 mb-4'; 
+                    // Changed to col-6 for smallest mobile screens to ensure 2 products per row
+                    col.className = 'col-6 col-sm-6 col-md-4 col-lg-3 mb-4'; 
                     
                     // Calculate discount percentage if old price exists
                     const discountPercentage = product.oldPrice 
@@ -3139,7 +3217,7 @@
         // Process order function
         async function processOrder(orderDetails) {
             // Show loading spinner
-            document.getElementById('loadingSpinner').style.display = 'flex'; // Assuming a loading spinner element exists
+            // document.getElementById('loadingSpinner').style.display = 'flex'; // Assuming a loading spinner element exists
             
             // In a real app, this would send the order to your backend
             return new Promise((resolve) => {
@@ -3214,7 +3292,7 @@
             const maxPrice = Math.max(...products.map(p => p.price));
             
             noUiSlider.create(priceSlider, {
-                start: [currentFilters.minPrice, currentFilters.maxPrice],
+                start: [minPrice, maxPrice], // Set initial range to min/max of all products
                 connect: true,
                 range: {
                     'min': minPrice,
@@ -3285,7 +3363,7 @@
                 setTimeout(() => {
                     Swal.fire({
                         title: 'Welcome to THE LIGHTNING!',
-                        text: 'Enjoy 10% off your first order with code WELCOME10',
+                        html: 'Enjoy 10% off your first order with code <strong>WELCOME10</strong>',
                         icon: 'info',
                         confirmButtonColor: 'var(--primary)'
                     });
@@ -3313,6 +3391,7 @@
                 document.getElementById('cartOverlay').classList.remove('show');
             });
             
+            // Universal overlay click listener to close sidebars
             document.getElementById('cartOverlay').addEventListener('click', function() {
                 document.getElementById('cartSidebar').classList.remove('open');
                 document.getElementById('wishlistSidebar').classList.remove('open');
@@ -3337,32 +3416,32 @@
                 document.getElementById('wishlistOverlay').classList.remove('show');
             });
             
-            // Cart item quantity handlers
+            // Cart item quantity handlers and remove buttons (delegated event listener)
             document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('increment') || e.target.parentElement.classList.contains('increment')) {
-                    const productId = parseInt(e.target.getAttribute('data-id') || e.target.parentElement.getAttribute('data-id'));
+                if (e.target.closest('.increment')) {
+                    const productId = parseInt(e.target.closest('.increment').getAttribute('data-id'));
                     const item = cart.find(item => item.id === productId);
                     if (item) updateCartItem(productId, item.quantity + 1);
                 }
                 
-                if (e.target.classList.contains('decrement') || e.target.parentElement.classList.contains('decrement')) {
-                    const productId = parseInt(e.target.getAttribute('data-id') || e.target.parentElement.getAttribute('data-id'));
+                if (e.target.closest('.decrement')) {
+                    const productId = parseInt(e.target.closest('.decrement').getAttribute('data-id'));
                     const item = cart.find(item => item.id === productId);
                     if (item) updateCartItem(productId, item.quantity - 1);
                 }
                 
-                if (e.target.classList.contains('remove') || e.target.parentElement.classList.contains('remove')) {
-                    const productId = parseInt(e.target.getAttribute('data-id') || e.target.parentElement.getAttribute('data-id'));
+                if (e.target.closest('.remove')) {
+                    const productId = parseInt(e.target.closest('.remove').getAttribute('data-id'));
                     removeFromCart(productId);
                 }
                 
-                if (e.target.classList.contains('remove-from-wishlist') || e.target.parentElement.classList.contains('remove-from-wishlist')) {
-                    const productId = parseInt(e.target.getAttribute('data-id') || e.target.parentElement.getAttribute('data-id'));
+                if (e.target.closest('.remove-from-wishlist')) {
+                    const productId = parseInt(e.target.closest('.remove-from-wishlist').getAttribute('data-id'));
                     removeFromWishlist(productId);
                 }
                 
-                if (e.target.classList.contains('add-to-cart-from-wishlist') || e.target.parentElement.classList.contains('add-to-cart-from-wishlist')) {
-                    const productId = parseInt(e.target.getAttribute('data-id') || e.target.parentElement.getAttribute('data-id'));
+                if (e.target.closest('.add-to-cart-from-wishlist')) {
+                    const productId = parseInt(e.target.closest('.add-to-cart-from-wishlist').getAttribute('data-id'));
                     addToCart(productId);
                 }
                 
@@ -3739,6 +3818,7 @@
                     </div>
                 `;
                 
+                // Re-attach listener for showLogin as the DOM element is recreated
                 document.getElementById('showLogin').addEventListener('click', function(e) {
                     e.preventDefault();
                     authForm.innerHTML = `
@@ -3791,9 +3871,9 @@
             // Floating filter button toggle
             document.getElementById('floatingFilterBtn').addEventListener('click', function() {
                 const filterSidebar = document.getElementById('filterSidebar');
-                const cartOverlay = document.getElementById('cartOverlay');
+                const cartOverlay = document.getElementById('cartOverlay'); // Re-using cart overlay for filters
                 filterSidebar.classList.toggle('open');
-                cartOverlay.classList.toggle('show'); // Use the same overlay for filters
+                cartOverlay.classList.toggle('show'); 
             });
 
             // Close filter sidebar from inside
