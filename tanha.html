@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -4145,7 +4144,7 @@
         </div>
     </div>
 
-    <!-- Filter Sidebar -->
+         <!-- Filter Sidebar -->
     <div class="filter-sidebar" id="filterSidebar">
         <div class="filter-header">
             <h3><i class="fas fa-filter"></i> Filter Products</h3>
@@ -4259,7 +4258,6 @@
         <button class="filter-toggle" id="filterToggle">
             <i class="fas fa-filter"></i>
         </button>
-
         <!-- Cart Sidebar -->
         <div class="cart-sidebar" id="cartSidebar">
             <div class="cart-header">
@@ -4428,46 +4426,47 @@
             </div>
         </nav>
 
-        <!-- Advanced Search Bar (Moved to top) -->
-        <div class="search-container animated-border-section">
-            <div class="search-wrapper">
-                <div class="search-box">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search for products, brands, categories...">
-                    <button class="search-btn" id="searchButton"><i class="fas fa-search"></i> Search</button>
-                    <div class="search-suggestions" id="searchSuggestions">
-                        <div class="suggestion-header">Popular Products</div>
-                        <div class="suggestion-item" onclick="selectSuggestion('Silver-Black Watch', 3200, 'https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg')">
-                            <img src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Silver-Black Watch">
-                            <div class="info">
-                                <div class="name">Silver-Black Watch</div>
-                                <div class="price">3200 BDT</div>
-                            </div>
+   <!-- Advanced Search Bar -->
+    <div class="search-container animate-slide-up">
+        <div class="search-wrapper">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search for products, brands, categories...">
+                <button class="search-btn" id="searchButton"><i class="fas fa-search"></i> Search</button>
+                <div class="search-suggestions" id="searchSuggestions">
+                    <div class="suggestion-header">Popular Products</div>
+                    <div class="suggestion-item" onclick="selectSuggestion('Silver-Black Watch', 3200, 'https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg')">
+                        <img src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Silver-Black Watch" loading="lazy">
+                        <div class="info">
+                            <div class="name">Silver-Black Watch</div>
+                            <div class="price">3200 BDT</div>
                         </div>
-                        <div class="suggestion-item" onclick="selectSuggestion('Luxury Watch', 3200, 'https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-01.jpg')">
-                            <img src="https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-01.jpg" alt="Luxury Watch">
-                            <div class="info">
-                                <div class="name">Luxury Watch</div>
-                                <div class="price">3200 BDT</div>
-                            </div>
+                    </div>
+                    <div class="suggestion-item" onclick="selectSuggestion('Luxury Watch', 3200, 'https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-01.jpg')">
+                        <img src="https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-01.jpg" alt="Luxury Watch" loading="lazy">
+                        <div class="info">
+                            <div class="name">Luxury Watch</div>
+                            <div class="price">3200 BDT</div>
                         </div>
-                        <div class="suggestion-item" onclick="selectSuggestion('Drop Shoulder T-shirt', 4500, 'https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076.jpg')">
-                            <img src="https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076.jpg" alt="Drop Shoulder T-shirt">
-                            <div class="info">
-                                <div class="name">Drop Shoulder T-shirt</div>
-                                <div class="price">4500 BDT</div>
-                            </div>
+                    </div>
+                    <div class="suggestion-item" onclick="selectSuggestion('Drop Shoulder T-shirt', 4500, 'https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076.jpg')">
+                        <img src="https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076.jpg" alt="Drop Shoulder T-shirt" loading="lazy">
+                        <div class="info">
+                            <div class="name">Drop Shoulder T-shirt</div>
+                            <div class="price">4500 BDT</div>
                         </div>
-                        <div class="suggestion-header">Recent Searches</div>
-                        <div class="recent-searches" id="recentSearchesContainer">
-                            <!-- Recent searches will be added dynamically -->
-                        </div>
-                        <div class="search-history-controls" id="searchHistoryControls">
-                            <span class="clear-history" id="clearHistory">Clear History</span>
-                        </div>
+                    </div>
+                    <div class="suggestion-header">Recent Searches</div>
+                    <div class="recent-searches" id="recentSearchesContainer">
+                        <!-- Recent searches will be added dynamically -->
+                    </div>
+                    <div class="search-history-controls" id="searchHistoryControls">
+                        <span class="clear-history" id="clearHistory"><i class="fas fa-trash-alt"></i> Clear History</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
 
         <!-- Floating Icon Bar (Navbar) -->
         <div class="floating-nav-bar">
@@ -4491,7 +4490,7 @@
 
                     <!-- Main Product Display -->
                     <div class="product-main-display" id="mainProductDisplay">
-                        <img id="mainProductImageBanner" src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Silver-Black Watch">
+                        <img id="mainProductImageBanner" src="https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg" alt="Silver-Black Watch" loading="lazy">
                     </div>
 
                     <!-- Right Side Caption -->
@@ -4538,7 +4537,7 @@
                 <div class="banner-slides">
                     <!-- Banner 1 -->
                     <div class="banner-slide active">
-                        <img src="https://i.imgur.com/0X4bQWb.png" alt="Summer Collection">
+                        <img src="https://i.imgur.com/0X4bQWb.png" alt="Summer Collection" loading="lazy">
                         <div class="banner-caption">
                             <h3>Summer Collection 2025</h3>
                             <p>Discover our premium summer fashion line with exclusive designs and comfortable fabrics</p>
@@ -4548,7 +4547,7 @@
 
                     <!-- Banner 2 -->
                     <div class="banner-slide">
-                        <img src="https://i.imgur.com/qgCxNSJ.png" alt="Limited Offer">
+                        <img src="https://i.imgur.com/qgCxNSJ.png" alt="Limited Offer" loading="lazy">
                         <div class="banner-caption">
                             <h3>Limited Time Offer</h3>
                             <p>Get 30% off on selected items. Use code LIGHTNING30 at checkout</p>
@@ -4558,7 +4557,7 @@
 
                     <!-- Banner 3 -->
                     <div class="banner-slide">
-                        <img src="https://i.imgur.com/yCuNAJr.png" alt="New Arrivals">
+                        <img src="https://i.imgur.com/yCuNAJr.png" alt="New Arrivals" loading="lazy">
                         <div class="banner-caption">
                             <h3>New Arrivals</h3>
                             <p>Explore our latest collection of premium watches and accessories</p>
@@ -4723,7 +4722,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // --- Global Data (Dummy Data - Replace with API calls in a real application) ---
-    // Ensure unique IDs for all products for proper linking
+    // IMPORTANT: For a static site, all product data is hardcoded here.
+    // To have "infinite" products, you would need to manually add them to this array.
+    // For truly dynamic content and user uploads, a backend and database are required.
+    // Each product now has a 'thumbnails' array which can hold many image URLs.
     const allProducts = [
         {
             id: "prod-001",
@@ -4734,7 +4736,10 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnails: [
                 "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men.jpg",
                 "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men-2.jpg",
-                "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men-3.jpg"
+                "https://gentselegance.com/wp-content/uploads/2025/03/Naviforce-8063-Silver-Black-Watch-For-Men-3.jpg",
+                "https://placehold.co/70x70/B0C4DE/000000?text=Watch+Side", // Added more thumbnails
+                "https://placehold.co/70x70/778899/FFFFFF?text=Watch+Back",
+                "https://placehold.co/70x70/6A5ACD/FFFFFF?text=Watch+Detail"
             ],
             description: "High quality Naviforce silver-black watch for men. Durable, stylish, and perfect for formal occasions. Features include water resistance up to 50m, stainless steel case, and precise quartz movement.",
             category: "watches",
@@ -4753,7 +4758,9 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnails: [
                 "https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-01.jpg",
                 "https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-02.jpg",
-                "https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-03.jpg"
+                "https://gentselegance.com/wp-content/uploads/2025/02/aolix-9196-luxury-watch-bangladesh-03.jpg",
+                "https://placehold.co/70x70/DDA0DD/000000?text=Luxury+Side",
+                "https://placehold.co/70x70/BA55D3/FFFFFF?text=Luxury+Back"
             ],
             description: "Aolix 9196 luxury wristwatch. Classy design with elegant finish. Perfect for gifts and celebrations. Features include genuine leather strap, mineral crystal glass, and precise Japanese movement.",
             category: "watches",
@@ -4771,7 +4778,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://media.e-valy.com/cms/products/images/d9c8a4f4-c55d-467f-b973-014c58dc09ff",
             thumbnails: [
                 "https://media.e-valy.com/cms/products/images/d9c8a4f4-c55d-467f-b973-014c58dc09ff",
-                "https://media.e-valy.com/cms/products/images/d9c8a4f4-c55d-467f-b973-014c58dc09ff"
+                "https://placehold.co/70x70/8B0000/FFFFFF?text=Punjabi+2",
+                "https://placehold.co/70x70/B22222/FFFFFF?text=Punjabi+3"
             ],
             description: "Premium quality Punjabi made from 100% cotton. Comfortable for everyday wear with a premium feel. Available in multiple colors. Handcrafted with traditional embroidery patterns.",
             category: "men",
@@ -4790,7 +4798,10 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnails: [
                 "https://i.imgur.com/RbjXbd4.jpg",
                 "https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076-2.jpg",
-                "https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076-3.jpg"
+                "https://sameerbeat.com/wp-content/uploads/2025/02/DSC09753-860x1076-3.jpg",
+                "https://placehold.co/70x70/000000/FFFFFF?text=T-shirt+4",
+                "https://placehold.co/70x70/36454F/FFFFFF?text=T-shirt+5",
+                "https://placehold.co/70x70/2F4F4F/FFFFFF?text=T-shirt+6"
             ],
             description: "Stylish premium black Drop shoulder T-shirt for men with premium quality and durability. Made from high-quality cotton blend for maximum comfort. Available in sizes S-XXL.",
             category: "men",
@@ -4808,7 +4819,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://down-ph.img.susercontent.com/file/ph-11134207-7rasf-m1m3n0gtgji63d",
             thumbnails: [
                 "https://down-ph.img.susercontent.com/file/ph-11134207-7rasf-m1m3n0gtgji63d",
-                "https://down-ph.img.susercontent.com/file/ph-11134207-7rasf-m1m3n0gtgji63d"
+                "https://placehold.co/70x70/F5DEB3/000000?text=Cargo+2",
+                "https://placehold.co/70x70/DEB887/000000?text=Cargo+3"
             ],
             description: "6 pocket cargo pant in cream color. Made with premium quality cotton blend fabric for durability and comfort. Features adjustable waistband and reinforced stitching. Available in sizes 28-40.",
             category: "men",
@@ -4826,7 +4838,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.webp",
             thumbnails: [
                 "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.webp",
-                "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.webp"
+                "https://placehold.co/70x70/800080/FFFFFF?text=Cap+2",
+                "https://placehold.co/70x70/9370DB/FFFFFF?text=Cap+3"
             ],
             description: "A premium quality cap which makes your look stylish and smart. Adjustable strap for perfect fit. Made from high-quality materials with authentic Luis Vuitton pattern. One size fits all.",
             category: "accessories",
@@ -4844,7 +4857,9 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://i.imgur.com/yCuNAJr.png",
             thumbnails: [
                 "https://i.imgur.com/yCuNAJr.png",
-                "https://i.imgur.com/yCuNAJr.png"
+                "https://placehold.co/70x70/4B0082/FFFFFF?text=Polo+2",
+                "https://placehold.co/70x70/8A2BE2/FFFFFF?text=Polo+3",
+                "https://placehold.co/70x70/9932CC/FFFFFF?text=Polo+4"
             ],
             description: "Imported and premium polo from Parijan. Made from 100% premium cotton with moisture-wicking technology. Features reinforced stitching and classic collar design. Available in sizes S-XXL in multiple colors.",
             category: "men",
@@ -4862,7 +4877,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://i.imgur.com/MI6O4Fg.png",
             thumbnails: [
                 "https://i.imgur.com/MI6O4Fg.png",
-                "https://i.imgur.com/MI6O4Fg.png"
+                "https://placehold.co/70x70/4682B4/FFFFFF?text=Jeans+2",
+                "https://placehold.co/70x70/5F9EA0/FFFFFF?text=Jeans+3"
             ],
             description: "High-quality cargo jeans with multiple pockets for functionality and style. Made from durable denim with stretch technology for comfort. Available in multiple washes and sizes 28-40.",
             category: "men",
@@ -4877,10 +4893,17 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "Canvas Shoes",
             price: 1800,
             oldPrice: 2200,
-            image: "https://i.imgur.com/o8ZQlTy.jpg",
+            image: "https://i.imgur.com/bWDXy16.png",
             thumbnails: [
-                "https://i.imgur.com/o8ZQlTy.jpg",
-                "https://i.imgur.com/o8ZQlTy.jpg"
+                "https://i.imgur.com/hisHATJ.png",
+                "https://i.imgur.com/ntmTQzc.png",
+                "https://i.imgur.com/bWDXy16.png",
+                "https://i.imgur.com/EgymbKx.png",  
+                "https://i.imgur.com/BUsuvKL.png",
+                "https://i.imgur.com/XQ1qMzu.png",
+                "https://i.imgur.com/AG4YzcP.png",
+                "https://i.imgur.com/n0G8RBa.png",
+                "https://i.imgur.com/v7s2XQG.png"
             ],
             description: "Premium canvas shoes with rubber sole for maximum comfort. Lightweight and breathable design perfect for casual wear. Available in multiple colors and sizes 6-12.",
             category: "footwear",
@@ -4898,7 +4921,8 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-2-450x450.webp",
             thumbnails: [
                 "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-2-450x450.webp",
-                "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-2-450x450.webp"
+                "https://placehold.co/70x70/8B0000/FFFFFF?text=Band+2",
+                "https://placehold.co/70x70/DC143C/FFFFFF?text=Band+3"
             ],
             description: "Stylish and budget-friendly wristband. Best for daily wear and youth fashion. Made from high-quality silicone that is durable and comfortable for all-day wear. Available in multiple colors.",
             category: "accessories",
@@ -4915,9 +4939,11 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 3000,
             image: "https://placehold.co/600x400/FF5733/FFFFFF?text=Summer+Dress",
             thumbnails: [
-                "https://placehold.co/600x400/FF5733/FFFFFF?text=Summer+Dress",
-                "https://placehold.co/600x400/DAF7A6/000000?text=Dress+View+2",
-                "https://placehold.co/600x400/C70039/FFFFFF?text=Dress+View+3"
+                "https://placehold.co/70x70/FF5733/FFFFFF?text=Summer+Dress",
+                "https://placehold.co/70x70/DAF7A6/000000?text=Dress+View+2",
+                "https://placehold.co/70x70/C70039/FFFFFF?text=Dress+View+3",
+                "https://placehold.co/70x70/FFC0CB/000000?text=Dress+View+4",
+                "https://placehold.co/70x70/FF69B4/FFFFFF?text=Dress+View+5"
             ],
             description: "Lightweight and elegant summer dress for women. Perfect for casual outings and beach days. Made from breathable cotton fabric.",
             category: "women",
@@ -4934,8 +4960,9 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 2000,
             image: "https://placehold.co/600x400/33FF57/000000?text=Casual+Shirt",
             thumbnails: [
-                "https://placehold.co/600x400/33FF57/000000?text=Casual+Shirt",
-                "https://placehold.co/600x400/5733FF/FFFFFF?text=Shirt+View+2"
+                "https://placehold.co/70x70/33FF57/000000?text=Casual+Shirt",
+                "https://placehold.co/70x70/5733FF/FFFFFF?text=Shirt+View+2",
+                "https://placehold.co/70x70/008000/FFFFFF?text=Shirt+View+3"
             ],
             description: "Comfortable and stylish casual shirt for men. Ideal for everyday wear. Made from soft linen blend.",
             category: "men",
@@ -4948,13 +4975,17 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: "prod-013",
             name: "Sporty Sneakers",
-            price: 3800,
-            oldPrice: 4200,
-            image: "https://placehold.co/600x400/33A2FF/FFFFFF?text=Sporty+Sneakers",
+            price: 2890,
+            oldPrice: 5000,
+            image: "https://i.imgur.com/NmdpK3i.png",
             thumbnails: [
-                "https://placehold.co/600x400/33A2FF/FFFFFF?text=Sporty+Sneakers",
-                "https://placehold.co/600x400/FF33A2/FFFFFF?text=Sneakers+View+2",
-                "https://placehold.co/600x400/A2FF33/000000?text=Sneakers+View+3"
+                "https://i.imgur.com/rDvAOqW.png",
+                "https://i.imgur.com/T2WqPr6.png",
+                "https://i.imgur.com/zf0oFeI.png",
+                "https://i.imgur.com/sQLgIUP.png",
+                "https://i.imgur.com/n0F3Lqt.png",
+                "https://i.imgur.com/11OlRF6.png",
+                "https://i.imgur.com/a6Lac7T.png"
             ],
             description: "High-performance sporty sneakers for running and training. Excellent grip and cushioning. Available in various sizes and colors.",
             category: "footwear",
@@ -4971,8 +5002,9 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 6000,
             image: "https://placehold.co/600x400/FF3333/FFFFFF?text=Elegant+Handbag",
             thumbnails: [
-                "https://placehold.co/600x400/FF3333/FFFFFF?text=Elegant+Handbag",
-                "https://placehold.co/600x400/33FFFF/000000?text=Handbag+View+2"
+                "https://placehold.co/70x70/FF3333/FFFFFF?text=Elegant+Handbag",
+                "https://placehold.co/70x70/33FFFF/000000?text=Handbag+View+2",
+                "https://placehold.co/70x70/8B0000/FFFFFF?text=Handbag+View+3"
             ],
             description: "Luxurious and spacious handbag for women. Perfect for formal events or daily use. Crafted from premium vegan leather.",
             category: "accessories",
@@ -4989,8 +5021,9 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 1100,
             image: "https://placehold.co/600x400/33FFC7/000000?text=Kids+Tee",
             thumbnails: [
-                "https://placehold.co/600x400/33FFC7/000000?text=Kids+Tee",
-                "https://placehold.co/600x400/C733FF/FFFFFF?text=Kids+Tee+View+2"
+                "https://placehold.co/70x70/33FFC7/000000?text=Kids+Tee",
+                "https://placehold.co/70x70/C733FF/FFFFFF?text=Kids+Tee+View+2",
+                "https://placehold.co/70x70/00CED1/FFFFFF?text=Kids+Tee+View+3"
             ],
             description: "Fun and vibrant graphic tee for kids. Soft and comfortable for all-day play. Made from 100% organic cotton.",
             category: "kids",
@@ -5007,8 +5040,9 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 8000,
             image: "https://placehold.co/600x400/3366FF/FFFFFF?text=Blazer",
             thumbnails: [
-                "https://placehold.co/600x400/3366FF/FFFFFF?text=Blazer",
-                "https://placehold.co/600x400/FF6633/FFFFFF?text=Blazer+View+2"
+                "https://placehold.co/70x70/3366FF/FFFFFF?text=Blazer",
+                "https://placehold.co/70x70/FF6633/FFFFFF?text=Blazer+View+2",
+                "https://placehold.co/70x70/4169E1/FFFFFF?text=Blazer+View+3"
             ],
             description: "A versatile smart casual blazer for men. Perfect for semi-formal occasions or a stylish everyday look. Made from a premium wool blend.",
             category: "men",
@@ -5025,8 +5059,9 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 3200,
             image: "https://placehold.co/600x400/FFD700/000000?text=Boho+Skirt",
             thumbnails: [
-                "https://placehold.co/600x400/FFD700/000000?text=Boho+Skirt",
-                "https://placehold.co/600x400/8A2BE2/FFFFFF?text=Skirt+View+2"
+                "https://placehold.co/70x70/FFD700/000000?text=Boho+Skirt",
+                "https://placehold.co/70x70/8A2BE2/FFFFFF?text=Skirt+View+2",
+                "https://placehold.co/70x70/DAA520/000000?text=Skirt+View+3"
             ],
             description: "Flowy and comfortable boho-chic skirt for women. Ideal for a relaxed yet stylish look. Features intricate patterns and a soft cotton blend.",
             category: "women",
@@ -5043,8 +5078,9 @@ document.addEventListener('DOMContentLoaded', function() {
             oldPrice: 1800,
             image: "https://placehold.co/600x400/8B4513/FFFFFF?text=Leather+Wallet",
             thumbnails: [
-                "https://placehold.co/600x400/8B4513/FFFFFF?text=Leather+Wallet",
-                "https://placehold.co/600x400/A0522D/FFFFFF?text=Wallet+View+2"
+                "https://placehold.co/70x70/8B4513/FFFFFF?text=Leather+Wallet",
+                "https://placehold.co/70x70/A0522D/FFFFFF?text=Wallet+View+2",
+                "https://placehold.co/70x70/D2691E/FFFFFF?text=Wallet+View+3"
             ],
             description: "Durable and stylish classic leather wallet. Multiple compartments for cards and cash. Made from genuine full-grain leather.",
             category: "accessories",
@@ -5056,6 +5092,142 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: "prod-019",
+            name: "Sport Headphones",
+            price: 3000,
+            oldPrice: 3500,
+            image: "https://placehold.co/600x400/00CED1/FFFFFF?text=Headphones",
+            thumbnails: [
+                "https://placehold.co/70x70/00CED1/FFFFFF?text=Headphones",
+                "https://placehold.co/70x70/4682B4/FFFFFF?text=Headphones+View+2",
+                "https://placehold.co/70x70/6495ED/FFFFFF?text=Headphones+View+3"
+            ],
+            description: "Wireless sport headphones with noise cancellation. Perfect for workouts and daily commutes. Sweat-resistant and comfortable fit.",
+            category: "accessories",
+            sku: "ACC-005",
+            brand: "AudioPro",
+            availability: "in_stock",
+            rating: 4.4,
+            badge: "Sale"
+        },
+        {
+            id: "prod-020",
+            name: "Vintage Denim Jacket",
+            price: 4800,
+            oldPrice: 5500,
+            image: "https://placehold.co/600x400/4682B4/FFFFFF?text=Denim+Jacket",
+            thumbnails: [
+                "https://placehold.co/70x70/4682B4/FFFFFF?text=Denim+Jacket",
+                "https://placehold.co/70x70/6A5ACD/FFFFFF?text=Jacket+View+2",
+                "https://placehold.co/70x70/7B68EE/FFFFFF?text=Jacket+View+3"
+            ],
+            description: "Classic vintage denim jacket for a timeless look. Durable and comfortable, perfect for layering. Features distressed details and a relaxed fit.",
+            category: "men",
+            sku: "MEN-008",
+            brand: "RetroStyle",
+            availability: "in_stock",
+            rating: 4.5,
+            badge: "Limited"
+        },
+        // --- Adding more dummy products to demonstrate "infinite" loading ---
+        {
+            id: "prod-021",
+            name: "Wireless Earbuds",
+            price: 1800,
+            oldPrice: 2000,
+            image: "https://placehold.co/600x400/FF7F50/FFFFFF?text=Earbuds",
+            thumbnails: [
+                "https://placehold.co/70x70/FF7F50/FFFFFF?text=Earbuds",
+                "https://placehold.co/70x70/FF6347/FFFFFF?text=Earbuds+2",
+                "https://placehold.co/70x70/FF4500/FFFFFF?text=Earbuds+3",
+                "https://placehold.co/70x70/CD5C5C/FFFFFF?text=Earbuds+4"
+            ],
+            description: "High-fidelity wireless earbuds with long-lasting battery life. Perfect for music lovers on the go.",
+            category: "accessories",
+            sku: "ACC-006",
+            brand: "SoundWave",
+            availability: "in_stock",
+            rating: 4.3,
+            badge: "Hot"
+        },
+        {
+            id: "prod-022",
+            name: "Classic White Sneakers",
+            price: 2200,
+            oldPrice: 2500,
+            image: "https://placehold.co/600x400/F0F8FF/000000?text=White+Sneakers",
+            thumbnails: [
+                "https://placehold.co/70x70/F0F8FF/000000?text=White+Sneakers",
+                "https://placehold.co/70x70/E6E6FA/000000?text=Sneaker+A",
+                "https://placehold.co/70x70/D8BFD8/000000?text=Sneaker+B"
+            ],
+            description: "Timeless white sneakers, versatile for any casual outfit. Comfortable and durable for daily wear.",
+            category: "footwear",
+            sku: "FOOT-003",
+            brand: "CleanKicks",
+            availability: "in_stock",
+            rating: 4.7,
+            badge: "Bestseller"
+        },
+        {
+            id: "prod-023",
+            name: "Slim Fit Chinos",
+            price: 2800,
+            oldPrice: 3200,
+            image: "https://placehold.co/600x400/6B8E23/FFFFFF?text=Chinos",
+            thumbnails: [
+                "https://placehold.co/70x70/6B8E23/FFFFFF?text=Chinos",
+                "https://placehold.co/70x70/8FBC8F/FFFFFF?text=Chinos+2",
+                "https://placehold.co/70x70/3CB371/FFFFFF?text=Chinos+3"
+            ],
+            description: "Comfortable slim-fit chinos for a smart casual look. Made from breathable stretch cotton.",
+            category: "men",
+            sku: "MEN-009",
+            brand: "ModernMan",
+            availability: "in_stock",
+            rating: 4.1,
+            badge: ""
+        },
+        {
+            id: "prod-024",
+            name: "Floral Maxi Dress",
+            price: 3500,
+            oldPrice: 4000,
+            image: "https://placehold.co/600x400/FFB6C1/000000?text=Floral+Dress",
+            thumbnails: [
+                "https://placehold.co/70x70/FFB6C1/000000?text=Floral+Dress",
+                "https://placehold.co/70x70/FF69B4/FFFFFF?text=Dress+A",
+                "https://placehold.co/70x70/FF1493/FFFFFF?text=Dress+B",
+                "https://placehold.co/70x70/C71585/FFFFFF?text=Dress+C"
+            ],
+            description: "Elegant floral maxi dress, perfect for spring and summer events. Lightweight and flowy fabric.",
+            category: "women",
+            sku: "WOMEN-003",
+            brand: "BloomFashion",
+            availability: "in_stock",
+            rating: 4.9,
+            badge: "New"
+        },
+        {
+            id: "prod-025",
+            name: "Digital Sport Watch",
+            price: 1500,
+            oldPrice: 1800,
+            image: "https://placehold.co/600x400/483D8B/FFFFFF?text=Digital+Watch",
+            thumbnails: [
+                "https://placehold.co/70x70/483D8B/FFFFFF?text=Digital+Watch",
+                "https://placehold.co/70x70/6A5ACD/FFFFFF?text=Digital+2",
+                "https://placehold.co/600x400/A0522D/FFFFFF?text=Wallet+View+2"
+            ],
+            description: "Durable and stylish classic leather wallet. Multiple compartments for cards and cash. Made from genuine full-grain leather.",
+            category: "accessories",
+            sku: "ACC-004",
+            brand: "Timeless",
+            availability: "in_stock",
+            rating: 4.6,
+            badge: "Bestseller"
+        },
+        {
+            id: "prod-026",
             name: "Sport Headphones",
             price: 3000,
             oldPrice: 3500,
@@ -5073,7 +5245,7 @@ document.addEventListener('DOMContentLoaded', function() {
             badge: "Sale"
         },
         {
-            id: "prod-020",
+            id: "prod-027",
             name: "Vintage Denim Jacket",
             price: 4800,
             oldPrice: 5500,
@@ -5214,8 +5386,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: "bento-002", title: "Casual Tees", description: "Everyday comfort.", image: "https://placehold.co/200x150/334155/f0abfc?text=Tees", price: "900 BDT", span: "span 1 / span 1", productId: "prod-004" }, // Linked to Drop Shoulder T-shirt
         { id: "bento-003", title: "Winter Jackets", description: "Stay warm, look cool.", image: "https://placehold.co/200x150/475569/a78bfa?text=Jacket", price: "6000 BDT", span: "span 1 / span 1", productId: "prod-020" }, // Linked to Vintage Denim Jacket
         { id: "bento-004", title: "Formal Wear", description: "Elegance for every occasion.", image: "https://placehold.co/200x300/64748b/fde68a?text=Formal+Wear", price: "7500 BDT", span: "span 1 / span 2", productId: "prod-016" }, // Linked to Smart Casual Blazer
-        { id: "bento-005", title: "Sportswear", description: "Performance meets style.", image: "https://placehold.co/400x150/0f172a/94a3b8?text=Sportswear", price: "2800 BDT", span: "span 2 / span 1", productId: "prod-013" }, // Linked to Sporty Sneakers
-        { id: "bento-006", title: "Sneaker Drops", description: "Limited edition releases.", image: "https://placehold.co/200x150/1e293b/67e8f9?text=Sneakers", price: "9500 BDT", span: "span 1 / span 1", productId: "prod-009" }, // Linked to Canvas Shoes
+        { id: "bento-005", title: "Sportswear", description: "Performance meets style.", image: "https://i.imgur.com/NmdpK3i.png", price: "2800 BDT", span: "span 2 / span 1", productId: "prod-013" }, // Linked to Sporty Sneakers
+        { id: "bento-006", title: "Sneaker Drops", description: "Limited edition releases.", image: "https://i.imgur.com/bWDXy16.png", price: "9500 BDT", span: "span 1 / span 1", productId: "prod-009" }, // Linked to Canvas Shoes
         { id: "bento-007", title: "Accessories Kit", description: "Elevate your look.", image: "https://placehold.co/200x150/334155/c4b5fd?text=Accessories", price: "1200 BDT", span: "span 1 / span 1", productId: "prod-010" }, // Linked to Budget Wristband
         { id: "bento-008", title: "Summer Shorts", description: "Light & breezy.", image: "https://placehold.co/400x150/475569/f0abfc?text=Shorts", price: "1500 BDT", span: "span 2 / span 1", productId: "prod-005" }, // Linked to Cargo Pant
         { id: "bento-009", title: "Kids Fashion", description: "Trendy outfits for little ones.", image: "https://placehold.co/200x150/64748b/a5f3fc?text=Kids", price: "700 BDT", span: "span 1 / span 1", productId: "prod-015" }, // Linked to Kids' Graphic Tee
@@ -5468,22 +5640,21 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-
-    // --- Advanced Search Bar (Suggestions, Recent Searches) ---
+ // --- Advanced Search Bar (Suggestions, Recent Searches) ---
     let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
     function renderRecentSearches() {
-        if (recentSearchesContainer) {
-            // Clear existing content, including hardcoded suggestions
-            searchSuggestions.innerHTML = '<div class="suggestion-header">Popular Products</div>';
+        if (searchSuggestions) {
+            searchSuggestions.innerHTML = ''; // Clear all content initially
 
-            // Add some popular product suggestions from allProducts (e.g., top 3 rated)
+            // Add Popular Products header and suggestions
+            searchSuggestions.innerHTML += '<div class="suggestion-header">Popular Products</div>';
             const popularProducts = [...allProducts].sort((a, b) => b.rating - a.rating).slice(0, 3);
             popularProducts.forEach(product => {
                 const item = document.createElement('div');
                 item.classList.add('suggestion-item');
                 item.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/40x40/f0f0f0/888888?text=N/A';">
                     <div class="info">
                         <div class="name">${product.name}</div>
                         <div class="price">${formatCurrency(product.price)}</div>
@@ -5497,14 +5668,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 searchSuggestions.appendChild(item);
             });
 
-            // Now add recent searches
-            const recentSearchesHeader = document.createElement('div');
-            recentSearchesHeader.classList.add('suggestion-header');
-            recentSearchesHeader.textContent = 'Recent Searches';
-            searchSuggestions.appendChild(recentSearchesHeader);
+            // Add Recent Searches header
+            searchSuggestions.innerHTML += '<div class="suggestion-header">Recent Searches</div>';
 
             const recentSearchesContent = document.createElement('div');
             recentSearchesContent.classList.add('recent-searches');
+
             if (recentSearches.length > 0) {
                 recentSearches.forEach(term => {
                     const span = document.createElement('span');
@@ -5522,7 +5691,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 controls.innerHTML = `<span class="clear-history" id="clearHistoryBtnInner">Clear History</span>`;
                 recentSearchesContent.appendChild(controls);
 
-                // Ensure the clearHistoryBtn is correctly targeted and has an event listener
                 const clearHistoryBtnInner = recentSearchesContent.querySelector('#clearHistoryBtnInner');
                 if (clearHistoryBtnInner) {
                     clearHistoryBtnInner.addEventListener('click', clearSearchHistory);
@@ -5538,11 +5706,11 @@ document.addEventListener('DOMContentLoaded', function() {
         term = term.trim();
         if (term && !recentSearches.includes(term)) {
             recentSearches.unshift(term);
-            if (recentSearches.length > 5) {
+            if (recentSearches.length > 5) { // Keep only the 5 most recent
                 recentSearches = recentSearches.slice(0, 5);
             }
             localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
-            renderRecentSearches(); // Re-render to show updated recent searches
+            // No need to re-render here, it's done on focus/input empty
         }
     }
 
@@ -5559,7 +5727,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (result.isConfirmed) {
                 recentSearches = [];
                 localStorage.removeItem('recentSearches');
-                renderRecentSearches();
+                renderRecentSearches(); // Re-render to show empty state
                 Swal.fire(
                     'Cleared!',
                     'Your search history has been cleared.',
@@ -5572,23 +5740,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchInput && searchSuggestions) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
-            searchSuggestions.innerHTML = ''; // Clear previous suggestions
-
             if (query.length > 0) {
                 const filteredSuggestions = allProducts.filter(product =>
                     product.name.toLowerCase().includes(query) ||
                     product.brand.toLowerCase().includes(query) ||
                     product.category.toLowerCase().includes(query)
-                );
+                ).slice(0, 5); // Limit suggestions to 5
 
+                searchSuggestions.innerHTML = ''; // Clear previous content
                 if (filteredSuggestions.length > 0) {
-                    searchSuggestions.classList.add('active');
                     searchSuggestions.innerHTML += '<div class="suggestion-header">Product Suggestions</div>';
                     filteredSuggestions.forEach(product => {
                         const item = document.createElement('div');
                         item.classList.add('suggestion-item');
                         item.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/40x40/f0f0f0/888888?text=N/A';">
                             <div class="info">
                                 <div class="name">${product.name}</div>
                                 <div class="price">${formatCurrency(product.price)}</div>
@@ -5598,14 +5764,16 @@ document.addEventListener('DOMContentLoaded', function() {
                             searchInput.value = product.name;
                             performSearch(product.name);
                             searchSuggestions.classList.remove('active');
+                            searchInput.blur(); // Remove focus
                         });
                         searchSuggestions.appendChild(item);
                     });
+                    searchSuggestions.classList.add('active');
                 } else {
                     searchSuggestions.classList.remove('active');
                 }
             } else {
-                searchSuggestions.classList.add('active');
+                searchSuggestions.classList.add('active'); // Show history if input is empty
                 renderRecentSearches();
             }
         });
@@ -5614,6 +5782,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (searchInput.value.length === 0) {
                 searchSuggestions.classList.add('active');
                 renderRecentSearches();
+            } else {
+                // If there's already text, re-trigger input to show suggestions for current text
+                searchInput.dispatchEvent(new Event('input'));
             }
         });
 
@@ -5626,134 +5797,136 @@ document.addEventListener('DOMContentLoaded', function() {
         if (searchButton) {
             searchButton.addEventListener('click', () => {
                 performSearch(searchInput.value);
+                searchSuggestions.classList.remove('active'); // Hide suggestions after search
             });
         }
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+                searchSuggestions.classList.remove('active');
+                searchInput.blur(); // Remove focus after search
+            }
+        });
     }
 
     function performSearch(query) {
-        if (query.trim() === '') {
+        currentSearchQuery = query.trim().toLowerCase();
+        if (currentSearchQuery === '') {
             Swal.fire({
                 icon: 'warning',
                 title: 'Empty Search',
-                text: 'Please enter a search term.'
+                text: 'Please enter a search term to find products.'
             });
-            return;
+            displayedProducts = [...allProducts]; // Show all products
+        } else {
+            addRecentSearch(currentSearchQuery); // Add to history
+            const filtered = allProducts.filter(p =>
+                p.name.toLowerCase().includes(currentSearchQuery) ||
+                p.brand.toLowerCase().includes(currentSearchQuery) ||
+                p.category.toLowerCase().includes(currentSearchQuery)
+            );
+            displayedProducts = filtered;
+            if (filtered.length === 0) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'No Results',
+                    text: `No products found matching "${query}".`
+                });
+            }
         }
-        addRecentSearch(query);
-        // In a real app, you'd filter the `allProducts` array and re-render the `productGrid`
-        // For now, we'll just log and show a SweetAlert.
-        const filtered = allProducts.filter(p =>
-            p.name.toLowerCase().includes(query.toLowerCase()) ||
-            p.brand.toLowerCase().includes(query.toLowerCase()) ||
-            p.category.toLowerCase().includes(query.toLowerCase())
-        );
-        displayedProducts = filtered;
         productsLoaded = 0; // Reset pagination
         productGrid.innerHTML = ''; // Clear current products
-        loadMoreProducts(); // Load first batch of filtered products
-        if (filtered.length === 0) {
-             Swal.fire({
-                icon: 'info',
-                title: 'No Results',
-                text: `No products found matching "${query}".`
-            });
-        }
+        loadMoreProducts(); // Load first batch of newly filtered/searched products
     }
 
-    renderRecentSearches(); // Initial render of recent searches
+    // Initial render of recent searches if any
+    renderRecentSearches();
 
-    // --- Filter Sidebar ---
-    if (filterToggle && filterSidebar && closeFilterBtn) {
-        filterToggle.addEventListener('click', () => {
-            showOverlayAndElement(filterSidebar);
-        });
-
-        closeFilterBtn.addEventListener('click', () => {
-            hideOverlayAndElement(filterSidebar);
-        });
-    }
-
-    filterTitles.forEach(title => {
-        title.addEventListener('click', () => {
-            const content = title.nextElementSibling;
-            title.classList.toggle('collapsed');
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
-        });
+// --- Filter Sidebar ---
+if (filterToggle && filterSidebar && closeFilterBtn) {
+    filterToggle.addEventListener('click', () => {
+        showOverlayAndElement(filterSidebar);
     });
 
-    if (applyFiltersBtn) {
-        applyFiltersBtn.addEventListener('click', () => {
-            const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-            const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
-            const selectedAvailability = Array.from(document.querySelectorAll('input[name="availability"]:checked')).map(cb => cb.value);
-            const minPrice = minPriceInput ? parseFloat(minPriceInput.value) : 0;
-            const maxPrice = maxPriceInput ? parseFloat(maxPriceInput.value) : Infinity;
+    closeFilterBtn.addEventListener('click', () => {
+        hideOverlayAndElement(filterSidebar);
+    });
+}
 
-            let filteredProducts = allProducts.filter(product => {
-                const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
-                const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
-                const matchesAvailability = selectedAvailability.length === 0 || selectedAvailability.includes(product.availability);
-                const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
-                return matchesCategory && matchesBrand && matchesAvailability && matchesPrice;
-            });
+filterTitles.forEach(title => {
+    title.addEventListener('click', () => {
+        const content = title.nextElementSibling;
+        title.classList.toggle('collapsed');
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    });
+});
 
-            // Apply sorting after filtering
-            filteredProducts = sortProducts(filteredProducts, currentSort);
+if (applyFiltersBtn) {
+    applyFiltersBtn.addEventListener('click', () => {
+        const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+        const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
+        const selectedAvailability = Array.from(document.querySelectorAll('input[name="availability"]:checked')).map(cb => cb.value);
+        const minPrice = minPriceInput && minPriceInput.value ? parseFloat(minPriceInput.value) : 0;
+        const maxPrice = maxPriceInput && maxPriceInput.value ? parseFloat(maxPriceInput.value) : Infinity;
 
-            displayedProducts = filteredProducts;
-            productsLoaded = 0; // Reset pagination for new filter set
-            productGrid.innerHTML = ''; // Clear current products
-            loadMoreProducts(); // Load first batch of filtered products
-
-            Swal.fire({
-                icon: 'info',
-                title: 'Filters Applied!',
-                html: `
-                    <p>Categories: ${selectedCategories.length > 0 ? selectedCategories.join(', ') : 'All'}</p>
-                    <p>Brands: ${selectedBrands.length > 0 ? selectedBrands.join(', ') : 'All'}</p>
-                    <p>Availability: ${selectedAvailability.length > 0 ? selectedAvailability.join(', ') : 'All'}</p>
-                    <p>Price Range: ${formatCurrency(minPrice)} - ${maxPrice === Infinity ? 'Max' : formatCurrency(maxPrice)}</p>
-                `
-            });
-            console.log('Applied Filters:', { selectedCategories, selectedBrands, selectedAvailability, minPrice, maxPrice });
-            hideOverlayAndElement(filterSidebar);
+        let filteredProducts = allProducts.filter(product => {
+            const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+            const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+            const matchesAvailability = selectedAvailability.length === 0 || selectedAvailability.includes(product.availability);
+            const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
+            return matchesCategory && matchesBrand && matchesAvailability && matchesPrice;
         });
-    }
 
-    if (resetFiltersBtn) {
-        resetFiltersBtn.addEventListener('click', () => {
-            // Uncheck all checkboxes
-            document.querySelectorAll('.filter-content input[type="checkbox"]').forEach(cb => cb.checked = false);
-            // Clear price inputs
-            if (minPriceInput) minPriceInput.value = '';
-            if (maxPriceInput) maxPriceInput.value = '';
+        filteredProducts = sortProducts(filteredProducts, currentSort);
+        displayedProducts = filteredProducts;
+        productsLoaded = 0;
+        productGrid.innerHTML = '';
+        loadMoreProducts();
 
-            // Re-check default "in stock" for availability
-            const inStockCheckbox = document.querySelector('input[name="availability"][value="in_stock"]');
-            if (inStockCheckbox) {
-                inStockCheckbox.checked = true;
-            }
-
-            // Reset displayed products to all products and re-render
-            displayedProducts = [...allProducts];
-            productsLoaded = 0;
-            productGrid.innerHTML = '';
-            loadMoreProducts();
-
-            Swal.fire({
-                icon: 'success',
-                title: 'Filters Reset!',
-                text: 'All filters have been cleared.'
-            });
-            console.log('Filters Reset');
-            hideOverlayAndElement(filterSidebar);
+        Swal.fire({
+            icon: 'info',
+            title: 'Filters Applied!',
+            html: `
+                <p>Categories: ${selectedCategories.length > 0 ? selectedCategories.join(', ') : 'All'}</p>
+                <p>Brands: ${selectedBrands.length > 0 ? selectedBrands.join(', ') : 'All'}</p>
+                <p>Availability: ${selectedAvailability.length > 0 ? selectedAvailability.join(', ') : 'All'}</p>
+                <p>Price Range: ${formatCurrency(minPrice)} - ${maxPrice === Infinity ? 'Max' : formatCurrency(maxPrice)}</p>
+            `
         });
-    }
+        hideOverlayAndElement(filterSidebar);
+    });
+}
 
+if (resetFiltersBtn) {
+    resetFiltersBtn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-content input[type="checkbox"]').forEach(cb => cb.checked = false);
+        if (minPriceInput) minPriceInput.value = '';
+        if (maxPriceInput) maxPriceInput.value = '';
+
+        const inStockCheckbox = document.querySelector('input[name="availability"][value="in_stock"]');
+        if (inStockCheckbox) {
+            inStockCheckbox.checked = true;
+        }
+
+        displayedProducts = [...allProducts];
+        productsLoaded = 0;
+        productGrid.innerHTML = '';
+        loadMoreProducts();
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Filters Reset!',
+            text: 'All filters have been cleared.'
+        });
+        hideOverlayAndElement(filterSidebar);
+    });
+}
+ 
     // --- Product Grid Rendering and Load More ---
     function sortProducts(products, sortBy) {
         switch (sortBy) {
