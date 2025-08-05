@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-  <meta http-equiv="Content-Language" content="bn" />
+    <meta http-equiv="Content-Language" content="bn" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="dIr_Bb55BlVJ5jDacm1bYgngw_xzcpLELuuqCDawWN4" />
     <meta name="description" content="THE LIGHTNING offers premium fashion: shirts, pants, and more in Bangladesh. Quality apparel at best prices." />
@@ -24,29 +23,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
-            /* Default (Light Mode) Colors */
-            --primary-color: #0f172a; /* Deep Navy - Can remain, likely for interactive elements */
-            --secondary-color: #9333ea; /* Vivid Purple */
-            --accent-color: #22d3ee; /* Electric Cyan */
-            --highlight-color: #f43f5e; /* Neon Pink */
-            --glow-color: #10b981; /* Emerald Glow */
+            /* Digital Ice Crystal Theme */
+            --primary-color: #0F172A;     /* Deep Navy */
+            --secondary-color: #7a0970;   /* Electric Cyan */
+            --accent-color: #bc627c;      /* Crystal Ice Blue */
+            --highlight-color: #F43F5E;   /* Neon Pink */
+            --glow-color: #10B981;        /* Emerald Glow */
 
-            --background-color: #ffffff; /* White background for light mode */
-            --text-color: #000000; /* Black text for light mode */
-            --card-bg: #f0f0f0; /* Light gray for cards in light mode */
-            --border-color: #e0e0e0; /* Light border in light mode */
+            --background-color: #FFFFFF;  /* White background */
+            --card-bg: #F0F8FA;           /* Icy Card Background */
+            --text-color: #0A0A23;        /* Dark Blue-Black text */
+            --border-color: #E0F2F8;      /* Light Ice Blue border */
 
             --border-radius: 12px;
-            --box-shadow: 0 0 20px rgba(16, 185, 129, 0.1); /* Adjusted for light background */
+            --box-shadow: 0 0 20px rgba(34, 211, 238, 0.08);
             --transition: all 0.3s ease;
-            --transition-long: all 0.5s ease; /* For more noticeable transitions */
+            --transition-long: all 0.5s ease;
 
-            --gradient-primary: linear-gradient(135deg, #9333ea 0%, #22d3ee 100%);
-            --gradient-accent: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-            --gradient-warning: linear-gradient(135deg, #f43f5e 0%, #f97316 100%);
-            --product-badge-color: #f43f5e; /* Red for product badges */
+            --gradient-primary: linear-gradient(135deg, #0F172A 0%, #22D3EE 100%);
+            --gradient-accent: linear-gradient(135deg, #10B981 0%, #A3F2FF 100%);
+            --gradient-warning: linear-gradient(135deg, #F43F5E 0%, #FB7185 100%);
+            --product-badge-color: #f274e1;
 
-            --neon-glow: 0 0 12px rgba(34, 211, 238, 0.3), 0 0 24px rgba(16, 185, 129, 0.2); /* Adjusted for light background */
+            --neon-glow: 0 0 12px rgba(34, 211, 238, 0.3), 0 0 24px rgba(16, 185, 129, 0.2);
         }
 
         /* Dark mode overrides */
@@ -1374,7 +1373,7 @@
         .bento-grid-item:nth-child(1) { grid-column: span 2; grid-row: span 2; } /* Larger item */
         .bento-grid-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
         .bento-grid-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
-        .bento-grid-item:nth-child(4) { grid-column: span 1; grid-row: span 2; } /* Tall item */
+        .bento-grid-item:nth-child(4) { grid-column: span 2; grid-row: span 2; } /* Tall item */
         .bento-grid-item:nth-child(5) { grid-column: span 2; grid-row: span 1; }
         .bento-grid-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
         .bento-grid-item:nth-child(7) { grid-column: span 1; grid-row: span 1; }
@@ -1442,6 +1441,12 @@
             background-color: var(--card-bg);
             border-color: var(--border-color);
             color: var(--text-color);
+        }
+
+        .sort-select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(36, 51, 71, 0.1);
         }
 
         .product-grid-container {
@@ -3653,6 +3658,73 @@
         .animate-slide-in-right { animation: slideInRight 1s ease-out forwards; }
         .animate-scale-in { animation: scaleIn 1s ease-out forwards; }
         .animate-rotate-360 { animation: rotateY360 8s linear infinite; } /* Product rotation */
+        /* Customer Viewed Section CSS */
+        .customer-viewed-section {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+            grid-column: 1 / -1; /* Make it span across both columns in the modal grid */
+        }
+
+        .customer-viewed-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .customer-viewed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        @media (max-width: 640px) {
+            .customer-viewed-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .customer-viewed-product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline from link */
+        }
+
+        .customer-viewed-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .customer-viewed-product img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .customer-viewed-product h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .customer-viewed-product p {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 0;
+        }
 
         /* Futuristic Banner Specific Styles */
         .futuristic-banner {
@@ -3967,6 +4039,10 @@
 
             .banner-text-left h2, .banner-text-right h2 {
                 font-size: 2.5rem;
+            }
+
+            .banner-text-left p, .banner-text-right p {
+                font-size: 1.1rem;
             }
 
             .product-main-display {
@@ -4604,7 +4680,6 @@
                 <!-- Bento grid items will be dynamically loaded here -->
             </div>
         </section>
-
         <!-- Main Content -->
         <div class="product-section glass-background animated-border-section">
             <div class="section-header">
@@ -4721,7 +4796,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
 
     // --- Global Data (Dummy Data - Replace with API calls in a real application) ---
     // IMPORTANT: For a static site, all product data is hardcoded here.
@@ -4746,7 +4821,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "High quality Naviforce silver-black watch for men. Durable, stylish, and perfect for formal occasions. Features include water resistance up to 50m, stainless steel case, and precise quartz movement.",
             category: "watches",
             sku: "WATCH-001",
-            brand: "Naviforce",
+            brand: "naviforce",
             availability: "in_stock",
             rating: 4.5,
             badge: "New"
@@ -4767,7 +4842,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Aolix 9196 luxury wristwatch. Classy design with elegant finish. Perfect for gifts and celebrations. Features include genuine leather strap, mineral crystal glass, and precise Japanese movement.",
             category: "watches",
             sku: "WATCH-002",
-            brand: "Aolix",
+            brand: "aolix",
             availability: "in_stock",
             rating: 4.2,
             badge: "Popular"
@@ -4786,7 +4861,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: "Premium quality Punjabi made from 100% cotton. Comfortable for everyday wear with a premium feel. Available in multiple colors. Handcrafted with traditional embroidery patterns.",
             category: "men",
             sku: "MEN-001",
-            brand: "Parijan",
+            brand: "parijan",
             availability: "in_stock",
             rating: 4.0,
             badge: ""
@@ -4961,13 +5036,19 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: "prod-012",
             name: "Men's Casual Shirt",
-            price: 1800,
-            oldPrice: 2000,
-            image: "https://placehold.co/600x400/33FF57/000000?text=Casual+Shirt",
+            price: 3150,
+            oldPrice: 4500,
+            image: "https://i.imgur.com/LhAE5ay.png",
             thumbnails: [
-                "https://placehold.co/70x70/33FF57/000000?text=Casual+Shirt",
-                "https://placehold.co/70x70/5733FF/FFFFFF?text=Shirt+View+2",
-                "https://placehold.co/70x70/008000/FFFFFF?text=Shirt+View+3"
+                "https://i.imgur.com/LhAE5ay.png",
+                "https://i.imgur.com/4mzYN8r.png",
+                "https://i.imgur.com/9a81BcL.png",
+                "https://i.imgur.com/V0x8hVG.png",
+                "https://i.imgur.com/4r2UbuD.png",
+                "https://i.imgur.com/cyKSrH5.png",
+                "https://i.imgur.com/p9mg13p.png",
+                "https://i.imgur.com/4Uhe8Tr.png",
+                "https://i.imgur.com/gxo7aZy.png",
             ],
             description: "Comfortable and stylish casual shirt for men. Ideal for everyday wear. Made from soft linen blend.",
             category: "men",
@@ -5013,7 +5094,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "https://ae-pic-a1.aliexpress-media.com/kf/S61b13c5d0a4e460dbfea77d671ebcc82z.jpg_960x960q75.jpg_.avif",
                 "https://ae-pic-a1.aliexpress-media.com/kf/S295c8809ddb9449cb4af1ed71dc2e60bU.jpg_960x960q75.jpg_.avif",
                 "https://ae01.alicdn.com/kf/S5dba009a4fa04bfba26d67244a723d34M.jpg",
-                "https://ae01.alicdn.com/kf/S23d52fffab8440f4bbf37907a0e52d4bN.jpg",
+                "https://ae01.alicdn.com/kf/S23d52fffab8440f4bbf37907a0e52d4bN.jpg"
             ],
             description: "Luxurious and spacious handbag for women. Perfect for formal events or daily use. Crafted from premium vegan leather.",
             category: "accessories",
@@ -5026,13 +5107,17 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             id: "prod-015",
             name: "Kids' Graphic Tee",
-            price: 950,
-            oldPrice: 1100,
-            image: "https://placehold.co/600x400/33FFC7/000000?text=Kids+Tee",
+            price: 1150,
+            oldPrice: 1500,
+            image: "https://i.imgur.com/cJgdz51.png",
             thumbnails: [
-                "https://placehold.co/70x70/33FFC7/000000?text=Kids+Tee",
-                "https://placehold.co/70x70/C733FF/FFFFFF?text=Kids+Tee+View+2",
-                "https://placehold.co/70x70/00CED1/FFFFFF?text=Kids+Tee+View+3"
+                "https://i.imgur.com/cJgdz51.png",
+                "https://i.imgur.com/qYdz4wV.png",
+                "https://i.imgur.com/nsxJjN0.png",
+                "https://i.imgur.com/HXhYm2O.png",
+                "https://i.imgur.com/sAKOTkU.png",
+                "https://i.imgur.com/sB9mn0b.png",
+                "https://i.imgur.com/az8nCWx.png"
             ],
             description: "Fun and vibrant graphic tee for kids. Soft and comfortable for all-day play. Made from 100% organic cotton.",
             category: "kids",
@@ -5163,11 +5248,19 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "Classic White Sneakers",
             price: 2200,
             oldPrice: 2500,
-            image: "https://placehold.co/600x400/F0F8FF/000000?text=White+Sneakers",
+            image: "https://i.imgur.com/JcW1i7R.png",
             thumbnails: [
-                "https://placehold.co/70x70/F0F8FF/000000?text=White+Sneakers",
-                "https://placehold.co/70x70/E6E6FA/000000?text=Sneaker+A",
-                "https://placehold.co/70x70/D8BFD8/000000?text=Sneaker+B"
+                "https://i.imgur.com/ox9It2e.png",
+                "https://i.imgur.com/yZfKeDF.png",
+                "https://i.imgur.com/JbKBLlU.png",
+                "https://i.imgur.com/lRg9MIb.png",
+                "https://i.imgur.com/jUTr4RU.png",
+                "https://i.imgur.com/IQgRFLI.png",
+                "https://i.imgur.com/0ZwtpqS.png",
+                "https://i.imgur.com/KkOVzcc.png",
+                "https://i.imgur.com/tygxSPo.png",
+                "https://i.imgur.com/dpPAZIQ.png",
+                "https://i.imgur.com/3rcLxr3.png"
             ],
             description: "Timeless white sneakers, versatile for any casual outfit. Comfortable and durable for daily wear.",
             category: "footwear",
@@ -5303,11 +5396,11 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             productId: "prod-011", // Links to "Women's Summer Dress"
-            mainImage: "https://placehold.co/600x400/FF5733/FFFFFF?text=Summer+Dress",
+            mainImage: "https://i.imgur.com/N8TIjHd.png",
             thumbnails: [
-                { src: "https://placehold.co/70x70/FF5733/FFFFFF?text=Summer+Dress", type: "circle" },
-                { src: "https://placehold.co/70x70/DAF7A6/000000?text=Dress+View+2", type: "hexagon" },
-                { src: "https://placehold.co/70x70/C70039/FFFFFF?text=Dress+View+3", type: "circle" }
+                { src: "https://i.imgur.com/N8TIjHd.png", type: "circle" },
+                { src: "https://i.imgur.com/UEqVhXj.png", type: "hexagon" },
+                { src: "https://i.imgur.com/FbKp55w.png", type: "circle" }
             ],
             leftTitle: "Elegance.",
             leftText: "Graceful designs for the modern woman. Embrace the summer breeze.",
@@ -5320,7 +5413,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dummy data for medium banners
     const mediumBannerData = [
         {
-            image: "https://i.imgur.com/7Y3Q5XN.jpg",
+            image: "https://i.imgur.com/3jlgDue.png",
             title: "Men's Collection",
             description: "Explore the latest trends in men's fashion.",
             link: "MEN.html",
@@ -5334,7 +5427,7 @@ document.addEventListener('DOMContentLoaded', function() {
             rating: 4.8
         },
         {
-            image: "https://i.imgur.com/2X9N1XQ.jpg",
+            image: "https://i.imgur.com/iLQusxm.png",
             title: "Accessories Galore",
             description: "Complete your look with our premium accessories.",
             link: "Accesories.html",
@@ -5394,7 +5487,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: "bento-001", title: "Smart Watches", description: "Stay connected in style.", image: "https://placehold.co/400x300/1e293b/a5f3fc?text=Smart+Watch", price: "4500 BDT", span: "span 2 / span 2", productId: "prod-001" }, // Linked to Silver-Black Watch
         { id: "bento-002", title: "Casual Tees", description: "Everyday comfort.", image: "https://placehold.co/200x150/334155/f0abfc?text=Tees", price: "900 BDT", span: "span 1 / span 1", productId: "prod-004" }, // Linked to Drop Shoulder T-shirt
         { id: "bento-003", title: "Winter Jackets", description: "Stay warm, look cool.", image: "https://placehold.co/200x150/475569/a78bfa?text=Jacket", price: "6000 BDT", span: "span 1 / span 1", productId: "prod-020" }, // Linked to Vintage Denim Jacket
-        { id: "bento-004", title: "Formal Wear", description: "Elegance for every occasion.", image: "https://placehold.co/200x300/64748b/fde68a?text=Formal+Wear", price: "7500 BDT", span: "span 1 / span 2", productId: "prod-016" }, // Linked to Smart Casual Blazer
+        { id: "bento-004", title: "Formal Wear", description: "Elegance for every occasion.", image: "https://placehold.co/200x300/64748b/fde68a?text=Formal+Wear", price: "7500 BDT", span: "span 2 / span 2", productId: "prod-016" }, // Linked to Smart Casual Blazer
         { id: "bento-005", title: "Sportswear", description: "Performance meets style.", image: "https://i.imgur.com/NmdpK3i.png", price: "2800 BDT", span: "span 2 / span 1", productId: "prod-013" }, // Linked to Sporty Sneakers
         { id: "bento-006", title: "Sneaker Drops", description: "Limited edition releases.", image: "https://i.imgur.com/bWDXy16.png", price: "9500 BDT", span: "span 1 / span 1", productId: "prod-009" }, // Linked to Canvas Shoes
         { id: "bento-007", title: "Accessories Kit", description: "Elevate your look.", image: "https://placehold.co/200x150/334155/c4b5fd?text=Accessories", price: "1200 BDT", span: "span 1 / span 1", productId: "prod-010" }, // Linked to Budget Wristband
@@ -5412,10 +5505,11 @@ document.addEventListener('DOMContentLoaded', function() {
         "https://lukazshop.com/wp-content/uploads/2025/02/IMG_2079-4-450x450.webp",
         "https://i.imgur.com/MI6O4Fg.png",
         "https://i.imgur.com/o8ZQlTy.jpg",
-        "https://placehold.co/600x400/FF5733/FFFFFF?text=Summer+Dress",
-        "https://placehold.co/600x400/33FF57/000000?text=Casual+Shirt",
-        "https://placehold.co/600x400/FF3333/FFFFFF?text=Elegant+Handbag",
-        "https://placehold.co/600x400/8B4513/FFFFFF?text=Leather+Wallet"
+        "https://i.imgur.com/N8TIjHd.png", // Women's Summer Dress
+        "https://i.imgur.com/LhAE5ay.png", // Men's Casual Shirt
+        "https://i.imgur.com/NmdpK3i.png", // Sporty Sneakers
+        "https://ae-pic-a1.aliexpress-media.com/kf/Sd846ed52ab7b43449701f1013127aed2o.jpg_960x960q75.jpg_.avif", // Elegant Handbag
+        "https://i.imgur.com/cJgdz51.png" // Kids' Graphic Tee
     ];
 
     // --- DOM Elements ---
@@ -5465,7 +5559,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const floatingFilterToggle = document.getElementById('floatingFilterToggle');
     const floatingThemeToggle = document.getElementById('floatingThemeToggle');
     const loginModal = document.getElementById('loginModal');
-    const closeLogin = document.querySelector('.close-login');
+    const closeLoginBtns = document.querySelectorAll('.close-login'); // Changed to querySelectorAll
     const registerModal = document.getElementById('registerModal');
     const showRegisterLink = document.getElementById('showRegister');
     const showLoginLink = document.getElementById('showLogin');
@@ -5501,6 +5595,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
     let currentSort = 'popular'; // Default sort order
+    let currentSearchQuery = ''; // To store the active search query
+
 
     // --- Utility Functions ---
 
@@ -5510,7 +5606,8 @@ document.addEventListener('DOMContentLoaded', function() {
      * @returns {string} The formatted currency string.
      */
     function formatCurrency(amount) {
-        return `${amount.toLocaleString('en-BD', { style: 'currency', currency: 'BDT' })}`;
+        // Using toLocaleString for proper currency formatting in Bangladesh
+        return `${amount.toLocaleString('en-BD', { style: 'currency', currency: 'BDT', minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
     }
 
     /**
@@ -5587,6 +5684,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hideOverlayAndElement(mobileNavSidebar);
         });
 
+        // This overlay listener handles closing all modals/sidebars when the overlay is clicked
         overlay.addEventListener('click', () => {
             if (mobileNavSidebar.classList.contains('open')) {
                 hideOverlayAndElement(mobileNavSidebar);
@@ -5649,7 +5747,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
- // --- Advanced Search Bar (Suggestions, Recent Searches) ---
+
+    // --- Advanced Search Bar (Suggestions, Recent Searches) ---
     let recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
 
     function renderRecentSearches() {
@@ -5697,7 +5796,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 const controls = document.createElement('div');
                 controls.classList.add('search-history-controls');
-                controls.innerHTML = `<span class="clear-history" id="clearHistoryBtnInner">Clear History</span>`;
+                controls.innerHTML = `<span class="clear-history" id="clearHistoryBtnInner"><i class="fas fa-trash-alt"></i> Clear History</span>`;
                 recentSearchesContent.appendChild(controls);
 
                 const clearHistoryBtnInner = recentSearchesContent.querySelector('#clearHistoryBtnInner');
@@ -5852,104 +5951,142 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial render of recent searches if any
     renderRecentSearches();
 
-// --- Filter Sidebar ---
-if (filterToggle && filterSidebar && closeFilterBtn) {
-    filterToggle.addEventListener('click', () => {
-        showOverlayAndElement(filterSidebar);
-    });
-
-    closeFilterBtn.addEventListener('click', () => {
-        hideOverlayAndElement(filterSidebar);
-    });
-}
-
-filterTitles.forEach(title => {
-    title.addEventListener('click', () => {
-        const content = title.nextElementSibling;
-        title.classList.toggle('collapsed');
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-        }
-    });
-});
-
-if (applyFiltersBtn) {
-    applyFiltersBtn.addEventListener('click', () => {
-        const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-        const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
-        const selectedAvailability = Array.from(document.querySelectorAll('input[name="availability"]:checked')).map(cb => cb.value);
-        const minPrice = minPriceInput && minPriceInput.value ? parseFloat(minPriceInput.value) : 0;
-        const maxPrice = maxPriceInput && maxPriceInput.value ? parseFloat(maxPriceInput.value) : Infinity;
-
-        let filteredProducts = allProducts.filter(product => {
-            const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
-            const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
-            const matchesAvailability = selectedAvailability.length === 0 || selectedAvailability.includes(product.availability);
-            const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
-            return matchesCategory && matchesBrand && matchesAvailability && matchesPrice;
+    // --- Filter Sidebar ---
+    if (filterToggle && filterSidebar && closeFilterBtn) {
+        filterToggle.addEventListener('click', () => {
+            showOverlayAndElement(filterSidebar);
         });
 
-        filteredProducts = sortProducts(filteredProducts, currentSort);
-        displayedProducts = filteredProducts;
-        productsLoaded = 0;
-        productGrid.innerHTML = '';
-        loadMoreProducts();
-
-        Swal.fire({
-            icon: 'info',
-            title: 'Filters Applied!',
-            html: `
-                <p>Categories: ${selectedCategories.length > 0 ? selectedCategories.join(', ') : 'All'}</p>
-                <p>Brands: ${selectedBrands.length > 0 ? selectedBrands.join(', ') : 'All'}</p>
-                <p>Availability: ${selectedAvailability.length > 0 ? selectedAvailability.join(', ') : 'All'}</p>
-                <p>Price Range: ${formatCurrency(minPrice)} - ${maxPrice === Infinity ? 'Max' : formatCurrency(maxPrice)}</p>
-            `
+        closeFilterBtn.addEventListener('click', () => {
+            hideOverlayAndElement(filterSidebar);
         });
-        hideOverlayAndElement(filterSidebar);
-    });
-}
+    }
 
-if (resetFiltersBtn) {
-    resetFiltersBtn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-content input[type="checkbox"]').forEach(cb => cb.checked = false);
-        if (minPriceInput) minPriceInput.value = '';
-        if (maxPriceInput) maxPriceInput.value = '';
-
-        const inStockCheckbox = document.querySelector('input[name="availability"][value="in_stock"]');
-        if (inStockCheckbox) {
-            inStockCheckbox.checked = true;
-        }
-
-        displayedProducts = [...allProducts];
-        productsLoaded = 0;
-        productGrid.innerHTML = '';
-        loadMoreProducts();
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Filters Reset!',
-            text: 'All filters have been cleared.'
+    filterTitles.forEach(title => {
+        title.addEventListener('click', () => {
+            const content = title.nextElementSibling;
+            title.classList.toggle('collapsed');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
         });
-        hideOverlayAndElement(filterSidebar);
     });
-}
- 
+
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', () => {
+            const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+            const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
+            const selectedAvailability = Array.from(document.querySelectorAll('input[name="availability"]:checked')).map(cb => cb.value);
+            const minPrice = minPriceInput && minPriceInput.value ? parseFloat(minPriceInput.value) : 0;
+            const maxPrice = maxPriceInput && maxPriceInput.value ? parseFloat(maxPriceInput.value) : Infinity;
+
+            let filteredProducts = allProducts.filter(product => {
+                const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+                const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+                const matchesAvailability = selectedAvailability.length === 0 || selectedAvailability.includes(product.availability);
+                const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
+                return matchesCategory && matchesBrand && matchesAvailability && matchesPrice;
+            });
+
+            filteredProducts = sortProducts(filteredProducts, currentSort);
+            displayedProducts = filteredProducts;
+            productsLoaded = 0;
+            productGrid.innerHTML = '';
+            loadMoreProducts();
+
+            Swal.fire({
+                icon: 'info',
+                title: 'Filters Applied!',
+                html: `
+                    <p>Categories: ${selectedCategories.length > 0 ? selectedCategories.join(', ') : 'All'}</p>
+                    <p>Brands: ${selectedBrands.length > 0 ? selectedBrands.join(', ') : 'All'}</p>
+                    <p>Availability: ${selectedAvailability.length > 0 ? selectedAvailability.join(', ') : 'All'}</p>
+                    <p>Price Range: ${formatCurrency(minPrice)} - ${maxPrice === Infinity ? 'Max' : formatCurrency(maxPrice)}</p>
+                `
+            });
+            hideOverlayAndElement(filterSidebar);
+        });
+    }
+
+    if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-content input[type="checkbox"]').forEach(cb => cb.checked = false);
+            if (minPriceInput) minPriceInput.value = '';
+            if (maxPriceInput) maxPriceInput.value = '';
+
+            // Re-check default "In Stock"
+            const inStockCheckbox = document.querySelector('input[name="availability"][value="in_stock"]');
+            if (inStockCheckbox) {
+                inStockCheckbox.checked = true;
+            }
+
+            // Re-check all category and brand checkboxes
+            document.querySelectorAll('input[name="category"]').forEach(cb => cb.checked = true);
+            document.querySelectorAll('input[name="brand"]').forEach(cb => cb.checked = true);
+
+
+            displayedProducts = [...allProducts];
+            productsLoaded = 0;
+            productGrid.innerHTML = '';
+            loadMoreProducts();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Filters Reset!',
+                text: 'All filters have been cleared.'
+            });
+            hideOverlayAndElement(filterSidebar);
+        });
+    }
+
+    // Price Range Slider and Inputs
+    const priceRangeSlider = document.querySelector('.price-range');
+
+    if (priceRangeSlider && minPriceInput && maxPriceInput) {
+        // Set initial values for inputs from slider
+        minPriceInput.value = priceRangeSlider.min;
+        maxPriceInput.value = priceRangeSlider.max;
+
+        priceRangeSlider.addEventListener('input', (e) => {
+            maxPriceInput.value = e.target.value;
+        });
+
+        minPriceInput.addEventListener('input', (e) => {
+            if (parseInt(e.target.value) > parseInt(maxPriceInput.value)) {
+                maxPriceInput.value = e.target.value;
+                priceRangeSlider.value = e.target.value;
+            }
+        });
+
+        maxPriceInput.addEventListener('input', (e) => {
+            if (parseInt(e.target.value) < parseInt(minPriceInput.value)) {
+                minPriceInput.value = e.target.value;
+            }
+            priceRangeSlider.value = e.target.value;
+        });
+    }
+
     // --- Product Grid Rendering and Load More ---
     function sortProducts(products, sortBy) {
         switch (sortBy) {
             case 'newest':
-                return products.sort((a, b) => { /* Add a 'dateAdded' property to products for this */ return 0; }); // Dummy sort for now
+                // For 'newest', you'd typically need a 'dateAdded' or similar field in your product data.
+                // For now, it will just keep the original order or a default sort.
+                // If you add a 'dateAdded' field (e.g., as a Unix timestamp or Date object), uncomment/modify:
+                // return [...products].sort((a, b) => b.dateAdded - a.dateAdded);
+                return [...products]; // Default to current order if no date field
             case 'price_low':
-                return products.sort((a, b) => a.price - b.price);
+                return [...products].sort((a, b) => a.price - b.price);
             case 'price_high':
-                return products.sort((a, b) => b.price - a.price);
+                return [...products].sort((a, b) => b.price - a.price);
             case 'rating':
-                return products.sort((a, b) => b.rating - a.rating);
+                return [...products].sort((a, b) => b.rating - a.rating);
             case 'popular':
             default:
-                return products; // Or implement a popularity score
+                // For 'popular', you might need a 'popularityScore' or 'salesCount' field.
+                return [...products]; // Default to current order if no specific popularity metric
         }
     }
 
@@ -5971,7 +6108,7 @@ if (resetFiltersBtn) {
             productCard.innerHTML = `
                 ${badgeHtml}
                 <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/250x187/f0f0f0/888888?text=Image+N/A';">
                     <div class="quick-view-btn"><i class="fas fa-eye"></i> Quick View</div>
                 </div>
                 <div class="wishlist-btn" data-product-id="${product.id}">
@@ -6025,12 +6162,32 @@ if (resetFiltersBtn) {
             return;
         }
 
+        // Generate "Customer Viewed Section" products
+        const relatedProducts = getRandomProducts(allProducts, 4, product.id);
+        let customerViewedHtml = '';
+        if (relatedProducts.length > 0) {
+            customerViewedHtml = `
+            <div class="customer-viewed-section">
+                <h3 class="customer-viewed-section-title">Customer Viewed Section</h3>
+                <div class="customer-viewed-grid">
+                    ${relatedProducts.map(p => `
+                        <a href="#" class="customer-viewed-product" onclick="openProductModalFromCustomerViewed('${p.id}'); return false;">
+                            <img src="${p.image}" alt="${p.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/f0f0f0/888888?text=N/A';">
+                            <h4>${p.name}</h4>
+                            <p>${formatCurrency(p.price)}</p>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+            `;
+        }
+
         dynamicProductModalContent.innerHTML = `
             <div class="product-modal-images">
-                <img src="${product.image}" alt="${product.name}" class="main-product-image" id="modalMainProductImage">
+                <img src="${product.image}" alt="${product.name}" class="main-product-image" id="modalMainProductImage" onerror="this.onerror=null;this.src='https://placehold.co/400x300/f0f0f0/888888?text=Image+N/A';">
                 <div class="product-thumbnails">
                     ${product.thumbnails.map((thumb, index) => `
-                        <img src="${thumb}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" data-image-src="${thumb}">
+                        <img src="${thumb}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" data-image-src="${thumb}" onerror="this.onerror=null;this.src='https://placehold.co/70x70/f0f0f0/888888?text=N/A';">
                     `).join('')}
                 </div>
             </div>
@@ -6060,6 +6217,7 @@ if (resetFiltersBtn) {
                         <i class="far fa-heart"></i>
                     </button>
                 </div>
+                ${customerViewedHtml}
             </div>
         `;
 
@@ -6103,6 +6261,25 @@ if (resetFiltersBtn) {
             this.classList.toggle('active', wishlist.some(item => item.id === productId));
         });
     }
+
+    // New function to handle opening a quick view from the new section
+    window.openProductModalFromCustomerViewed = function(productId) {
+        // Since the modal is already open, we just update its content
+        // and animate it with a little bounce effect
+        const modalWasVisible = productModal.classList.contains('show');
+        openProductModal(productId); // Re-open with new product
+        if (modalWasVisible) {
+            dynamicProductModalContent.classList.remove('show'); // Remove 'show' to trigger re-animation
+            setTimeout(() => dynamicProductModalContent.classList.add('show'), 100); // Re-add 'show' after a brief delay
+        }
+    };
+
+    // New utility function to get a random list of products
+    function getRandomProducts(arr, num, excludeId) {
+        const shuffled = arr.filter(p => p.id !== excludeId).sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, num);
+    }
+
 
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', () => hideOverlayAndElement(productModal));
@@ -6255,14 +6432,14 @@ if (resetFiltersBtn) {
                 const cartItemDiv = document.createElement('div');
                 cartItemDiv.classList.add('cart-item');
                 cartItemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.onerror=null;this.src='https://placehold.co/90x90/f0f0f0/888888?text=N/A';">
                     <div class="cart-item-details">
                         <h4 class="cart-item-title">${item.name}</h4>
                         <div class="cart-item-price">${formatCurrency(item.price)}</div>
                         <div class="cart-item-actions">
                             <div class="quantity-control-cart">
                                 <button class="quantity-btn-cart decrease-cart-qty" data-product-id="${item.id}">-</button>
-                                <input type="number" class="quantity-input-cart" value="${item.quantity}" min="1" data-product-id="${item.id}">
+                                <input type="number" class="quantity-input-cart" value="${item.quantity}" min="1" data-product-id="${item.id}" readonly>
                                 <button class="quantity-btn-cart increase-cart-qty" data-product-id="${item.id}">+</button>
                             </div>
                             <button class="remove-item-btn" data-product-id="${item.id}"><i class="fas fa-trash-alt"></i> Remove</button>
@@ -6298,7 +6475,9 @@ if (resetFiltersBtn) {
                 input.addEventListener('change', () => updateCartQuantity(input.dataset.productId, input.value));
             });
         }
-        if (floatingCartCount) floatingCartCount.textContent = cart.length;
+        // Update header cart count and floating cart count
+        if (document.getElementById('cartCount')) document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (floatingCartCount) floatingCartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
         calculateCartTotals();
     }
 
@@ -6320,7 +6499,7 @@ if (resetFiltersBtn) {
         Swal.fire({
             icon: 'info',
             title: 'Order via WhatsApp',
-            html: `You are about to place an order for <strong>${product.name} (x${quantity})</strong> via WhatsApp.`,
+            html: `You are about to place an order for <strong>${product.name} (x${quantity})</strong> for <strong>${formatCurrency(product.price * quantity)}</strong> via WhatsApp.`,
             showCancelButton: true,
             confirmButtonText: '<i class="fab fa-whatsapp"></i> Chat on WhatsApp',
             cancelButtonText: 'Cancel',
@@ -6429,7 +6608,7 @@ if (resetFiltersBtn) {
                 const wishlistItemDiv = document.createElement('div');
                 wishlistItemDiv.classList.add('wishlist-item');
                 wishlistItemDiv.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="wishlist-item-img">
+                    <img src="${item.image}" alt="${item.name}" class="wishlist-item-img" onerror="this.onerror=null;this.src='https://placehold.co/90x90/f0f0f0/888888?text=N/A';">
                     <div class="wishlist-item-details">
                         <h4 class="wishlist-item-title">${item.name}</h4>
                         <div class="wishlist-item-price">${formatCurrency(item.price)}</div>
@@ -6482,10 +6661,12 @@ if (resetFiltersBtn) {
     if (openLoginBtn) {
         openLoginBtn.addEventListener('click', () => showOverlayAndElement(loginModal));
     }
-    if (closeLogin) {
-        closeLogin.addEventListener('click', () => {
-            hideOverlayAndElement(loginModal);
-            hideOverlayAndElement(registerModal); // Ensure both are hidden
+    if (closeLoginBtns) { // Use querySelectorAll for all close buttons
+        closeLoginBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                hideOverlayAndElement(loginModal);
+                hideOverlayAndElement(registerModal); // Ensure both are hidden
+            });
         });
     }
     if (showRegisterLink) {
@@ -6599,15 +6780,15 @@ if (resetFiltersBtn) {
             newSlideData.thumbnails.forEach((thumb, i) => {
                 const thumbDiv = document.createElement('div');
                 thumbDiv.className = `thumbnail-item ${thumb.type}`;
-                thumbDiv.dataset.thumbnailIndex = i;
-                thumbDiv.innerHTML = `<img src="${thumb.src}" alt="Thumbnail ${i}">`;
+                thumbDiv.dataset.thumbnailSrc = thumb.src; // Store src for click listener
+                thumbDiv.innerHTML = `<img src="${thumb.src}" alt="Thumbnail ${i}" onerror="this.onerror=null;this.src='https://placehold.co/70x70/f0f0f0/888888?text=N/A';">`;
                 if (i % 2 === 0 && futuristicThumbnailsLeft) {
                     futuristicThumbnailsLeft.appendChild(thumbDiv);
                 } else if (futuristicThumbnailsRight) {
                     futuristicThumbnailsRight.appendChild(thumbDiv);
                 }
                 thumbDiv.addEventListener('click', function() {
-                    if (mainProductImageBanner) mainProductImageBanner.src = thumb.src;
+                    if (mainProductImageBanner) mainProductImageBanner.src = this.dataset.thumbnailSrc;
                     if (mainProductDisplay) mainProductDisplay.classList.remove('flipped'); // Reset flip state if any
                 });
             });
@@ -6827,7 +7008,7 @@ if (resetFiltersBtn) {
         }
     ];
     let currentMainSlideIndex = 0;
-    const mainBannerSlides = document.querySelector('.banner-slides');
+    const mainBannerSlidesContainer = document.querySelector('.banner-slides'); // Renamed to avoid conflict
     const mainPrevBtn = document.querySelector('.banner-section .prev-btn');
     const mainNextBtn = document.querySelector('.banner-section .next-btn');
     const mainIndicatorDotsContainer = document.querySelector('.banner-section .indicator-dots');
@@ -6849,40 +7030,38 @@ if (resetFiltersBtn) {
     }
 
     function updateMainBanner(newIndex, direction = null) {
-        if (!mainBannerSlides) return;
+        if (!mainBannerSlidesContainer) return;
 
-        const currentSlideElement = mainBannerSlides.querySelector('.banner-slide.active');
-        const newSlideData = mainBannerSlidesData[newIndex];
+        // Clear existing slides
+        mainBannerSlidesContainer.innerHTML = '';
 
-        // Create new slide element
-        const newSlideElement = document.createElement('div');
-        newSlideElement.classList.add('banner-slide');
-        newSlideElement.innerHTML = `
-            <img src="${newSlideData.image}" alt="${newSlideData.title}">
-            <div class="banner-caption">
-                <h3>${newSlideData.title}</h3>
-                <p>${newSlideData.description}</p>
-                <a href="${newSlideData.link}" class="banner-btn">${newSlideData.buttonText} <i class="fas fa-arrow-right"></i></a>
-            </div>
-        `;
+        // Create and append all slides, but only activate the new one
+        mainBannerSlidesData.forEach((slideData, index) => {
+            const slideElement = document.createElement('div');
+            slideElement.classList.add('banner-slide');
+            slideElement.innerHTML = `
+                <img src="${slideData.image}" alt="${slideData.title}" onerror="this.onerror=null;this.src='https://placehold.co/1400x500/f0f0f0/888888?text=Banner+N/A';">
+                <div class="banner-caption">
+                    <h3>${slideData.title}</h3>
+                    <p>${slideData.description}</p>
+                    <a href="${slideData.link}" class="banner-btn">${slideData.buttonText} <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+            mainBannerSlidesContainer.appendChild(slideElement);
 
-        // Handle animation classes
-        if (currentSlideElement) {
-            currentSlideElement.classList.remove('active');
-            if (direction === 'next') {
-                currentSlideElement.classList.add('flip-out');
-            } else if (direction === 'prev') {
-                currentSlideElement.classList.add('flip-out');
+            if (index === newIndex) {
+                setTimeout(() => {
+                    slideElement.classList.add('active');
+                    // Apply flip-in animation if it's a transition
+                    if (direction) {
+                        slideElement.classList.add('flip-in');
+                        slideElement.addEventListener('animationend', () => {
+                            slideElement.classList.remove('flip-in');
+                        }, { once: true });
+                    }
+                }, 50); // Small delay to ensure classes are applied for transition
             }
-            currentSlideElement.addEventListener('animationend', () => {
-                currentSlideElement.remove();
-            }, { once: true });
-        }
-
-        mainBannerSlides.appendChild(newSlideElement);
-        setTimeout(() => {
-            newSlideElement.classList.add('active');
-        }, 50);
+        });
 
         currentMainSlideIndex = newIndex;
         updateMainBannerDots();
@@ -6938,7 +7117,7 @@ if (resetFiltersBtn) {
     if (mediumBannersContainer) {
         mediumBannersContainer.innerHTML = mediumBannerData.map(banner => `
             <div class="medium-banner-card">
-                <img src="${banner.image}" alt="${banner.title}">
+                <img src="${banner.image}" alt="${banner.title}" onerror="this.onerror=null;this.src='https://placehold.co/300x250/f0f0f0/888888?text=Banner+N/A';">
                 <div class="medium-banner-content">
                     <h4>${banner.title}</h4>
                     <p>${banner.description}</p>
@@ -6956,7 +7135,7 @@ if (resetFiltersBtn) {
                 const link = card.querySelector('.medium-banner-link');
                 if (link && link.href) {
                     console.log(`Navigating to Medium Banner link: ${link.href}`);
-                    // window.location.href = link.href;
+                    // window.location.href = link.href; // Uncomment to enable actual navigation
                 }
             });
         });
@@ -6966,7 +7145,7 @@ if (resetFiltersBtn) {
     if (smallBannersContainer) {
         smallBannersContainer.innerHTML = smallBannerData.map(banner => `
             <div class="small-banner-card">
-                <img src="${banner.image}" alt="${banner.title}">
+                <img src="${banner.image}" alt="${banner.title}" onerror="this.onerror=null;this.src='https://placehold.co/180x150/f0f0f0/888888?text=Banner+N/A';">
                 <div class="small-banner-content">
                     <h5>${banner.title}</h5>
                     <div class="small-banner-rating">
@@ -6983,7 +7162,7 @@ if (resetFiltersBtn) {
                 const link = card.querySelector('.small-banner-link');
                 if (link && link.href) {
                     console.log(`Navigating to Small Banner link: ${link.href}`);
-                    // window.location.href = link.href;
+                    // window.location.href = link.href; // Uncomment to enable actual navigation
                 }
             });
         });
@@ -7024,7 +7203,7 @@ if (resetFiltersBtn) {
         const duplicatedImages = [...marqueeImages, ...marqueeImages];
         imageMarqueeContainer.innerHTML = duplicatedImages.map(imgSrc => `
             <div class="image-marquee-item">
-                <img src="${imgSrc}" alt="Brand Logo">
+                <img src="${imgSrc}" alt="Brand Logo" onerror="this.onerror=null;this.src='https://placehold.co/80x80/f0f0f0/888888?text=N/A';">
             </div>
         `).join('');
     }
@@ -7046,6 +7225,48 @@ if (resetFiltersBtn) {
             productsLoaded = 0; // Reset pagination
             productGrid.innerHTML = ''; // Clear current products
             loadMoreProducts(); // Load first batch of newly sorted products
+        });
+    }
+
+    // --- Formspree Newsletter Subscription ---
+    const subscribeForm = document.getElementById('subscribeForm');
+    const subscribeMessage = document.getElementById('subscribeMessage');
+
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(subscribeForm);
+            const response = await fetch(subscribeForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                subscribeMessage.textContent = 'Thank you for subscribing!';
+                subscribeMessage.style.color = 'green';
+                subscribeForm.reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Subscribed!',
+                    text: 'Thank you for subscribing to our newsletter!'
+                });
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    subscribeMessage.textContent = data.errors.map(error => error.message).join(', ');
+                } else {
+                    subscribeMessage.textContent = 'Oops! There was a problem subscribing.';
+                }
+                subscribeMessage.style.color = 'red';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Subscription Failed',
+                    text: 'There was an issue with your subscription. Please try again.'
+                });
+            }
         });
     }
 
