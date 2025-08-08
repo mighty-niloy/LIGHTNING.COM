@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For My Dearest Asfiya Rahman Akhi — 10/10 ✨</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.8);
+      --accent-1: #ff7ab6;
+      --accent-2: #7b61ff;
+      --accent-3: #33d6c6;
+    }
+    html,body{height:100%;}
+    body{
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(255,122,153,0.14), transparent 8%),
+                  radial-gradient(900px 500px at 90% 80%, rgba(123,97,255,0.12), transparent 10%),
+                  linear-gradient(120deg,#ffd1e8 0%, #e7d7ff 30%, #d6fff4 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    body.blue-theme {
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(123,97,255,0.14), transparent 8%),
+                  radial-gradient(900px 500px at 90% 80%, rgba(51,214,198,0.12), transparent 10%),
+                  linear-gradient(120deg,#e7d7ff 0%, #d6fff4 30%, #ffd1e8 100%);
+    }
+    body.blue-theme .text-pink-600, body.blue-theme .from-pink-500 {
+      color: #6161ff;
+      --tw-gradient-from: #6161ff;
+    }
+    body.blue-theme .to-purple-600 {
+      --tw-gradient-to: #33d6c6;
+    }
+
+    /* Handwritten title */
+    .caveat{font-family: 'Caveat', cursive;}
+
+    /* pulse heart animation */
+    @keyframes pulse-heart{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+    .pulse-heart{animation:pulse-heart 1.6s infinite ease-in-out}
+
+    /* typewriter */
+    .typewriter{display:inline-block; border-right:2px solid rgba(0,0,0,0.12); padding-right:6px}
+
+    /* custom cursor for fun */
+    .cursor-dot{position:fixed;pointer-events:none;width:12px;height:12px;border-radius:999px;background:var(--accent-1);mix-blend-mode:multiply;transform:translate(-50%,-50%);z-index:9999;transition:transform .08s linear}
+
+    /* subtle floating hearts */
+    .heart{position:absolute;font-size:18px;opacity:.85;will-change:transform}
+
+    /* accessible focus outline */
+    .focus-ring:focus{outline:3px solid rgba(59,130,246,0.25);outline-offset:3px}
+
+    /* responsiveness for large card */
+    @media (min-width:768px){
+      main{max-width:820px}
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-6">
+
+  <div id="cursor" class="cursor-dot"></div>
+
+  <main id="card" class="relative bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl py-10 px-6 md:px-12 text-center max-w-xl transform transition-transform duration-500 hover:scale-[1.02]">
+    <header class="mb-4">
+      <h1 class="caveat text-5xl md:text-6xl font-bold text-pink-600">Hey, Asfiya Rahman Akhi ✨</h1>
+      <p class="mt-2 text-sm text-gray-600">A tiny page made with big feelings — .</p>
+    </header>
+
+    <section class="flex flex-col md:flex-row items-center gap-6 md:gap-8 justify-center">
+      <div class="w-36 h-36 rounded-full overflow-hidden shadow-lg ring-4 ring-white">
+        <img id="avatar" src="https://i.imgur.com/5FHmF4f.png" alt="Asfiya" class="w-full h-full object-cover" />
+      </div>
+
+      <div class="text-left">
+        <p id="main-message" class="typewriter text-xl md:text-2xl font-medium text-gray-800">You light up every room you enter —</p>
+        <div class="mt-3 flex gap-2">
+          <button id="reveal-button" class="focus-ring inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold shadow hover:scale-105 transition-transform">💖 Reveal a surprise</button>
+
+          <button id="music-toggle" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border text-gray-700 font-medium shadow focus-ring">▶ Play music</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reveal-area" class="mt-8 space-y-6 opacity-0 max-h-0 overflow-hidden transition-all duration-700">
+      <div class="rounded-xl p-4 bg-gradient-to-r from-white/60 to-white/30 border border-white/40 shadow-inner">
+        <h2 class="text-2xl caveat text-purple-700 font-bold">You're truly special.</h2>
+        <p class="mt-2 text-gray-700">Thanks for being you — thoughtful, kind, and full of spark. Here's a little list of things I love about you:</p>
+        <ul class="mt-3 text-left list-disc list-inside text-gray-700">
+          <li>Your laugh — it brightens days.</li>
+          <li>Your style — always unique.</li>
+          <li>Your kindness — makes the world softer.</li>
+        </ul>
+      </div>
+
+      <div id="memory-card" class="rounded-xl p-4 bg-white/60 border border-white/40 shadow-inner cursor-pointer hover:scale-105 transition-transform text-center">
+        <p class="font-semibold text-pink-600">Click for a Memory</p>
+        <p id="memory-content" class="mt-2 text-gray-700 hidden">Remember that rainy Tuesday when we laughed so hard at that terrible movie? Best day ever.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a id="song-link" href="https://youtu.be/EEHknbNgmhY?si=M3PVIB6zJPUgEGBK" target="_blank" class="block p-3 rounded-lg bg-white/90 border hover:scale-105 transition-transform focus-ring">🎵 A song for you</a>
+        <button id="poem-open" class="p-3 rounded-lg bg-white/90 border focus-ring">✍️ Read a tiny poem</button>
+      </div>
+
+      <div class="flex items-center justify-center gap-3">
+        <button id="share-btn" class="px-4 py-2 rounded-full bg-emerald-500 text-white font-semibold shadow focus-ring">Share this</button>
+        <button id="save-image" class="px-4 py-2 rounded-full bg-indigo-500 text-white font-semibold shadow focus-ring">Download as image</button>
+        <button id="theme-toggle" class="px-4 py-2 rounded-full bg-blue-500 text-white font-semibold shadow focus-ring">Switch to Blue Theme</button>
+      </div>
+    </section>
+
+    <footer class="mt-6 text-xs text-gray-600">Tip: press <kbd class="px-2 py-1 bg-white rounded">S</kbd> to toggle the surprise.</footer>
+
+    <div id="poem-modal" aria-hidden="true" class="fixed inset-0 z-40 flex items-center justify-center p-6 pointer-events-none">
+      <div class="pointer-events-auto max-w-xl w-full rounded-2xl bg-white/95 p-6 shadow-2xl border">
+        <div class="flex justify-between items-start">
+          <h3 class="caveat text-2xl font-bold">A little poem</h3>
+          <button id="poem-close" class="text-gray-600">✕</button>
+        </div>
+        <div class="mt-4 text-gray-800 leading-relaxed">
+          <p>When morning paints your name in gold,<br/>the day grows brave and kind.<br/>In every quiet corner of my heart,<br/>I carry you, sweet Akhi — one of a kind.</p>
+        </div>
+        <div class="mt-4 text-right">
+          <button id="poem-copy" class="px-4 py-2 rounded-full bg-pink-500 text-white">Copy poem</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ----- small helpers -----
+    const $ = (id)=>document.getElementById(id);
+
+    // cursor follow
+    const cursor = $('cursor');
+    window.addEventListener('mousemove', (e)=>{
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // typewriter effect for the intro line
+    (function typewriter(){
+      const el = document.getElementById('main-message');
+      const txt = "You light up every room you enter —";
+      let i=0;
+      el.textContent = '';
+      function step(){
+        if(i<txt.length){ el.textContent += txt[i++]; setTimeout(step, 35); }
+        else { el.classList.remove('typewriter'); }
+      }
+      step();
+    })();
+
+    // reveal logic + confetti & emojis
+    const revealBtn = $('reveal-button');
+    const revealArea = $('reveal-area');
+    let revealed = false;
+
+    function doConfetti(){
+      confetti({particleCount:80, spread:120, origin:{y:0.2}});
+    }
+
+    function doEmojis() {
+      const emojis = ['💖', '✨', '❤️', '🌟', '😊'];
+      const revealBtnRect = revealBtn.getBoundingClientRect();
+      const originX = (revealBtnRect.left + revealBtnRect.right) / 2 / window.innerWidth;
+      const originY = (revealBtnRect.top + revealBtnRect.bottom) / 2 / window.innerHeight;
+
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { x: originX, y: originY },
+        shapes: emojis,
+        scalar: 1.5
+      });
+    }
+
+    revealBtn.addEventListener('click', ()=>{
+      if(revealed) return;
+      revealed = true;
+      revealArea.style.opacity = '1';
+      revealArea.style.maxHeight = '800px';
+      revealBtn.textContent = 'Revealed 💖';
+      doConfetti();
+      doEmojis();
+    });
+
+    // keyboard shortcut (S) to toggle
+    window.addEventListener('keydown',(e)=>{
+      if(e.key.toLowerCase()==='s') revealBtn.click();
+    });
+
+    // poem modal
+    const poemOpen = $('poem-open');
+    const poemModal = $('poem-modal');
+    const poemClose = $('poem-close');
+    const poemCopy = $('poem-copy');
+
+    poemOpen.addEventListener('click', ()=>{
+      poemModal.style.pointerEvents = 'auto';
+      poemModal.style.opacity = '1';
+      poemModal.querySelector('div').focus?.();
+    });
+    poemClose.addEventListener('click', ()=>{
+      poemModal.style.pointerEvents = 'none';
+      poemModal.style.opacity = '0';
+    });
+    poemCopy.addEventListener('click', ()=>{
+      const text = poemModal.querySelector('div.mt-4').innerText;
+      navigator.clipboard?.writeText(text).then(()=>{
+        poemCopy.textContent = 'Copied ✓';
+        setTimeout(()=>poemCopy.textContent='Copy poem',1200);
+      });
+    });
+
+    // share button using Web Share API
+    $('share-btn').addEventListener('click', async ()=>{
+      const shareData = {title:document.title, text: 'A small surprise for you ❤️', url:location.href};
+      if(navigator.share){
+        try{ await navigator.share(shareData); }catch(e){ alert('Couldn\'t share — maybe your browser blocked it.'); }
+      } else {
+        // fallback: copy url
+        navigator.clipboard?.writeText(location.href);
+        alert('Link copied to clipboard. Share it with love!');
+      }
+    });
+
+    // save card as image using html2canvas
+    $('save-image').addEventListener('click', ()=>{
+      const card = document.getElementById('card');
+      html2canvas(card, {scale:2}).then(canvas=>{
+        const a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png');
+        a.download = 'for_akhi.png';
+        a.click();
+      });
+    });
+
+    // music toggle
+    let audio;
+    const musicBtn = $('music-toggle');
+    musicBtn.addEventListener('click', ()=>{
+      if(!audio){
+        audio = new Audio('https://cdn.simple-music.example/song.mp3'); // replace with a real URL or keep as placeholder
+        audio.loop = true;
+      }
+      if(audio.paused){ audio.play().catch(()=>alert('Autoplay blocked — click the play button again.')); musicBtn.textContent = '⏸ Pause music'; }
+      else { audio.pause(); musicBtn.textContent = '▶ Play music'; }
+    });
+
+    // small decorative hearts that float up randomly
+    ;(function spawnHearts(){
+      const colors = ['#ff7ab6','#ff9eb6','#ffd6ea','#ffd1b6'];
+      const root = document.body;
+      function make(){
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.innerHTML = '❤';
+        root.appendChild(h);
+        const left = Math.random()*100;
+        h.style.left = left + '%';
+        h.style.bottom = '-30px';
+        h.style.fontSize = (12+Math.random()*22)+'px';
+        h.style.color = colors[Math.floor(Math.random()*colors.length)];
+        const dur = 4000+Math.random()*3500;
+        h.animate([{transform:'translateY(0) scale(1)','opacity':1},{transform:'translateY(-420px) scale(.9)','opacity':0}], {duration:dur, easing:'ease-out'});
+        setTimeout(()=>h.remove(), dur);
+      }
+      setInterval(make, 1200);
+    })();
+
+    // small accessibility: replace avatar if broken
+    document.getElementById('avatar').addEventListener('error', function(){
+      this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect fill="%23f3f4f6" width="100%" height="100%"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="28" fill="%23909ca6">Your photo here</text></svg>';
+    });
+
+    // feather icons replace
+    feather.replace();
+
+    // small friendly hint: replace placeholder music URL
+    if(location.hostname==='localhost' || location.hostname==='127.0.0.1'){
+      console.log('Local preview: Replace the music URL in the HTML with a real MP3 URL or remove the music toggle.');
+    }
+
+    // New: Memory Card logic
+    const memoryCard = $('memory-card');
+    const memoryContent = $('memory-content');
+
+    memoryCard.addEventListener('click', () => {
+      memoryContent.classList.toggle('hidden');
+    });
+
+    // New: Theme Toggle logic
+    const themeToggle = $('theme-toggle');
+    let isBlueTheme = false;
+
+    themeToggle.addEventListener('click', () => {
+      isBlueTheme = !isBlueTheme;
+      document.body.classList.toggle('blue-theme', isBlueTheme);
+      if (isBlueTheme) {
+        themeToggle.textContent = 'Switch to Pink Theme';
+      } else {
+        themeToggle.textContent = 'Switch to Blue Theme';
+      }
+    });
+
+  </script>
+</body>
+</html>
