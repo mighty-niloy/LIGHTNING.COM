@@ -1,0 +1,2966 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N-Studio | Premium Anime Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* --- CSS Variables for Theme Switching --- */
+  :root {
+    /* Dark Theme (Default) */
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #0d1525;
+    --bg-tertiary: rgba(255, 255, 255, 0.03);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    --accent-cyan: #00ffe0;
+    --accent-magenta: #ff00ff;
+    --accent-purple: #a800ff;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --modal-bg: rgba(10, 15, 26, 0.95);
+    --header-bg: rgba(10, 15, 26, 0.85);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --particle-color-1: #00ffe0;
+    --particle-color-2: #ff00ff;
+    --particle-color-3: #a800ff;
+    --gradient-primary: linear-gradient(45deg, #00ffe0, #ff00ff);
+    --gradient-secondary: linear-gradient(45deg, #ff00ff, #a800ff);
+    --gradient-cyan: linear-gradient(45deg, #00ffe0, transparent);
+    --gradient-magenta: linear-gradient(45deg, #ff00ff, transparent);
+    --search-bg: rgba(255, 255, 255, 0.05);
+    --btn-text-dark: #0a0f1a;
+    --btn-text-light: #ffffff;
+    --theme-toggle-bg: rgba(255, 255, 255, 0.1);
+    --theme-toggle-icon: #ffd700;
+  }
+
+  [data-theme="light"] {
+    /* Light Theme */
+    --bg-primary: #f0f4ff;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: rgba(10, 15, 26, 0.03);
+    --text-primary: #0a0f1a;
+    --text-secondary: rgba(10, 15, 26, 0.8);
+    --text-tertiary: rgba(10, 15, 26, 0.6);
+    --accent-cyan: #0088cc;
+    --accent-magenta: #cc00cc;
+    --accent-purple: #8800ff;
+    --border-color: rgba(10, 15, 26, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --modal-bg: rgba(255, 255, 255, 0.95);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --shadow-color: rgba(10, 15, 26, 0.1);
+    --particle-color-1: #0088cc;
+    --particle-color-2: #cc00cc;
+    --particle-color-3: #8800ff;
+    --gradient-primary: linear-gradient(45deg, #0088cc, #cc00cc);
+    --gradient-secondary: linear-gradient(45deg, #cc00cc, #8800ff);
+    --gradient-cyan: linear-gradient(45deg, #0088cc, transparent);
+    --gradient-magenta: linear-gradient(45deg, #cc00cc, transparent);
+    --search-bg: rgba(10, 15, 26, 0.05);
+    --btn-text-dark: #ffffff;
+    --btn-text-light: #0a0f1a;
+    --theme-toggle-bg: rgba(10, 15, 26, 0.1);
+    --theme-toggle-icon: #ff9500;
+  }
+
+  /* --- Global Enhancements --- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+  }
+  
+  section {
+    padding: 80px 50px;
+    position: relative;
+  }
+
+  /* --- Theme Toggle Button --- */
+  .theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: var(--theme-toggle-bg);
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    transition: all 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent-cyan);
+  }
+
+  .theme-toggle i {
+    font-size: 14px;
+    color: var(--text-secondary);
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+
+  .theme-toggle .toggle-slider {
+    position: absolute;
+    left: 5px;
+    width: 22px;
+    height: 22px;
+    background: var(--theme-toggle-icon);
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  [data-theme="light"] .theme-toggle .toggle-slider {
+    transform: translateX(30px);
+  }
+
+  /* --- Premium Particle Background --- */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(ellipse at top, var(--bg-primary) 0%, var(--bg-secondary) 70%);
+  }
+  
+  /* --- Cinematic Glow Effects --- */
+  .glow-effect {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .glow-cyan {
+    background: var(--gradient-cyan);
+    top: -300px;
+    right: -300px;
+  }
+  
+  .glow-magenta {
+    background: var(--gradient-magenta);
+    bottom: -300px;
+    left: -300px;
+  }
+  
+  /* --- Premium Header --- */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    backdrop-filter: blur(20px) saturate(180%);
+    position: sticky;
+    top: 0;
+    background: var(--header-bg);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  
+  header.scrolled {
+    background: var(--header-bg);
+    padding: 15px 50px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+  }
+  
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 255, 224, 0.3);
+    letter-spacing: -1px;
+    position: relative;
+  }
+  
+  .logo::after {
+    content: 'β';
+    position: absolute;
+    top: -10px;
+    right: -25px;
+    font-size: 1rem;
+    color: var(--accent-magenta);
+    font-weight: 700;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+  }
+  
+  nav a {
+    position: relative;
+    padding: 5px 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-secondary);
+  }
+  
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  nav a:hover {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 15px rgba(0, 255, 224, 0.5);
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--search-bg);
+    border-radius: 50px;
+    padding: 12px 25px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  
+  .search-bar:focus-within {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 255, 224, 0.05);
+    box-shadow: 0 0 20px rgba(0, 255, 224, 0.2);
+  }
+  
+  .search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 5px 15px;
+    width: 220px;
+    font-size: 1rem;
+  }
+  
+  .search-bar input:focus {
+    outline: none;
+  }
+  
+  .search-bar i {
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+  }
+  
+  .search-bar:focus-within i {
+    color: var(--accent-cyan);
+  }
+  
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .login-btn {
+    padding: 12px 32px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--btn-text-dark);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent-magenta), var(--accent-cyan));
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+  
+  .login-btn:hover::before {
+    left: 0;
+  }
+  
+  .login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 255, 224, 0.4);
+  }
+  
+  /* --- Cinematic Hero Section --- */
+  .hero {
+    position: relative;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: 
+      radial-gradient(ellipse at top right, rgba(168, 0, 255, 0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(0, 255, 224, 0.2) 0%, transparent 50%),
+      linear-gradient(rgba(10, 15, 26, 0.9), rgba(10, 15, 26, 0.95)),
+      url('https://i.imgur.com/5r6kVfN.jpg') no-repeat center/cover;
+    padding-left: 80px;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 30%, transparent 70%, var(--bg-primary) 100%);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    max-width: 700px;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .hero-content h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5rem;
+    background: linear-gradient(45deg, var(--text-primary) 30%, var(--accent-cyan) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 0 0 50px rgba(0, 255, 224, 0.3);
+    animation: titleGlow 4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes titleGlow {
+    0% { text-shadow: 0 0 50px rgba(0, 255, 224, 0.3); }
+    100% { text-shadow: 0 0 70px rgba(0, 255, 224, 0.6), 0 0 100px rgba(0, 255, 224, 0.3); }
+  }
+  
+  .hero-content h1 span {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 25px;
+  }
+  
+  .hero-btn {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+  
+  .watch-btn {
+    background: var(--gradient-secondary);
+    color: var(--btn-text-dark);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.4);
+  }
+  
+  .watch-btn::before {
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-magenta));
+  }
+  
+  .watch-btn:hover::before {
+    left: 0;
+  }
+  
+  .watch-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 0, 255, 0.6);
+  }
+  
+  .explore-btn {
+    background: transparent;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    backdrop-filter: blur(10px);
+  }
+  
+  .explore-btn::before {
+    background: rgba(0, 255, 224, 0.1);
+  }
+  
+  .explore-btn:hover::before {
+    left: 0;
+  }
+  
+  .explore-btn:hover {
+    background: rgba(0, 255, 224, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 224, 0.3);
+  }
+  
+  /* --- Premium Section Headers --- */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .section-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+  
+  .view-all {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    padding: 8px 20px;
+    border-radius: 30px;
+    background: rgba(0, 255, 224, 0.05);
+    border: 1px solid rgba(0, 255, 224, 0.2);
+  }
+  
+  .view-all:hover {
+    gap: 15px;
+    background: rgba(0, 255, 224, 0.1);
+    border-color: var(--accent-cyan);
+    transform: translateX(5px);
+  }
+  
+  /* --- Enhanced Carousel --- */
+  .carousel-container {
+    position: relative;
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    scroll-behavior: smooth;
+    padding: 30px 10px;
+    scrollbar-width: none;
+    position: relative;
+  }
+  
+  .carousel::before,
+  .carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .carousel::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-primary), transparent);
+  }
+  
+  .carousel::after {
+    right: 0;
+    background: linear-gradient(90deg, transparent, var(--bg-primary));
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .carousel-item {
+    min-width: 320px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(20px);
+    transform-style: preserve-3d;
+  }
+  
+  .carousel-item:hover {
+    transform: translateY(-15px) perspective(1000px) rotateX(5deg);
+    border-color: var(--accent-cyan);
+    box-shadow: 
+      0 25px 50px rgba(0, 255, 224, 0.2),
+      0 0 0 1px rgba(0, 255, 224, 0.1) inset;
+  }
+  
+  .carousel-img {
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .carousel-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, var(--bg-primary), transparent);
+  }
+  
+  .carousel-img img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .carousel-item:hover .carousel-img img {
+    transform: scale(1.15);
+  }
+  
+  .carousel-info {
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .carousel-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .carousel-info p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  
+  .genre-tag {
+    display: inline-block;
+    background: rgba(0, 255, 224, 0.1);
+    color: var(--accent-cyan);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 255, 224, 0.2);
+    font-weight: 500;
+  }
+  
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .carousel-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-cyan);
+    background: rgba(0, 255, 224, 0.1);
+    color: var(--accent-cyan);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carousel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 224, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .carousel-btn:hover::before {
+    left: 100%;
+  }
+  
+  .carousel-btn:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 255, 224, 0.5);
+  }
+  
+  /* --- Premium Badge --- */
+  .premium-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient-secondary);
+    color: var(--btn-text-dark);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.4);
+    z-index: 3;
+    letter-spacing: 1px;
+    animation: badgePulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  /* --- Enhanced Genre Filter --- */
+  .genre-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .genre-btn {
+    padding: 12px 30px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .genre-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(0, 255, 224, 0.2), rgba(255, 0, 255, 0.2));
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  
+  .genre-btn.active, .genre-btn:hover {
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+  }
+  
+  .genre-btn.active::before, .genre-btn:hover::before {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .genre-btn.active span, .genre-btn:hover span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* --- Cinematic Literature Section --- */
+  .literature-section {
+    background: linear-gradient(135deg, var(--bg-tertiary), rgba(168, 0, 255, 0.1));
+    border-radius: 30px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+  
+  .literature-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 255, 224, 0.05) 0%, transparent 70%);
+    z-index: -1;
+  }
+  
+  .literature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+  }
+  
+  .literature-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    position: relative;
+  }
+  
+  .literature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-magenta);
+    box-shadow: 
+      0 20px 40px rgba(255, 0, 255, 0.2),
+      0 0 0 1px rgba(255, 0, 255, 0.1) inset;
+  }
+  
+  .literature-img {
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .literature-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--bg-primary), transparent);
+  }
+  
+  .literature-img img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .literature-card:hover .literature-img img {
+    transform: scale(1.1);
+  }
+  
+  .literature-content {
+    padding: 30px;
+  }
+  
+  .literature-badge {
+    display: inline-block;
+    background: var(--gradient-secondary);
+    color: var(--btn-text-dark);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .literature-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .literature-content p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* --- My List Section --- */
+  .my-list-section {
+    background: linear-gradient(135deg, var(--bg-tertiary), rgba(0, 255, 224, 0.1));
+    border-radius: 30px;
+    padding: 60px;
+    margin-top: 50px;
+  }
+  
+  .my-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .list-item {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  
+  .list-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 10px 30px rgba(0, 255, 224, 0.2);
+  }
+  
+  .list-item-img {
+    width: 80px;
+    height: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .list-item-img img {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .list-item-info {
+    flex: 1;
+  }
+  
+  .list-item-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+  }
+  
+  .list-item-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  .remove-btn {
+    background: transparent;
+    border: 1px solid var(--accent-magenta);
+    color: var(--accent-magenta);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  .remove-btn:hover {
+    background: var(--accent-magenta);
+    color: var(--btn-text-dark);
+  }
+  
+  /* --- Premium Modal Design --- */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(20px);
+    animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes modalFadeIn {
+    from { opacity: 0; backdrop-filter: blur(0); }
+    to { opacity: 1; backdrop-filter: blur(20px); }
+  }
+  
+  .modal-content {
+    background: var(--modal-bg);
+    border-radius: 30px;
+    width: 90%;
+    max-width: 900px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: 
+      0 50px 100px var(--shadow-color),
+      0 0 0 1px rgba(0, 255, 224, 0.05) inset;
+    animation: modalSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes modalSlideUp {
+    from { transform: translateY(100px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  
+  .modal-header {
+    padding: 40px 40px 25px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, rgba(0, 255, 224, 0.05), transparent);
+  }
+  
+  .modal-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+  
+  .close-btn {
+    color: var(--accent-magenta);
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 0, 255, 0.1);
+    border: 1px solid rgba(255, 0, 255, 0.2);
+  }
+  
+  .close-btn:hover {
+    background: var(--accent-magenta);
+    color: var(--btn-text-dark);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+  }
+  
+  .modal-body {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+  }
+  
+  .modal-poster {
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px var(--shadow-color);
+    position: relative;
+  }
+  
+  .modal-poster::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 255, 224, 0.1), rgba(255, 0, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal-poster:hover::after {
+    opacity: 1;
+  }
+  
+  .modal-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .modal-info p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+  }
+  
+  .modal-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .detail-item {
+    padding: 20px;
+    background: var(--bg-tertiary);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  
+  .detail-item:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 255, 224, 0.05);
+  }
+  
+  .detail-label {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .detail-value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .modal-btn {
+    padding: 18px 35px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .modal-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+  
+  .watch-btn-modal {
+    background: var(--gradient-secondary);
+    color: var(--btn-text-dark);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+  }
+  
+  .watch-btn-modal::before {
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-magenta));
+  }
+  
+  .watch-btn-modal:hover::before {
+    left: 0;
+  }
+  
+  .watch-btn-modal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 0, 255, 0.5);
+  }
+  
+  .list-btn-modal {
+    background: transparent;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+  }
+  
+  .list-btn-modal::before {
+    background: rgba(0, 255, 224, 0.1);
+  }
+  
+  .list-btn-modal:hover::before {
+    left: 0;
+  }
+  
+  .list-btn-modal:hover {
+    background: rgba(0, 255, 224, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 224, 0.2);
+  }
+  
+  /* --- Enhanced Payment Modal --- */
+  .payment-modal-content {
+    max-width: 550px;
+  }
+  
+  .payment-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 40px;
+    margin-top: 10px;
+  }
+  
+  .payment-tab {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+    position: relative;
+  }
+  
+  .payment-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  
+  .payment-tab.active {
+    color: var(--accent-cyan);
+  }
+  
+  .payment-tab.active::after {
+    width: 100%;
+  }
+  
+  .payment-content {
+    padding: 40px;
+  }
+  
+  .payment-method {
+    display: none;
+    animation: fadeInUp 0.4s ease;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .payment-method.active {
+    display: block;
+  }
+  
+  .payment-method h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+  
+  .payment-method p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+  }
+  
+  .payment-input {
+    width: 100%;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    background: var(--search-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .payment-input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    background: rgba(0, 255, 224, 0.05);
+    box-shadow: 0 0 30px rgba(0, 255, 224, 0.1);
+  }
+  
+  .payment-btn {
+    width: 100%;
+    padding: 20px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 15px;
+    color: var(--btn-text-dark);
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+  }
+  
+  .payment-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--accent-magenta), var(--accent-cyan));
+    transition: left 0.5s ease;
+  }
+  
+  .payment-btn:hover::before {
+    left: 0;
+  }
+  
+  .payment-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 255, 224, 0.4);
+  }
+  
+  .qr-code {
+    text-align: center;
+    padding: 30px;
+    background: var(--bg-tertiary);
+    border-radius: 15px;
+    margin: 25px 0;
+    border: 1px solid var(--border-color);
+  }
+  
+  .qr-code img {
+    width: 220px;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+  }
+  
+  .qr-code p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+  
+  /* --- Login Modal --- */
+  .login-modal-content {
+    max-width: 450px;
+  }
+  
+  .login-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 40px;
+  }
+  
+  .login-tab {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+  }
+  
+  .login-tab.active {
+    color: var(--accent-cyan);
+    border-bottom-color: var(--accent-cyan);
+  }
+  
+  .social-login {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .social-login-btn {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .social-login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+  }
+  
+  .facebook-btn {
+    background: #4267B2;
+    color: white;
+    border: none;
+  }
+  
+  .google-btn {
+    background: #DB4437;
+    color: white;
+    border: none;
+  }
+  
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+  }
+  
+  .divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-color);
+  }
+  
+  .divider span {
+    background: var(--modal-bg);
+    padding: 0 20px;
+    color: var(--text-tertiary);
+  }
+  
+  /* --- Enhanced Footer --- */
+  footer {
+    background: linear-gradient(to top, var(--bg-primary), var(--bg-secondary));
+    padding: 80px 50px 40px;
+    margin-top: 100px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+  }
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+  
+  .footer-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+  }
+  
+  .footer-links h3 {
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .footer-links h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--gradient-primary);
+  }
+  
+  .footer-links ul {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-links a {
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent-cyan);
+    padding-left: 10px;
+    transform: translateX(5px);
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+  }
+  
+  .social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: left 0.3s ease;
+  }
+  
+  .social-link:hover::before {
+    left: 0;
+  }
+  
+  .social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    border-color: transparent;
+  }
+  
+  .social-link i {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .newsletter input {
+    width: 100%;
+    padding: 18px 20px;
+    background: var(--search-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    background: rgba(0, 255, 224, 0.05);
+  }
+  
+  .newsletter button {
+    width: 100%;
+    padding: 18px;
+    background: var(--gradient-secondary);
+    border: none;
+    border-radius: 12px;
+    color: var(--btn-text-dark);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .newsletter button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+  }
+  
+  .copyright {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+  }
+  
+  /* --- Responsive Enhancements --- */
+  @media (max-width: 1200px) {
+    .hero-content h1 {
+      font-size: 3.8rem;
+    }
+    
+    section {
+      padding: 60px 40px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    header {
+      padding: 20px 40px;
+    }
+    
+    .hero {
+      padding-left: 40px;
+    }
+    
+    .hero-content h1 {
+      font-size: 3.2rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2.4rem;
+    }
+    
+    .modal-body {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .modal-poster {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+    }
+    
+    .hero {
+      padding: 40px;
+      height: auto;
+      min-height: 80vh;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+    
+    .hero-content p {
+      font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+    }
+    
+    .carousel-item {
+      min-width: 280px;
+    }
+    
+    .literature-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    
+    .view-all {
+      align-self: flex-start;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    header {
+      padding: 15px 30px;
+    }
+    
+    .logo {
+      font-size: 2.2rem;
+    }
+    
+    section {
+      padding: 50px 30px;
+    }
+    
+    .hero {
+      padding: 30px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.4rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .carousel-item {
+      min-width: 250px;
+    }
+    
+    .modal-content {
+      width: 95%;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .payment-content {
+      padding: 30px;
+    }
+    
+    .modal-title {
+      font-size: 2rem;
+    }
+    
+    .modal-actions {
+      flex-direction: column;
+    }
+    
+    footer {
+      padding: 60px 30px 30px;
+    }
+  }
+  
+  /* --- Premium Animations --- */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      transform: translateY(50px); 
+      opacity: 0; 
+    }
+    to { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  /* --- Scroll Progress --- */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--gradient-primary);
+    z-index: 1001;
+    transition: width 0.1s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<div id="particles-js"></div>
+<div class="glow-effect glow-cyan"></div>
+<div class="glow-effect glow-magenta"></div>
+
+<header id="main-header">
+  <div class="logo">N-STUDIO</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#new-releases">New Releases</a>
+    <a href="#genres">Genres</a>
+    <a href="#trending">Trending</a>
+    <a href="#literature">Literature</a>
+    <a href="#mylist">My List</a>
+  </nav>
+  <div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search anime..." id="search-input">
+  </div>
+  <div class="user-actions">
+    <div class="theme-toggle" id="theme-toggle">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+      <div class="toggle-slider"></div>
+    </div>
+    <button class="login-btn" onclick="openLogin()"><i class="fas fa-user"></i> Premium Access</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Cinematic Anime<br><span>Bangladeshi Literature</span></h1>
+    <p>Experience premium anime adaptations of classic Bangladeshi literature alongside international masterpieces. Ultra HD streaming, exclusive content, and a next-generation viewing experience powered by N-Studio.</p>
+    <div class="hero-buttons">
+      <button class="hero-btn watch-btn" onclick="openModal('Nouka Dubi - The Boat Wreck')">
+        <i class="fas fa-play"></i> Watch Now
+      </button>
+      <button class="hero-btn explore-btn" onclick="scrollToSection('new-releases')">
+        <i class="fas fa-compass"></i> Explore Library
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="new-releases">
+  <div class="section-header">
+    <h2>New Releases</h2>
+    <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="carousel-container">
+    <div class="carousel" id="new-releases-carousel">
+      <div class="carousel-item" onclick="openModal('Nouka Dubi - The Boat Wreck')">
+        <div class="premium-badge">Premium</div>
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Nouka Dubi">
+        </div>
+        <div class="carousel-info">
+          <h3>Nouka Dubi</h3>
+          <p>Based on Rabindranath Tagore's novel</p>
+          <span class="genre-tag">Literature</span>
+          <span class="genre-tag">Drama</span>
+        </div>
+      </div>
+      <div class="carousel-item" onclick="openModal('Cyber Shinobi 2099')">
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/hfGZgZ8.jpg" alt="Cyber Shinobi">
+        </div>
+        <div class="carousel-info">
+          <h3>Cyber Shinobi 2099</h3>
+          <p>Futuristic ninja action series</p>
+          <span class="genre-tag">Action</span>
+          <span class="genre-tag">Sci-Fi</span>
+        </div>
+      </div>
+      <div class="carousel-item" onclick="openModal('Shesher Kabita - The Last Poem')">
+        <div class="premium-badge">Premium</div>
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/5r6kVfN.jpg" alt="Shesher Kabita">
+        </div>
+        <div class="carousel-info">
+          <h3>Shesher Kabita</h3>
+          <p>Tagore's classic romantic tale</p>
+          <span class="genre-tag">Literature</span>
+          <span class="genre-tag">Romance</span>
+        </div>
+      </div>
+      <div class="carousel-item" onclick="openModal('Neon Samurai')">
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/Tl0WgjD.jpg" alt="Neon Samurai">
+        </div>
+        <div class="carousel-info">
+          <h3>Neon Samurai</h3>
+          <p>Cyberpunk samurai adventure</p>
+          <span class="genre-tag">Action</span>
+          <span class="genre-tag">Cyberpunk</span>
+        </div>
+      </div>
+      <div class="carousel-item" onclick="openModal('Kabuliwala - The Fruit Seller')">
+        <div class="premium-badge">Premium</div>
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Kabuliwala">
+        </div>
+        <div class="carousel-info">
+          <h3>Kabuliwala</h3>
+          <p>Tagore's heartwarming story</p>
+          <span class="genre-tag">Literature</span>
+          <span class="genre-tag">Drama</span>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="scrollCarousel('new-releases-carousel', -400)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn" onclick="scrollCarousel('new-releases-carousel', 400)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="genres">
+  <div class="section-header">
+    <h2>Browse by Genre</h2>
+  </div>
+  <div class="genre-filter">
+    <button class="genre-btn active" onclick="filterGenre('all')">All</button>
+    <button class="genre-btn" onclick="filterGenre('action')">Action</button>
+    <button class="genre-btn" onclick="filterGenre('romance')">Romance</button>
+    <button class="genre-btn" onclick="filterGenre('sci-fi')">Sci-Fi</button>
+    <button class="genre-btn" onclick="filterGenre('fantasy')">Fantasy</button>
+    <button class="genre-btn" onclick="filterGenre('literature')">Literature</button>
+    <button class="genre-btn" onclick="filterGenre('horror')">Horror</button>
+  </div>
+  <div class="carousel" id="genre-carousel">
+    <div class="carousel-item" data-genre="action literature" onclick="openModal('Nouka Dubi - The Boat Wreck')">
+      <div class="carousel-img">
+        <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Nouka Dubi">
+      </div>
+      <div class="carousel-info">
+        <h3>Nouka Dubi</h3>
+        <p>Classic literature adaptation</p>
+        <span class="genre-tag">Literature</span>
+      </div>
+    </div>
+    <div class="carousel-item" data-genre="action" onclick="openModal('Cyber Shinobi 2099')">
+      <div class="carousel-img">
+        <img src="https://i.imgur.com/hfGZgZ8.jpg" alt="Cyber Shinobi">
+      </div>
+      <div class="carousel-info">
+        <h3>Cyber Shinobi 2099</h3>
+        <p>Futuristic ninja action</p>
+        <span class="genre-tag">Action</span>
+      </div>
+    </div>
+    <div class="carousel-item" data-genre="romance literature" onclick="openModal('Shesher Kabita - The Last Poem')">
+      <div class="carousel-img">
+        <img src="https://i.imgur.com/5r6kVfN.jpg" alt="Shesher Kabita">
+      </div>
+      <div class="carousel-info">
+        <h3>Shesher Kabita</h3>
+        <p>Romantic literature classic</p>
+        <span class="genre-tag">Romance</span>
+      </div>
+    </div>
+    <div class="carousel-item" data-genre="sci-fi action" onclick="openModal('Neon Samurai')">
+      <div class="carousel-img">
+        <img src="https://i.imgur.com/Tl0WgjD.jpg" alt="Neon Samurai">
+      </div>
+      <div class="carousel-info">
+        <h3>Neon Samurai</h3>
+        <p>Cyberpunk adventure</p>
+        <span class="genre-tag">Sci-Fi</span>
+      </div>
+    </div>
+    <div class="carousel-item" data-genre="fantasy" onclick="openModal('Spirited Away')">
+      <div class="carousel-img">
+        <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Spirited Away">
+      </div>
+      <div class="carousel-info">
+        <h3>Spirited Away</h3>
+        <p>Magical fantasy journey</p>
+        <span class="genre-tag">Fantasy</span>
+      </div>
+    </div>
+    <div class="carousel-item" data-genre="horror" onclick="openModal('Tokyo Ghoul')">
+      <div class="carousel-img">
+        <img src="https://i.imgur.com/hfGZgZ8.jpg" alt="Tokyo Ghoul">
+      </div>
+      <div class="carousel-info">
+        <h3>Tokyo Ghoul</h3>
+        <p>Dark supernatural horror</p>
+        <span class="genre-tag">Horror</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trending">
+  <div class="section-header">
+    <h2>Trending Now</h2>
+    <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="carousel-container">
+    <div class="carousel" id="trending-carousel">
+      <div class="carousel-item" onclick="openModal('Attack on Titan')">
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Attack on Titan">
+        </div>
+        <div class="carousel-info">
+          <h3>Attack on Titan</h3>
+          <p>Epic battle for humanity</p>
+          <span class="genre-tag">Action</span>
+          <span class="genre-tag">Fantasy</span>
+        </div>
+      </div>
+      <div class="carousel-item" onclick="openModal('Demon Slayer')">
+        <div class="premium-badge">Trending</div>
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/hfGZgZ8.jpg" alt="Demon Slayer">
+        </div>
+        <div class="carousel-info">
+          <h3>Demon Slayer</h3>
+          <p>Demon hunting adventure</p>
+          <span class="genre-tag">Action</span>
+          <span class="genre-tag">Supernatural</span>
+        </div>
+      </div>
+      <div class="carousel-item" onclick="openModal('Jujutsu Kaisen')">
+        <div class="carousel-img">
+          <img src="https://i.imgur.com/5r6kVfN.jpg" alt="Jujutsu Kaisen">
+        </div>
+        <div class="carousel-info">
+          <h3>Jujutsu Kaisen</h3>
+          <p>Cursed energy battles</p>
+          <span class="genre-tag">Action</span>
+          <span class="genre-tag">Supernatural</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="literature" class="literature-section">
+  <div class="section-header">
+    <h2>Bangladeshi Literature Adaptations</h2>
+    <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="literature-grid">
+    <div class="literature-card" onclick="openModal('Nouka Dubi - The Boat Wreck')">
+      <div class="literature-img">
+        <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Nouka Dubi">
+      </div>
+      <div class="literature-content">
+        <span class="literature-badge">Premium</span>
+        <h3>Nouka Dubi</h3>
+        <p>Based on Rabindranath Tagore's novel about love, sacrifice, and societal pressures in early 20th century Bengal.</p>
+        <button class="list-btn-modal" onclick="event.stopPropagation();addToList('Nouka Dubi')">
+          <i class="fas fa-plus"></i> Add to List
+        </button>
+      </div>
+    </div>
+    <div class="literature-card" onclick="openModal('Shesher Kabita - The Last Poem')">
+      <div class="literature-img">
+        <img src="https://i.imgur.com/5r6kVfN.jpg" alt="Shesher Kabita">
+      </div>
+      <div class="literature-content">
+        <span class="literature-badge">Premium</span>
+        <h3>Shesher Kabita</h3>
+        <p>Tagore's exploration of modern love versus traditional values, set against the backdrop of urban Kolkata.</p>
+        <button class="list-btn-modal" onclick="event.stopPropagation();addToList('Shesher Kabita')">
+          <i class="fas fa-plus"></i> Add to List
+        </button>
+      </div>
+    </div>
+    <div class="literature-card" onclick="openModal('Kabuliwala - The Fruit Seller')">
+      <div class="literature-img">
+        <img src="https://i.imgur.com/Tl0WgjD.jpg" alt="Kabuliwala">
+      </div>
+      <div class="literature-content">
+        <span class="literature-badge">Premium</span>
+        <h3>Kabuliwala</h3>
+        <p>The touching story of an Afghan fruit seller and his bond with a little girl in colonial Calcutta.</p>
+        <button class="list-btn-modal" onclick="event.stopPropagation();addToList('Kabuliwala')">
+          <i class="fas fa-plus"></i> Add to List
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mylist" class="my-list-section">
+  <div class="section-header">
+    <h2>My List</h2>
+    <span class="view-all" id="list-count">0 Items</span>
+  </div>
+  <div class="my-list-grid" id="my-list-container">
+    <!-- My list items will be added dynamically -->
+    <p style="color: var(--text-secondary); text-align: center; grid-column: 1 / -1;">Your list is empty. Add some anime to get started!</p>
+  </div>
+</section>
+
+<!-- Anime Detail Modal -->
+<div class="modal" id="anime-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-title">Anime Title</h2>
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-poster">
+        <img src="https://i.imgur.com/4AiXzf8.jpg" alt="Anime Poster" id="modal-poster">
+      </div>
+      <div class="modal-info">
+        <h3 id="modal-subtitle">Synopsis</h3>
+        <p id="modal-synopsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Watch episodes, read synopsis, and explore details.</p>
+        <div class="modal-details">
+          <div class="detail-item">
+            <span class="detail-label">Genre</span>
+            <span class="detail-value" id="modal-genre">Action, Adventure</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Release Year</span>
+            <span class="detail-value" id="modal-year">2024</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Episodes</span>
+            <span class="detail-value" id="modal-episodes">24</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Status</span>
+            <span class="detail-value" id="modal-status">Ongoing</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-btn watch-btn-modal" onclick="openPayment()">
+            <i class="fas fa-play"></i> Watch Now
+          </button>
+          <button class="modal-btn list-btn-modal" id="modal-list-btn" onclick="addToListFromModal()">
+            <i class="fas fa-plus"></i> Add to My List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div class="modal" id="payment-modal">
+  <div class="modal-content payment-modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Premium Access</h2>
+      <span class="close-btn" onclick="closePayment()">&times;</span>
+    </div>
+    <div class="payment-tabs">
+      <div class="payment-tab active" onclick="switchPayment('bKash')">bKash</div>
+      <div class="payment-tab" onclick="switchPayment('visa')">Visa/Mastercard</div>
+      <div class="payment-tab" onclick="switchPayment('nagad')">Nagad</div>
+      <div class="payment-tab" onclick="switchPayment('rocket')">Rocket</div>
+    </div>
+    <div class="payment-content">
+      <div class="payment-method active" id="bKash-payment">
+        <h3>Pay with bKash</h3>
+        <p>Send payment to the following bKash number:</p>
+        <div class="qr-code">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bKash:015XXXXXXX&format=png&color=0-0-0&bgcolor=255-255-255" alt="bKash QR">
+          <p><strong>bKash Number: 015XXXXXXX</strong></p>
+          <p><small>Amount: ৳299/month</small></p>
+        </div>
+        <input type="text" class="payment-input" id="bKash-transaction" placeholder="Enter bKash Transaction ID">
+        <input type="text" class="payment-input" id="bKash-number" placeholder="Enter Your bKash Number">
+        <button class="payment-btn" onclick="processPayment('bKash')">Confirm Payment</button>
+      </div>
+      <div class="payment-method" id="visa-payment">
+        <h3>Pay with Card</h3>
+        <input type="text" class="payment-input" id="card-number" placeholder="Card Number" maxlength="19">
+        <div style="display:flex;gap:15px;">
+          <input type="text" class="payment-input" id="card-expiry" placeholder="MM/YY" maxlength="5">
+          <input type="text" class="payment-input" id="card-cvv" placeholder="CVV" maxlength="4">
+        </div>
+        <input type="text" class="payment-input" id="card-name" placeholder="Cardholder Name">
+        <button class="payment-btn" onclick="processPayment('visa')">Pay $4.99/month</button>
+        <p style="color:var(--text-tertiary);font-size:0.9rem;margin-top:15px;">Secure payment powered by Stripe</p>
+      </div>
+      <div class="payment-method" id="nagad-payment">
+        <h3>Pay with Nagad</h3>
+        <p>Send payment to the following Nagad number:</p>
+        <div class="qr-code">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Nagad:017XXXXXXX&format=png&color=0-0-0&bgcolor=255-255-255" alt="Nagad QR">
+          <p><strong>Nagad Number: 017XXXXXXX</strong></p>
+          <p><small>Amount: ৳299/month</small></p>
+        </div>
+        <input type="text" class="payment-input" id="nagad-transaction" placeholder="Enter Nagad Transaction ID">
+        <input type="text" class="payment-input" id="nagad-number" placeholder="Enter Your Nagad Number">
+        <button class="payment-btn" onclick="processPayment('nagad')">Confirm Payment</button>
+      </div>
+      <div class="payment-method" id="rocket-payment">
+        <h3>Pay with Rocket</h3>
+        <p>Send payment to the following Rocket number:</p>
+        <div class="qr-code">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Rocket:016XXXXXXX&format=png&color=0-0-0&bgcolor=255-255-255" alt="Rocket QR">
+          <p><strong>Rocket Number: 016XXXXXXX</strong></p>
+          <p><small>Amount: ৳299/month</small></p>
+        </div>
+        <input type="text" class="payment-input" id="rocket-transaction" placeholder="Enter Rocket Transaction ID">
+        <input type="text" class="payment-input" id="rocket-number" placeholder="Enter Your Rocket Number">
+        <button class="payment-btn" onclick="processPayment('rocket')">Confirm Payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal" id="login-modal">
+  <div class="modal-content login-modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Login to N-Studio</h2>
+      <span class="close-btn" onclick="closeLogin()">&times;</span>
+    </div>
+    <div class="login-tabs">
+      <div class="login-tab active" onclick="switchLogin('login')">Login</div>
+      <div class="login-tab" onclick="switchLogin('signup')">Sign Up</div>
+    </div>
+    <div class="payment-content">
+      <div id="login-form">
+        <input type="text" class="payment-input" id="login-email" placeholder="Email">
+        <input type="password" class="payment-input" id="login-password" placeholder="Password">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0;">
+          <label style="color:var(--text-tertiary);font-size:0.9rem;">
+            <input type="checkbox" style="margin-right:5px;"> Remember me
+          </label>
+          <a href="#" style="color:var(--accent-cyan);font-size:0.9rem;">Forgot Password?</a>
+        </div>
+        <button class="payment-btn" onclick="login()">Login</button>
+        <div class="divider">
+          <span>or continue with</span>
+        </div>
+        <div class="social-login">
+          <button class="social-login-btn facebook-btn">
+            <i class="fab fa-facebook"></i> Facebook
+          </button>
+          <button class="social-login-btn google-btn">
+            <i class="fab fa-google"></i> Google
+          </button>
+        </div>
+        <p style="text-align:center;margin-top:20px;color:var(--text-tertiary);">
+          Don't have an account? <a href="#" style="color:var(--accent-cyan);" onclick="switchLogin('signup')">Sign up</a>
+        </p>
+      </div>
+      <div id="signup-form" style="display:none;">
+        <input type="text" class="payment-input" id="signup-name" placeholder="Full Name">
+        <input type="email" class="payment-input" id="signup-email" placeholder="Email">
+        <input type="password" class="payment-input" id="signup-password" placeholder="Password">
+        <input type="password" class="payment-input" id="signup-confirm" placeholder="Confirm Password">
+        <div style="margin:10px 0;">
+          <label style="color:var(--text-tertiary);font-size:0.9rem;">
+            <input type="checkbox" style="margin-right:5px;"> I agree to the <a href="#" style="color:var(--accent-cyan);">Terms & Conditions</a>
+          </label>
+        </div>
+        <button class="payment-btn" onclick="signup()">Create Account</button>
+        <p style="text-align:center;margin-top:20px;color:var(--text-tertiary);">
+          Already have an account? <a href="#" style="color:var(--accent-cyan);" onclick="switchLogin('login')">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <div class="footer-logo">N-STUDIO</div>
+      <p style="color:var(--text-secondary);margin-bottom:20px;">The future of anime streaming. Experience Bangladeshi literature like never before with premium quality and exclusive content.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#new-releases">New Releases</a></li>
+        <li><a href="#genres">Genres</a></li>
+        <li><a href="#literature">Literature Anime</a></li>
+        <li><a href="#trending">Trending</a></li>
+        <li><a href="#mylist">My List</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Copyright</a></li>
+        <li><a href="#">Content Policy</a></li>
+      </ul>
+    </div>
+    <div class="newsletter">
+      <h3>Newsletter</h3>
+      <p style="color:var(--text-secondary);margin-bottom:15px;">Subscribe for updates on new releases and exclusive content</p>
+      <input type="email" id="newsletter-email" placeholder="Your email address">
+      <button onclick="subscribeNewsletter()">Subscribe</button>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2025 N-Studio. All Rights Reserved. | A product of Bangladesh Digital Media</p>
+    <p style="margin-top:10px;font-size:0.8rem;">Version 2.0 | Premium Streaming Platform</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  // Theme Toggle Functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  // Check for saved theme or prefer color scheme
+  const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  
+  themeToggle.addEventListener('click', function() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update particles for new theme
+    updateParticles(newTheme);
+  });
+  
+  // Update particle colors based on theme
+  function updateParticles(theme) {
+    const particlesConfig = {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 1000 } },
+        color: { 
+          value: theme === 'dark' ? 
+            ["#00ffe0", "#ff00ff", "#a800ff", "#00ff9d"] : 
+            ["#0088cc", "#cc00cc", "#8800ff", "#00cc88"] 
+        },
+        shape: { type: "circle" },
+        opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+        size: { value: theme === 'dark' ? 4 : 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+        line_linked: {
+          enable: true,
+          distance: 200,
+          color: theme === 'dark' ? "#00ffe0" : "#0088cc",
+          opacity: 0.3,
+          width: 1.5
+        },
+        move: {
+          enable: true,
+          speed: theme === 'dark' ? 3 : 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: { enable: true, rotateX: 600, rotateY: 1200 }
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        }
+      }
+    };
+    
+    particlesJS("particles-js", particlesConfig);
+  }
+  
+  // Initial particle setup
+  updateParticles(currentTheme);
+  
+  // Anime Data (from AnimBD)
+  const animeData = {
+    "Nouka Dubi - The Boat Wreck": {
+      title: "Nouka Dubi",
+      subtitle: "The Boat Wreck",
+      synopsis: "Based on Rabindranath Tagore's classic novel, this anime adaptation follows the story of Ramesh and Hemnalini, whose lives take an unexpected turn after a boat accident. A tale of love, sacrifice, and societal expectations in early 20th century Bengal.",
+      genre: "Literature, Drama, Romance",
+      year: "2024",
+      episodes: "12",
+      status: "Completed",
+      premium: true,
+      poster: "https://i.imgur.com/3zinoqt.png"
+    },
+    "Cyber Shinobi 2099": {
+      title: "Cyber Shinobi 2099",
+      subtitle: "Future Ninja Chronicles",
+      synopsis: "In a dystopian future where corporations rule the world, a clan of cyber-enhanced ninjas fight to protect the last remnants of human freedom. Fast-paced action with stunning cyberpunk visuals.",
+      genre: "Action, Sci-Fi, Cyberpunk",
+      year: "2023",
+      episodes: "24",
+      status: "Ongoing",
+      premium: false,
+      poster: "https://i.imgur.com/hfGZgZ8.jpg"
+    },
+    "Shesher Kabita - The Last Poem": {
+      title: "Shesher Kabita",
+      subtitle: "The Last Poem",
+      synopsis: "A modern adaptation of Tagore's romantic masterpiece exploring the conflict between traditional values and modern love. Set in contemporary Dhaka and Kolkata with stunning visual poetry.",
+      genre: "Literature, Romance, Drama",
+      year: "2024",
+      episodes: "8",
+      status: "Completed",
+      premium: true,
+      poster: "https://i.imgur.com/5r6kVfN.jpg"
+    },
+    "Neon Samurai": {
+      title: "Neon Samurai",
+      subtitle: "Blade Runner's Legacy",
+      synopsis: "In 22nd century Neo-Tokyo, a ronin samurai with a cybernetic arm seeks vengeance against the mega-corporation that destroyed his clan. A visual spectacle of neon lights and blade battles.",
+      genre: "Action, Sci-Fi, Cyberpunk",
+      year: "2023",
+      episodes: "16",
+      status: "Completed",
+      premium: false,
+      poster: "https://i.imgur.com/Tl0WgjD.jpg"
+    },
+    "Kabuliwala - The Fruit Seller": {
+      title: "Kabuliwala",
+      subtitle: "The Fruit Seller from Kabul",
+      synopsis: "Adaptation of Tagore's heartwarming story about an Afghan fruit seller and his emotional bond with a little girl in colonial Calcutta, exploring themes of fatherly love and cultural connections.",
+      genre: "Literature, Drama, Slice of Life",
+      year: "2024",
+      episodes: "6",
+      status: "Completed",
+      premium: true,
+      poster: "https://i.imgur.com/4AiXzf8.jpg"
+    },
+    "Spirited Away": {
+      title: "Spirited Away",
+      subtitle: "Studio Ghibli Masterpiece",
+      synopsis: "A young girl enters the world of spirits and must work in a bathhouse to rescue her parents who have been turned into pigs. An award-winning fantasy adventure.",
+      genre: "Fantasy, Adventure, Family",
+      year: "2001",
+      episodes: "Movie",
+      status: "Completed",
+      premium: true,
+      poster: "https://i.imgur.com/4AiXzf8.jpg"
+    },
+    "Tokyo Ghoul": {
+      title: "Tokyo Ghoul",
+      subtitle: "Dark Fantasy Horror",
+      synopsis: "A college student becomes a half-ghoul after a chance encounter and must navigate the dangerous world of ghouls who feed on human flesh while trying to maintain his humanity.",
+      genre: "Horror, Supernatural, Drama",
+      year: "2014",
+      episodes: "48",
+      status: "Completed",
+      premium: false,
+      poster: "https://i.imgur.com/hfGZgZ8.jpg"
+    },
+    "Attack on Titan": {
+      title: "Attack on Titan",
+      subtitle: "The Final Season",
+      synopsis: "Humanity's last stand against man-eating Titans in a post-apocalyptic world. Epic battles and deep mysteries unfold in this critically acclaimed series.",
+      genre: "Action, Fantasy, Drama",
+      year: "2013",
+      episodes: "88",
+      status: "Completed",
+      premium: true,
+      poster: "https://i.imgur.com/4AiXzf8.jpg"
+    },
+    "Demon Slayer": {
+      title: "Demon Slayer",
+      subtitle: "Kimetsu no Yaiba",
+      synopsis: "A young boy becomes a demon slayer to save his sister and avenge his family. Breathtaking animation and emotional storytelling.",
+      genre: "Action, Supernatural, Adventure",
+      year: "2019",
+      episodes: "55",
+      status: "Ongoing",
+      premium: true,
+      poster: "https://i.imgur.com/hfGZgZ8.jpg"
+    },
+    "Jujutsu Kaisen": {
+      title: "Jujutsu Kaisen",
+      subtitle: "Sorcery Fight",
+      synopsis: "A high schooler eats a cursed object and becomes a vessel for a powerful curse, joining a secret organization of Jujutsu Sorcerers to fight curses.",
+      genre: "Action, Supernatural, Horror",
+      year: "2020",
+      episodes: "47",
+      status: "Ongoing",
+      premium: true,
+      poster: "https://i.imgur.com/5r6kVfN.jpg"
+    }
+  };
+  
+  // My List Management
+  let myList = JSON.parse(localStorage.getItem('nstudio-myList')) || [];
+  let currentAnime = "";
+  
+  function updateMyList() {
+    const container = document.getElementById('my-list-container');
+    const count = document.getElementById('list-count');
+    
+    if (myList.length === 0) {
+      container.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1 / -1;">Your list is empty. Add some anime to get started!</p>';
+      count.textContent = "0 Items";
+      return;
+    }
+    
+    count.textContent = `${myList.length} ${myList.length === 1 ? 'Item' : 'Items'}`;
+    
+    container.innerHTML = myList.map((anime, index) => `
+      <div class="list-item">
+        <div class="list-item-img">
+          <img src="${anime.poster}" alt="${anime.title}">
+        </div>
+        <div class="list-item-info">
+          <h4>${anime.title}</h4>
+          <p>${anime.subtitle || 'Anime Series'}</p>
+          <small style="color: var(--text-tertiary);">${anime.genre.split(',')[0]}</small>
+        </div>
+        <button class="remove-btn" onclick="removeFromList(${index})">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    `).join('');
+  }
+  
+  function addToList(animeTitle) {
+    const anime = animeData[animeTitle];
+    if (!anime) return;
+    
+    // Check if already in list
+    if (myList.some(item => item.title === anime.title)) {
+      alert(`"${anime.title}" is already in your list!`);
+      return;
+    }
+    
+    myList.push(anime);
+    localStorage.setItem('nstudio-myList', JSON.stringify(myList));
+    updateMyList();
+    
+    // Show notification
+    showNotification(`${anime.title} added to My List!`);
+  }
+  
+  function addToListFromModal() {
+    if (currentAnime) {
+      addToList(currentAnime);
+      updateListButton();
+    }
+  }
+  
+  function updateListButton() {
+    const listBtn = document.getElementById('modal-list-btn');
+    if (!listBtn || !currentAnime) return;
+    
+    const anime = animeData[currentAnime];
+    if (!anime) return;
+    
+    const inList = myList.some(item => item.title === anime.title);
+    
+    if (inList) {
+      listBtn.innerHTML = '<i class="fas fa-check"></i> In My List';
+      listBtn.style.background = 'var(--accent-cyan)';
+      listBtn.style.color = 'var(--btn-text-dark)';
+      listBtn.style.border = 'none';
+      listBtn.onclick = function() {
+        showNotification('Already in your list!');
+      };
+    } else {
+      listBtn.innerHTML = '<i class="fas fa-plus"></i> Add to My List';
+      listBtn.style.background = 'transparent';
+      listBtn.style.color = 'var(--accent-cyan)';
+      listBtn.style.border = '2px solid var(--accent-cyan)';
+      listBtn.onclick = addToListFromModal;
+    }
+  }
+  
+  function removeFromList(index) {
+    const removed = myList.splice(index, 1)[0];
+    localStorage.setItem('nstudio-myList', JSON.stringify(myList));
+    updateMyList();
+    showNotification(`Removed ${removed.title} from My List`);
+    
+    // Update modal button if this anime is currently open
+    if (currentAnime && animeData[currentAnime].title === removed.title) {
+      updateListButton();
+    }
+  }
+  
+  // Modal Functions
+  function openModal(animeKey) {
+    const anime = animeData[animeKey] || {
+      title: animeKey,
+      subtitle: "Anime Details",
+      synopsis: "Experience this exciting anime series with stunning animation and compelling storytelling.",
+      genre: "Various",
+      year: "2024",
+      episodes: "12",
+      status: "Available",
+      premium: false,
+      poster: "https://i.imgur.com/4AiXzf8.jpg"
+    };
+    
+    document.getElementById('modal-title').textContent = anime.title;
+    document.getElementById('modal-subtitle').textContent = anime.subtitle;
+    document.getElementById('modal-synopsis').textContent = anime.synopsis;
+    document.getElementById('modal-genre').textContent = anime.genre;
+    document.getElementById('modal-year').textContent = anime.year;
+    document.getElementById('modal-episodes').textContent = anime.episodes;
+    document.getElementById('modal-status').textContent = anime.status;
+    document.getElementById('modal-poster').src = anime.poster;
+    
+    document.getElementById('anime-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    currentAnime = animeKey;
+    
+    // Update list button state
+    updateListButton();
+  }
+  
+  function closeModal() {
+    document.getElementById('anime-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Payment Functions
+  function openPayment() {
+    closeModal();
+    document.getElementById('payment-modal').style.display = 'flex';
+  }
+  
+  function closePayment() {
+    document.getElementById('payment-modal').style.display = 'none';
+  }
+  
+  function switchPayment(method) {
+    document.querySelectorAll('.payment-tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+    
+    const tab = document.querySelector(`.payment-tab[onclick="switchPayment('${method}')"]`);
+    if (tab) tab.classList.add('active');
+    
+    const methodEl = document.getElementById(`${method}-payment`);
+    if (methodEl) methodEl.classList.add('active');
+  }
+  
+  function processPayment(method) {
+    let message = '';
+    switch(method) {
+      case 'bKash':
+        const bKashID = document.getElementById('bKash-transaction').value;
+        const bKashNum = document.getElementById('bKash-number').value;
+        if (!bKashID || !bKashNum) {
+          showNotification('Please enter bKash transaction ID and number', 'error');
+          return;
+        }
+        message = `bKash payment processing (Transaction ID: ${bKashID})...`;
+        break;
+      case 'visa':
+        const cardNum = document.getElementById('card-number').value;
+        if (!cardNum) {
+          showNotification('Please enter card details', 'error');
+          return;
+        }
+        message = 'Credit card payment processing...';
+        break;
+      case 'nagad':
+        const nagadID = document.getElementById('nagad-transaction').value;
+        const nagadNum = document.getElementById('nagad-number').value;
+        if (!nagadID || !nagadNum) {
+          showNotification('Please enter Nagad transaction ID and number', 'error');
+          return;
+        }
+        message = `Nagad payment processing (Transaction ID: ${nagadID})...`;
+        break;
+      case 'rocket':
+        const rocketID = document.getElementById('rocket-transaction').value;
+        const rocketNum = document.getElementById('rocket-number').value;
+        if (!rocketID || !rocketNum) {
+          showNotification('Please enter Rocket transaction ID and number', 'error');
+          return;
+        }
+        message = `Rocket payment processing (Transaction ID: ${rocketID})...`;
+        break;
+    }
+    
+    showNotification(message);
+    
+    // Simulate payment processing
+    setTimeout(() => {
+      closePayment();
+      showNotification('Payment successful! You now have premium access for 30 days.', 'success');
+      
+      // Store premium status
+      localStorage.setItem('nstudio-premium', 'true');
+      localStorage.setItem('nstudio-premium-until', Date.now() + 30 * 24 * 60 * 60 * 1000);
+      
+      // Update UI for premium
+      updatePremiumStatus();
+    }, 2000);
+  }
+  
+  // Login Functions
+  function openLogin() {
+    document.getElementById('login-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeLogin() {
+    document.getElementById('login-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  function switchLogin(form) {
+    document.querySelectorAll('.login-tab').forEach(tab => tab.classList.remove('active'));
+    document.getElementById('login-form').style.display = form === 'login' ? 'block' : 'none';
+    document.getElementById('signup-form').style.display = form === 'signup' ? 'block' : 'none';
+    
+    const tab = document.querySelector(`.login-tab[onclick="switchLogin('${form}')"]`);
+    if (tab) tab.classList.add('active');
+  }
+  
+  function login() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    if (!email || !password) {
+      showNotification('Please enter email and password', 'error');
+      return;
+    }
+    
+    // Demo login - in real app, this would connect to backend
+    localStorage.setItem('nstudio-user', email);
+    closeLogin();
+    showNotification(`Welcome back to N-Studio!`, 'success');
+    updateUserStatus();
+  }
+  
+  function signup() {
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const confirm = document.getElementById('signup-confirm').value;
+    
+    if (!name || !email || !password || !confirm) {
+      showNotification('Please fill all fields', 'error');
+      return;
+    }
+    
+    if (password !== confirm) {
+      showNotification('Passwords do not match', 'error');
+      return;
+    }
+    
+    // Demo signup
+    localStorage.setItem('nstudio-user', email);
+    localStorage.setItem('nstudio-user-name', name);
+    closeLogin();
+    showNotification(`Welcome to N-Studio, ${name}!`, 'success');
+    updateUserStatus();
+  }
+  
+  // Search Functionality
+  document.getElementById('search-input').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    if (searchTerm.length < 2) return;
+    
+    const results = Object.entries(animeData).filter(([key, anime]) => 
+      anime.title.toLowerCase().includes(searchTerm) || 
+      anime.genre.toLowerCase().includes(searchTerm)
+    );
+    
+    // In a real app, you would display search results
+    if (results.length > 0 && searchTerm.length >= 3) {
+      showNotification(`Found ${results.length} anime matching "${searchTerm}"`);
+    }
+  });
+  
+  // Genre Filter
+  function filterGenre(genre) {
+    const items = document.querySelectorAll('#genre-carousel .carousel-item');
+    
+    items.forEach(item => {
+      if (genre === 'all' || item.getAttribute('data-genre').includes(genre)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    
+    document.querySelectorAll('.genre-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.genre-btn[onclick="filterGenre('${genre}')"]`).classList.add('active');
+  }
+  
+  // Carousel Controls
+  function scrollCarousel(carouselId, amount) {
+    const carousel = document.getElementById(carouselId);
+    carousel.scrollBy({ left: amount, behavior: 'smooth' });
+  }
+  
+  // Scroll to Section
+  function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  // Notification System
+  function showNotification(message, type = 'info') {
+    // Remove existing notification
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+    
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'error' ? 'var(--accent-magenta)' : type === 'success' ? 'var(--accent-cyan)' : 'var(--bg-secondary)'};
+        color: ${type === 'error' || type === 'success' ? 'var(--btn-text-dark)' : 'var(--text-primary)'};
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s;
+        animation-fill-mode: forwards;
+        border: 1px solid var(--border-color);
+        max-width: 400px;
+      ">
+        <i class="fas fa-${type === 'error' ? 'exclamation-circle' : type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+        <span>${message}</span>
+      </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 3000);
+  }
+  
+  // Newsletter Subscription
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletter-email').value;
+    if (!email || !email.includes('@')) {
+      showNotification('Please enter a valid email address', 'error');
+      return;
+    }
+    
+    // Store subscription (demo)
+    localStorage.setItem('nstudio-newsletter', email);
+    document.getElementById('newsletter-email').value = '';
+    showNotification('Subscribed to newsletter!', 'success');
+  }
+  
+  // Update user and premium status
+  function updateUserStatus() {
+    const user = localStorage.getItem('nstudio-user');
+    const loginBtn = document.querySelector('.login-btn');
+    
+    if (user) {
+      const name = localStorage.getItem('nstudio-user-name') || user.split('@')[0];
+      loginBtn.innerHTML = `<i class="fas fa-user-check"></i> ${name}`;
+      loginBtn.onclick = function() {
+        showNotification(`Logged in as ${name}`);
+      };
+    }
+  }
+  
+  function updatePremiumStatus() {
+    const premium = localStorage.getItem('nstudio-premium');
+    const until = localStorage.getItem('nstudio-premium-until');
+    
+    if (premium && until && Date.now() < parseInt(until)) {
+      // User has premium access
+      document.querySelector('.login-btn').innerHTML = '<i class="fas fa-crown"></i> Premium Member';
+    }
+  }
+  
+  // Header scroll effect
+  window.addEventListener('scroll', function() {
+    const header = document.getElementById('main-header');
+    const scrollProgress = document.querySelector('.scroll-progress');
+    
+    if (window.scrollY > 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+    
+    // Update scroll progress bar
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + "%";
+  });
+  
+  // Close modals when clicking outside
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
+  
+  // Add keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      closePayment();
+      closeLogin();
+    }
+  });
+  
+  // Initialize animations on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-slide-up');
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('section, .carousel-item, .literature-card').forEach(el => {
+    observer.observe(el);
+  });
+  
+  // Format card number input
+  document.getElementById('card-number')?.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    value = value.replace(/(\d{4})/g, '$1 ').trim();
+    e.target.value = value.substring(0, 19);
+  });
+  
+  // Format expiry date input
+  document.getElementById('card-expiry')?.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    e.target.value = value.substring(0, 5);
+  });
+  
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', function() {
+    updateMyList();
+    updateUserStatus();
+    updatePremiumStatus();
+    
+    // Check for premium expiry
+    const premiumUntil = localStorage.getItem('nstudio-premium-until');
+    if (premiumUntil && Date.now() > parseInt(premiumUntil)) {
+      localStorage.removeItem('nstudio-premium');
+      localStorage.removeItem('nstudio-premium-until');
+      showNotification('Your premium subscription has expired', 'error');
+    }
+  });
+</script>
+
+<style>
+  /* Animation keyframes for notifications */
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Ripple effect for buttons */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+  }
+  
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+</style>
+
+</body>
+</html>
